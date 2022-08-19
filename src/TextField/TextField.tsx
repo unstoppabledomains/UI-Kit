@@ -1,5 +1,5 @@
-import {TextField, TextFieldProps} from '@mui/material';
+import {TextField, TextFieldProps, OutlinedTextFieldProps} from '@mui/material';
 
-export {TextFieldProps};
+export {TextFieldProps, OutlinedTextFieldProps};
 
 export default TextField;

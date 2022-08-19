@@ -1,3 +1,5 @@
-import {Modal} from '@mui/material';
+import {Modal, ModalProps} from '@mui/material';
+
+export {ModalProps}
 
 export default Modal;

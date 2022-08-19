@@ -1,3 +1,5 @@
-import {LinearProgress} from '@mui/material';
+import {LinearProgress, linearProgressClasses} from '@mui/material';
+
+export {linearProgressClasses};
 
 export default LinearProgress;

@@ -1,6 +1,8 @@
 export {default as theme} from './styles';
 export * from './styles';
 
+export * from './colors';
+
 export {default as Accordion} from './Accordion';
 
 export {default as AccordionActions} from './AccordionActions';
@@ -38,6 +40,7 @@ export {default as Button} from './Button';
 export * from './Button';
 
 export {default as ButtonBase} from './ButtonBase';
+export * from './ButtonBase';
 
 export {default as ButtonGroup} from './ButtonGroup';
 
@@ -69,6 +72,7 @@ export {default as Container} from './Container';
 export {default as CssBaseline} from './CssBaseline';
 
 export {default as Dialog} from './Dialog';
+export * from './Dialog';
 
 export {default as DialogActions} from './DialogActions';
 
@@ -124,6 +128,7 @@ export * from './InputBase';
 export {default as InputLabel} from './InputLabel';
 
 export {default as LinearProgress} from './LinearProgress';
+export * from './LinearProgress';
 
 export {default as Link} from './Link';
 
@@ -152,6 +157,7 @@ export {default as MenuList} from './MenuList';
 export {default as MobileStepper} from './MobileStepper';
 
 export {default as Modal} from './Modal';
+export * from './Modal';
 
 export {default as NativeSelect} from './NativeSelect';
 
@@ -180,6 +186,7 @@ export {default as Rating} from './Rating';
 export {default as ScopedCssBaseline} from './ScopedCssBaseline';
 
 export {default as Select} from './Select';
+export * from './Select';
 
 export {default as Skeleton} from './Skeleton';
 
@@ -210,6 +217,7 @@ export {default as StepContent} from './StepContent';
 export {default as StepIcon} from './StepIcon';
 
 export {default as StepLabel} from './StepLabel';
+export * from './StepLabel';
 
 export {default as Stepper} from './Stepper';
 
@@ -235,6 +243,7 @@ export {default as TableFooter} from './TableFooter';
 export {default as TableHead} from './TableHead';
 
 export {default as TablePagination} from './TablePagination';
+export * from './TablePagination';
 
 export {default as TableRow} from './TableRow';
 
@@ -249,6 +258,10 @@ export * from './TextField'
 
 export {default as TextareaAutosize} from './TextareaAutosize';
 
+export {default as ThemeProvider} from './ThemeProvider';
+
+export {default as StyledEngineProvider} from './StyledEngineProvider';
+
 export {default as ToggleButton} from './ToggleButton';
 
 export {default as ToggleButtonGroup} from './ToggleButtonGroup';
@@ -256,6 +269,7 @@ export {default as ToggleButtonGroup} from './ToggleButtonGroup';
 export {default as Toolbar} from './Toolbar';
 
 export {default as Tooltip} from './Tooltip';
+export * from './Tooltip';
 
 export {default as Typography} from './Typography';
 export * from './Typography'
@@ -263,3 +277,5 @@ export * from './Typography'
 export {default as useMediaQuery} from './useMediaQuery'
 
 export {default as Zoom} from './Zoom';
+
+export {default as OverridableComponent} from './OverridableComponent';
