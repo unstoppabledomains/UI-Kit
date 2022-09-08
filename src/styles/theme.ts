@@ -3,8 +3,8 @@ import type {
   ThemeOptions,
   Theme,
 } from '@mui/material';
-import {createTheme, responsiveFontSizes} from '@mui/material';
-import type {CSSObject} from 'tss-react';
+import { createTheme, responsiveFontSizes } from '@mui/material';
+import type { CSSObject } from 'tss-react';
 
 export const MAX_PAGE_CONTENT_WIDTH = 1020;
 export const MAX_ARTICLE_CONTENT_WIDTH = 760;
@@ -194,7 +194,7 @@ declare module '@mui/material/styles/createPalette' {
   interface PaletteOptions extends PaletteExtends {}
 }
 
-const THEME_SHAPE_BORDER_RADIUS: number = 8;
+const THEME_SHAPE_BORDER_RADIUS = 8;
 
 // more info on dark mode: https://mui.com/material-ui/customization/dark-mode/
 const buildThemeOptions = (mode: 'light' | 'dark'): ThemeOptions => ({
@@ -278,13 +278,13 @@ const buildThemeOptions = (mode: 'light' | 'dark'): ThemeOptions => ({
   },
   palette: {
     mode,
-    error: {main: '#B72015'},
-    link: {main: '#0D67FE'},
-    iceBlue: {main: '#E6F6FF', dark: '#ceedff'},
-    yellow: {main: '#ffefb7'},
-    cloudyBlue: {main: 'rgba(190, 195, 220, 0.1)'},
-    purple: {main: '#797ff2'},
-    nightBlue: {main: '#061543'},
+    error: { main: '#B72015' },
+    link: { main: '#0D67FE' },
+    iceBlue: { main: '#E6F6FF', dark: '#ceedff' },
+    yellow: { main: '#ffefb7' },
+    cloudyBlue: { main: 'rgba(190, 195, 220, 0.1)' },
+    purple: { main: '#797ff2' },
+    nightBlue: { main: '#061543' },
     primary: {
       light: '#D6E5FF',
       main: '#0D67FE',
@@ -409,6 +409,7 @@ const buildThemeOptions = (mode: 'light' | 'dark'): ThemeOptions => ({
 
 // global components styles overrides
 const addThemeOverrides = (theme: Theme) => {
+  /* eslint-disable no-param-reassign */
   theme.components = {
     MuiTabs: {
       defaultProps: {
@@ -527,7 +528,7 @@ const addThemeOverrides = (theme: Theme) => {
         standardError: {
           background: theme.palette.dangerShades[100],
           color: theme.palette.dangerShades[900],
-          border: `1px solid rgba(0 0 0 / 8%)`,
+          border: '1px solid rgba(0 0 0 / 8%)',
           '& .MuiAlert-icon': {
             color: theme.palette.dangerShades[700],
           },
@@ -598,6 +599,8 @@ const addThemeOverrides = (theme: Theme) => {
     };
   }
 
+  /* eslint-disable @typescript-eslint/ban-ts-comment */
+
   // @ts-ignore
   theme.containers.main[theme.breakpoints.down('md')] = {
     marginTop: theme.spacing(2),
@@ -607,6 +610,8 @@ const addThemeOverrides = (theme: Theme) => {
   theme.containers.modalContent[theme.breakpoints.down('md')] = {
     minWidth: 0,
   };
+
+  /* eslint-enable no-param-reassign, @typescript-eslint/ban-ts-comment */
 
   return responsiveFontSizes(theme);
 };

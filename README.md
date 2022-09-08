@@ -4,10 +4,11 @@ A set of common Unstoppable Domains components 🧩
 
 ## Installing UI Kit
 
-UI Kit can be installed with `yarn`. React and MUI dependencies must be installed as well:
+UI Kit can be installed with `yarn`. React and React DOM must be installed as
+well:
 
 ```shell
-yarn add @unstoppabledomains/ui-kit @mui/material @mui/styles @mui/lab @mui/icons-material @emotion/react @emotion/styled react react-dom tss-react 
+yarn add @unstoppabledomains/ui-kit react react-dom
 ```
 
 ## Updating UI Kit
@@ -26,11 +27,13 @@ Create a new project:
 mkdir ui-kit-consumer && cd $_
 yarn init -y
 ```
+
 Install the required dependencies from the section above.
 
 ### Importing MUI components
 
-All [Material UI](https://mui.com/material-ui/getting-started/usage/) components with the default props applied can be re-exported from the UI Kit:
+All [Material UI](https://mui.com/material-ui/getting-started/usage/) components
+with the default props applied can be re-exported from the UI Kit:
 
 ```typescript
 import React from 'react';
@@ -41,7 +44,8 @@ const App = () => {
 }
 ```
 
-To apply Unstoppable Domains website theme, use the `ThemeProvider` with the UI Kit `theme` applied:
+To apply Unstoppable Domains website theme, use the `ThemeProvider` with the UI
+Kit `theme` applied:
 
 ```typescript
 import React from 'react';
@@ -88,7 +92,7 @@ or **Linux shell**).
    ```shell
    yarn install
    ```
-   
+
 All the components are exported as named exports from `./src/index.ts`.
 
 ### Creating a distribution package
@@ -113,7 +117,8 @@ Update the `package.json` file with the new version number:
 "version": "1.2.3"
 ```
 
-Create a pull request to the UI Kit with the desired changes and wait for it to be merged. Then publish the package to `npm`:
+Create a pull request to the UI Kit with the desired changes and wait for it to
+be merged. Then publish the package to `npm`:
 
 ```shell
 yarn publish
@@ -121,7 +126,8 @@ yarn publish
 
 ## Storybook
 
-Storybook is installed and configured to visualize the Unstoppable Domains website components.
+Storybook is installed and configured to visualize the Unstoppable Domains
+website components.
 
 To run Storybook:
 
@@ -129,7 +135,8 @@ To run Storybook:
 yarn storybook
 ```
 
-This will open up http://localhost:6006/ in your browser with the introductory page.
+This will open up http://localhost:6006/ in your browser with the introductory
+page.
 
 To create standalone HTML files for the Storybook documentation:
 
