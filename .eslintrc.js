@@ -46,9 +46,13 @@ module.exports = {
         project: ['./tsconfig.json'],
         sourceType: 'module',
       },
+      rules: {
+        '@typescript-eslint/object-curly-spacing': ['error', 'never'],
+      }
     },
   ],
   rules: {
-    "react/jsx-filename-extension": ['error', { "extensions": [".js", ".jsx", ".ts", ".tsx", ".mdx"] }],
+    "react/jsx-filename-extension": ['error', {"extensions": [".js", ".jsx", ".ts", ".tsx", ".mdx"]}],
+    '@typescript-eslint/object-curly-spacing': ['error', 'never'],
   }
 };

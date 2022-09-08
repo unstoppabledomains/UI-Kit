@@ -3,8 +3,8 @@ import type {
   ThemeOptions,
   Theme,
 } from '@mui/material';
-import { createTheme, responsiveFontSizes } from '@mui/material';
-import type { CSSObject } from 'tss-react';
+import {createTheme, responsiveFontSizes} from '@mui/material';
+import type {CSSObject} from 'tss-react';
 
 export const MAX_PAGE_CONTENT_WIDTH = 1020;
 export const MAX_ARTICLE_CONTENT_WIDTH = 760;
@@ -278,13 +278,13 @@ const buildThemeOptions = (mode: 'light' | 'dark'): ThemeOptions => ({
   },
   palette: {
     mode,
-    error: { main: '#B72015' },
-    link: { main: '#0D67FE' },
-    iceBlue: { main: '#E6F6FF', dark: '#ceedff' },
-    yellow: { main: '#ffefb7' },
-    cloudyBlue: { main: 'rgba(190, 195, 220, 0.1)' },
-    purple: { main: '#797ff2' },
-    nightBlue: { main: '#061543' },
+    error: {main: '#B72015'},
+    link: {main: '#0D67FE'},
+    iceBlue: {main: '#E6F6FF', dark: '#ceedff'},
+    yellow: {main: '#ffefb7'},
+    cloudyBlue: {main: 'rgba(190, 195, 220, 0.1)'},
+    purple: {main: '#797ff2'},
+    nightBlue: {main: '#061543'},
     primary: {
       light: '#D6E5FF',
       main: '#0D67FE',

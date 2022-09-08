@@ -20,10 +20,10 @@
     "build-storybook": "build-storybook",
     "build:modules": "babel src --out-dir dist --extensions '.ts' --presets @babel/preset-typescript --plugins @babel/plugin-transform-runtime",
     "build:types": "tsc",
-    "eslint:check": "eslint \"**/*.{ts,tsx,json,md,mdx}\"",
-    "eslint:fix": "eslint \"**/*.{ts,tsx,json,md,mdx}\" --fix",
-    "prettier:check": "prettier --check --config .prettierrc --ignore-path .prettierignore \"**/*.{ts,tsx,json,md,mdx}\"",
-    "prettier:fix": "prettier --write -l --config .prettierrc --ignore-path .prettierignore \"**/*.{ts,tsx,json,md,mdx}\"",
+    "eslint:check": "eslint \"**/*.{js,ts,tsx,json,md,mdx}\"",
+    "eslint:fix": "eslint \"**/*.{js,ts,tsx,json,md,mdx}\" --fix",
+    "prettier:check": "prettier --check --config .prettierrc --ignore-path .prettierignore \"**/*.{js,ts,tsx,json,md,mdx}\"",
+    "prettier:fix": "prettier --write -l --config .prettierrc --ignore-path .prettierignore \"**/*.{js,ts,tsx,json,md,mdx}\"",
     "storybook": "start-storybook -p 6006"
   },
   "dependencies": {

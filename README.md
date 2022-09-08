@@ -4,19 +4,27 @@ A set of common Unstoppable Domains components 🧩
 
 ## Installing UI Kit
 
-UI Kit can be installed with `yarn`. React and React DOM must be installed as
-well:
+UI Kit can be installed with either `npm` or `yarn`. React and React DOM must be
+installed as well (either 17th or 18th versions are required):
 
 ```shell
 yarn add @unstoppabledomains/ui-kit react react-dom
 ```
 
+```shell
+npm install --save @unstoppabledomains/ui-kit react react-dom
+```
+
 ## Updating UI Kit
 
-UI Kit can be updated with `yarn`:
+UI Kit can be updated with either `npm` or `yarn`:
 
 ```shell
 yarn upgrade @unstoppabledomains/ui-kit --latest
+```
+
+```shell
+npm update @unstoppabledomains/ui-kit --save
 ```
 
 ## Using UI Kit
@@ -24,7 +32,7 @@ yarn upgrade @unstoppabledomains/ui-kit --latest
 Create a new project:
 
 ```shell
-mkdir ui-kit-consumer && cd $_
+mkdir ud-ui-kit-consumer && cd $_
 yarn init -y
 ```
 
@@ -32,12 +40,24 @@ Install the required dependencies from the section above.
 
 ### Importing MUI components
 
-All [Material UI](https://mui.com/material-ui/getting-started/usage/) components
-with the default props applied can be re-exported from the UI Kit:
+All [Material UI](https://mui.com/material-ui/getting-started/usage/)
+components, hooks, types, icons, and colors with the default props applied can
+be re-exported from the UI Kit by using these imports respectively:
+
+```typescript
+import {
+  Typography,
+  useMediaQuery,
+} from '@unstoppabledomains/ui-kit/dist/components';
+import type {Theme} from '@unstoppabledomains/ui-kit/dist/components';
+import {Edit} from '@unstoppabledomains/ui-kit/dist/icons';
+import {LoadingButton} from '@unstoppabledomains/ui-kit/dist/lab';
+import {indigo as indigoColor} from '@unstoppabledomains/ui-kit/dist/colors';
+```
 
 ```typescript
 import React from 'react';
-import { Button } from '@unstoppabledomains/ui-kit';
+import { Button } from '@unstoppabledomains/ui-kit/dist/components';
 
 const App = () => {
   return <Button variant="contained>Hello World</Button>;
@@ -45,15 +65,16 @@ const App = () => {
 ```
 
 To apply Unstoppable Domains website theme, use the `ThemeProvider` with the UI
-Kit `theme` applied:
+Kit `lightTheme` or `darkTheme` applied:
 
 ```typescript
 import React from 'react';
-import { ThemeProvider, theme, Button } from '@unstoppabledomains/ui-kit';
+import { ThemeProvider, Button } from '@unstoppabledomains/ui-kit/dist/components';
+import { lightTheme } from '@unstoppabledomains/ui-kit/dist/styles';
 
 const App = () => {
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={lightTheme}>
       <Button variant="contained>Hello World</Button>
     </ThemeProvider>
   );
@@ -93,15 +114,13 @@ or **Linux shell**).
    yarn install
    ```
 
-All the components are exported as named exports from `./src/index.ts`.
-
 ### Creating a distribution package
 
-Run `yarn rollup` to create a `dist` which contains all the built components.
+Run `yarn build` to create a `dist` which contains all the built entities.
 
 ### Publishing to `npm`
 
-_to be clarified_
+_To be clarified_
 
 Make sure to document the changes in the `CHANGELOG.md` file:
 
