@@ -1,21 +1,9 @@
 {
+  "include": ["src/**/*"],
   "compilerOptions": {
-    "module": "ESNext",
-    "target": "es2019",
-    "lib": ["es6", "dom", "es2019"],
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "strict": true,
-    "skipLibCheck": true,
-    "jsx": "preserve",
-    "sourceMap": true,
-    "outDir": "dist",
-    "moduleResolution": "node",
-    "allowSyntheticDefaultImports": true,
+    "allowJs": true,
     "declaration": true,
     "emitDeclarationOnly": true,
-    "declarationDir": "dist/types"
-  },
-  "include": ["src/**/*"],
-  "exclude": ["stories"]
+    "outDir": "dist",
+  }
 }

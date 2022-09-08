@@ -1,8 +1,9 @@
-import {
-  createTheme,
-  responsiveFontSizes,
+import type {
   SimplePaletteColorOptions,
-} from '@mui/material/styles';
+  ThemeOptions,
+  Theme,
+} from '@mui/material';
+import {createTheme, responsiveFontSizes} from '@mui/material';
 import type {CSSObject} from 'tss-react';
 
 export const MAX_PAGE_CONTENT_WIDTH = 1020;
@@ -87,6 +88,16 @@ type NeutralShades = {
   400: string;
   500: string;
   600: string;
+  700: string;
+  800: string;
+};
+
+type BackgroundWithAlpha = (
+  alpha: number,
+) => React.CSSProperties['backgroundColor'];
+
+type BackgroundsWithAlpha = {
+  default: BackgroundWithAlpha;
 };
 
 interface ThemeExtends {
@@ -143,11 +154,12 @@ interface ThemeExtends {
 }
 
 declare module '@mui/material/styles' {
-  /* eslint-disable @typescript-eslint/no-empty-interface */
+  // eslint-disable-next-line @typescript-eslint/no-empty-interface
   interface TypographyStyle extends CSSObject {}
+  // eslint-disable-next-line @typescript-eslint/no-empty-interface, @typescript-eslint/no-shadow
   interface Theme extends ThemeExtends {}
+  // eslint-disable-next-line @typescript-eslint/no-empty-interface, @typescript-eslint/no-shadow
   interface ThemeOptions extends ThemeExtends {}
-  /* eslint-enable @typescript-eslint/no-empty-interface */
 }
 
 interface PaletteExtends {
@@ -170,19 +182,22 @@ interface PaletteExtends {
   warningShades: WarningShades;
   dangerShades: DangerShades;
   neutralShades: NeutralShades;
+  mode: 'light' | 'dark';
+  backgroundWithAlpha: BackgroundsWithAlpha;
 }
 
 // Add custom colors to palette properties
 declare module '@mui/material/styles/createPalette' {
-  /* eslint-disable @typescript-eslint/no-empty-interface */
+  // eslint-disable-next-line @typescript-eslint/no-empty-interface
   interface Palette extends PaletteExtends {}
+  // eslint-disable-next-line @typescript-eslint/no-empty-interface
   interface PaletteOptions extends PaletteExtends {}
-  /* eslint-enable @typescript-eslint/no-empty-interface */
 }
 
-const THEME_SHAPE_BORDER_RADIUS = 8;
+const THEME_SHAPE_BORDER_RADIUS: number = 8;
 
-const theme = createTheme({
+// more info on dark mode: https://mui.com/material-ui/customization/dark-mode/
+const buildThemeOptions = (mode: 'light' | 'dark'): ThemeOptions => ({
   breakpoints: {
     values: {
       xs: 0,
@@ -237,12 +252,12 @@ const theme = createTheme({
       borderRadius: THEME_SHAPE_BORDER_RADIUS * 0.75,
     },
     navigationBox: {
-      backgroundColor: '#fff',
+      backgroundColor: mode === 'dark' ? '#121212' : '#fff',
       border: '1px solid #e2e4ec',
       borderRadius: THEME_SHAPE_BORDER_RADIUS,
     },
     card: {
-      backgroundColor: '#fff',
+      backgroundColor: mode === 'dark' ? '#121212' : '#fff',
       borderRadius: THEME_SHAPE_BORDER_RADIUS * 4,
       padding: 16,
       boxShadow:
@@ -250,7 +265,7 @@ const theme = createTheme({
       boxSizing: 'border-box',
     },
     panel: {
-      backgroundColor: '#fff',
+      backgroundColor: mode === 'dark' ? '#121212' : '#fff',
       borderRadius: THEME_SHAPE_BORDER_RADIUS,
       padding: 8,
       boxShadow: 'inset 0 0 0 1px #E2E4EC',
@@ -262,6 +277,7 @@ const theme = createTheme({
     },
   },
   palette: {
+    mode,
     error: {main: '#B72015'},
     link: {main: '#0D67FE'},
     iceBlue: {main: '#E6F6FF', dark: '#ceedff'},
@@ -280,7 +296,13 @@ const theme = createTheme({
       dark: '#00b6cc',
     },
     background: {
-      default: '#F9FAFF',
+      default: mode === 'dark' ? '#121212' : '#F9FAFF',
+    },
+    backgroundWithAlpha: {
+      default: (alpha) =>
+        mode === 'dark'
+          ? `rgba(12,12,12,${alpha})`
+          : `rgba(255,255,255,${alpha})`,
     },
     success: {
       light: '#E2F3EC',
@@ -368,6 +390,8 @@ const theme = createTheme({
       400: '#AFAFB6',
       500: '#7A7A85',
       600: '#62626A',
+      700: '#4A4A4F',
+      800: '#323234',
     },
   },
   shape: {
@@ -384,188 +408,214 @@ const theme = createTheme({
 });
 
 // global components styles overrides
-theme.components = {
-  MuiTabs: {
-    defaultProps: {
-      textColor: 'primary',
-      indicatorColor: 'primary',
-    },
-  },
-  MuiSnackbar: {
-    styleOverrides: {
-      root: {
-        margin: 8,
+const addThemeOverrides = (theme: Theme) => {
+  theme.components = {
+    MuiTabs: {
+      defaultProps: {
+        textColor: 'primary',
+        indicatorColor: 'primary',
       },
     },
-  },
-  MuiTypography: {
-    styleOverrides: {
-      root: {
-        wordBreak: 'break-word',
-      },
-      h5: {
-        fontWeight: 700,
-        [theme.breakpoints.down('sm')]: {
-          fontSize: '1.25rem',
-        },
-      },
-      h6: {
-        [theme.breakpoints.up('xs')]: {
-          fontSize: '1.125rem',
-          lineHeight: 1.5,
-        },
-      },
-      body1: {
-        [theme.breakpoints.down('sm')]: {
-          fontSize: '0.875rem',
-        },
-      },
-      body2: {
-        [theme.breakpoints.down('sm')]: {
-          fontSize: '0.825rem',
-        },
-      },
-      subtitle2: {
-        lineHeight: 1.45,
-      },
-    },
-  },
-  MuiStepLabel: {
-    styleOverrides: {
-      label: {
-        fontSize: '1rem',
-      },
-    },
-  },
-  MuiButton: {
-    styleOverrides: {
-      root: {
-        fontWeight: theme.typography.fontWeightBold,
-        fontSize: theme.typography.body1.fontSize,
-        wordBreak: 'normal',
-      },
-      sizeLarge: {
-        padding: theme.spacing(0.625, 2),
-        minHeight: 40,
-      },
-      sizeSmall: {
-        fontSize: theme.typography.body2.fontSize,
-        paddingBottom: theme.spacing(0.85),
-        paddingTop: theme.spacing(0.85),
-        minHeight: 40,
-      },
-    },
-  },
-  MuiInputBase: {
-    styleOverrides: {
-      input: {
-        [theme.breakpoints.down('md')]: {
-          fontSize: theme.typography.fontSize,
+    MuiSnackbar: {
+      styleOverrides: {
+        root: {
+          margin: 8,
         },
       },
     },
-  },
-  MuiFormLabel: {
-    styleOverrides: {
-      root: {
-        [theme.breakpoints.down('md')]: {
-          fontSize: theme.typography.fontSize,
+    MuiTypography: {
+      styleOverrides: {
+        root: {
+          wordBreak: 'break-word',
+        },
+        h5: {
+          fontWeight: 700,
+          [theme.breakpoints.down('sm')]: {
+            fontSize: '1.25rem',
+          },
+        },
+        h6: {
+          [theme.breakpoints.up('xs')]: {
+            fontSize: '1.125rem',
+            lineHeight: 1.5,
+          },
+        },
+        body1: {
+          [theme.breakpoints.down('sm')]: {
+            fontSize: '0.875rem',
+          },
+        },
+        body2: {
+          [theme.breakpoints.down('sm')]: {
+            fontSize: '0.825rem',
+          },
+        },
+        subtitle2: {
+          lineHeight: 1.45,
         },
       },
     },
-  },
-  MuiDialog: {
-    styleOverrides: {
-      paper: {
-        [theme.breakpoints.down('md')]: {
-          margin: theme.spacing(1.5),
-        },
-      },
-      paperScrollPaper: {
-        [theme.breakpoints.down('md')]: {
-          width: `calc(100% - ${theme.spacing(3)})`,
-        },
-      },
-      paperFullWidth: {
-        [theme.breakpoints.down('md')]: {
-          width: `calc(100% - ${theme.spacing(3)})`,
+    MuiStepLabel: {
+      styleOverrides: {
+        label: {
+          fontSize: '1rem',
         },
       },
     },
-  },
-  MuiAlert: {
-    styleOverrides: {
-      standardError: {
-        background: theme.palette.dangerShades[100],
-        color: theme.palette.dangerShades[900],
-        border: `1px solid rgba(0 0 0 / 8%)`,
-        '& .MuiAlert-icon': {
-          color: theme.palette.dangerShades[700],
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          fontWeight: theme.typography.fontWeightBold,
+          fontSize: theme.typography.body1.fontSize,
+          wordBreak: 'normal',
         },
-      },
-    },
-  },
-  MuiAlertTitle: {
-    styleOverrides: {
-      root: {
-        fontSize: theme.typography.body1.fontSize,
-        marginBottom: 0,
-      },
-    },
-  },
-  MuiTab: {
-    styleOverrides: {
-      root: {
-        paddingLeft: 0,
-        paddingRight: 0,
-        textTransform: 'none',
-        fontSize: theme.typography.body1.fontSize,
-        marginRight: theme.spacing(4),
-        [theme.breakpoints.up('xs')]: {
-          minWidth: 'auto',
+        outlinedInherit: {
+          borderColor: theme.palette.neutralShades[300],
+          color: theme.palette.greyShades[900],
         },
-        [theme.breakpoints.down('md')]: {
+        sizeLarge: {
+          padding: theme.spacing(0.625, 2),
+          minHeight: 40,
+        },
+        sizeSmall: {
           fontSize: theme.typography.body2.fontSize,
+          paddingBottom: theme.spacing(0.85),
+          paddingTop: theme.spacing(0.85),
+          minHeight: 40,
         },
       },
     },
-  },
-  MuiImageListItemBar: {
-    styleOverrides: {
-      title: {
-        color: theme.palette.common.black,
-        fontWeight: theme.typography.fontWeightBold,
-      },
-    },
-  },
-  MuiBadge: {
-    styleOverrides: {
-      root: {
-        wordBreak: 'normal',
-      },
-    },
-  },
-  MuiCard: {
-    styleOverrides: {
-      root: {
-        '&.MuiPaper-elevation0': {
-          border: 'solid 1px #DDDDDF',
+    MuiInputBase: {
+      styleOverrides: {
+        input: {
+          [theme.breakpoints.down('md')]: {
+            fontSize: theme.typography.fontSize,
+          },
         },
       },
     },
-  },
+    MuiFormLabel: {
+      styleOverrides: {
+        root: {
+          [theme.breakpoints.down('md')]: {
+            fontSize: theme.typography.fontSize,
+          },
+        },
+      },
+    },
+    MuiDialog: {
+      styleOverrides: {
+        paper: {
+          [theme.breakpoints.down('md')]: {
+            margin: theme.spacing(1.5),
+          },
+        },
+        paperScrollPaper: {
+          [theme.breakpoints.down('md')]: {
+            width: `calc(100% - ${theme.spacing(3)})`,
+          },
+        },
+        paperFullWidth: {
+          [theme.breakpoints.down('md')]: {
+            width: `calc(100% - ${theme.spacing(3)})`,
+          },
+        },
+      },
+    },
+    MuiAlert: {
+      styleOverrides: {
+        standardError: {
+          background: theme.palette.dangerShades[100],
+          color: theme.palette.dangerShades[900],
+          border: `1px solid rgba(0 0 0 / 8%)`,
+          '& .MuiAlert-icon': {
+            color: theme.palette.dangerShades[700],
+          },
+        },
+      },
+    },
+    MuiAlertTitle: {
+      styleOverrides: {
+        root: {
+          fontSize: theme.typography.body1.fontSize,
+          marginBottom: 0,
+        },
+      },
+    },
+    MuiTab: {
+      styleOverrides: {
+        root: {
+          paddingLeft: 0,
+          paddingRight: 0,
+          textTransform: 'none',
+          fontSize: theme.typography.body1.fontSize,
+          marginRight: theme.spacing(4),
+          [theme.breakpoints.up('xs')]: {
+            minWidth: 'auto',
+          },
+          [theme.breakpoints.down('md')]: {
+            fontSize: theme.typography.body2.fontSize,
+          },
+        },
+      },
+    },
+    MuiImageListItemBar: {
+      styleOverrides: {
+        title: {
+          color: theme.palette.common.black,
+          fontWeight: theme.typography.fontWeightBold,
+        },
+      },
+    },
+    MuiBadge: {
+      styleOverrides: {
+        root: {
+          wordBreak: 'normal',
+        },
+      },
+    },
+  };
+
+  if (theme.palette.mode === 'light' && theme.components) {
+    theme.components.MuiCard = {
+      styleOverrides: {
+        root: {
+          '&.MuiPaper-elevation0': {
+            border: 'solid 1px #DDDDDF',
+          },
+        },
+      },
+    };
+  }
+
+  if (theme.palette.mode === 'dark' && theme.components) {
+    theme.components.MuiPaper = {
+      styleOverrides: {
+        root: {
+          border: `1px solid ${theme.palette.neutralShades[700]}`,
+        },
+      },
+    };
+  }
+
+  // @ts-ignore
+  theme.containers.main[theme.breakpoints.down('md')] = {
+    marginTop: theme.spacing(2),
+  };
+
+  // @ts-ignore
+  theme.containers.modalContent[theme.breakpoints.down('md')] = {
+    minWidth: 0,
+  };
+
+  return responsiveFontSizes(theme);
 };
 
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-theme.containers.main[theme.breakpoints.down('md')] = {
-  marginTop: theme.spacing(2),
-};
+export const lightTheme = addThemeOverrides(
+  createTheme(buildThemeOptions('light')),
+);
+export const darkTheme = addThemeOverrides(
+  createTheme(buildThemeOptions('dark')),
+);
 
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-theme.containers.modalContent[theme.breakpoints.down('md')] = {
-  minWidth: 0,
-};
-
-export default responsiveFontSizes(theme);
+export default lightTheme;

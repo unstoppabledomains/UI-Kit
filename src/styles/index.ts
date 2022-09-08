@@ -1,21 +1,8 @@
 import {createMakeAndWithStyles} from 'tss-react';
-import {Theme, ClassNameMap, useTheme, keyframes} from '@mui/material/styles';
-import {MAX_ARTICLE_CONTENT_WIDTH, MAX_PAGE_CONTENT_WIDTH} from './theme'
+import {useTheme} from '@mui/material/styles';
 
-const {makeStyles, useStyles, withStyles} = createMakeAndWithStyles({
+export const {makeStyles, useStyles, withStyles} = createMakeAndWithStyles({
   useTheme,
 });
 
-export {default} from './theme';
-
-export {
-  makeStyles,
-  useStyles,
-  withStyles,
-  useTheme,
-  MAX_ARTICLE_CONTENT_WIDTH,
-  MAX_PAGE_CONTENT_WIDTH,
-  Theme,
-  ClassNameMap,
-  keyframes
-};
+export {lightTheme, darkTheme, MAX_PAGE_CONTENT_WIDTH, MAX_ARTICLE_CONTENT_WIDTH} from './theme';
