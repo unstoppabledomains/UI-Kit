@@ -16,26 +16,16 @@ module.exports = {
     'plugin:markdown/recommended',
   ],
   parser: '@typescript-eslint/parser',
-  plugins: [
-    'unused-imports',
-    'promise',
-    'react',
-    'tss-unused-classes',
-  ],
+  plugins: ['unused-imports', 'promise', 'react', 'tss-unused-classes'],
   overrides: [
     {
-      "files": "*.mdx",
-      "extends": "plugin:mdx/recommended"
+      files: '*.mdx',
+      extends: 'plugin:mdx/recommended',
     },
     {
       files: ['*.ts', '*.tsx'],
-      plugins: [
-        '@typescript-eslint',
-      ],
-      extends: [
-        'airbnb-typescript',
-        'plugin:@typescript-eslint/recommended',
-      ],
+      plugins: ['@typescript-eslint'],
+      extends: ['airbnb-typescript', 'plugin:@typescript-eslint/recommended'],
       parserOptions: {
         extraFileExtensions: ['.json', '.md'],
         ecmaVersion: 2020,
@@ -48,11 +38,14 @@ module.exports = {
       },
       rules: {
         '@typescript-eslint/object-curly-spacing': ['error', 'never'],
-      }
+      },
     },
   ],
   rules: {
-    "react/jsx-filename-extension": ['error', {"extensions": [".js", ".jsx", ".ts", ".tsx", ".mdx"]}],
+    'react/jsx-filename-extension': [
+      'error',
+      {extensions: ['.js', '.jsx', '.ts', '.tsx', '.mdx']},
+    ],
     '@typescript-eslint/object-curly-spacing': ['error', 'never'],
-  }
+  },
 };
