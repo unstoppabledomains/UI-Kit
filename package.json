@@ -1,6 +1,7 @@
 {
   "name": "@unstoppabledomains/ui-kit",
   "version": "1.0.0",
+  "private": false,
   "description": "A set of common Unstoppable Domains components",
   "homepage": "https://github.com/unstoppabledomains/UI-Kit#readme",
   "bugs": {
@@ -16,14 +17,25 @@
   ],
   "scripts": {
     "build": "rm -rf dist && yarn build:modules && yarn build-storybook && yarn build:types",
+    "build-storybook": "build-storybook",
     "build:modules": "babel src --out-dir dist --extensions '.ts' --presets @babel/preset-typescript --plugins @babel/plugin-transform-runtime",
     "build:types": "tsc",
-    "build-storybook": "build-storybook",
     "eslint:check": "eslint \"**/*.{ts,tsx,json,md,mdx}\"",
     "eslint:fix": "eslint \"**/*.{ts,tsx,json,md,mdx}\" --fix",
     "prettier:check": "prettier --check --config .prettierrc --ignore-path .prettierignore \"**/*.{ts,tsx,json,md,mdx}\"",
     "prettier:fix": "prettier --write -l --config .prettierrc --ignore-path .prettierignore \"**/*.{ts,tsx,json,md,mdx}\"",
     "storybook": "start-storybook -p 6006"
+  },
+  "dependencies": {
+    "@babel/plugin-transform-runtime": "^7.18.10",
+    "@emotion/react": "^11.8.2",
+    "@emotion/styled": "^11.8.1",
+    "@mui/icons-material": "^5.8.4",
+    "@mui/lab": "^5.0.0-alpha.66",
+    "@mui/material": "^5.3.1",
+    "@mui/styles": "^5.3.0",
+    "@storybook/addon-docs": "^6.5.10",
+    "tss-react": "^4.0.0-beta.3"
   },
   "devDependencies": {
     "@babel/cli": "^7.18.10",
@@ -65,20 +77,23 @@
     "react-dom": "^17.0.2",
     "typescript": "^4.7.4"
   },
-  "dependencies": {
-    "@babel/plugin-transform-runtime": "^7.18.10",
-    "@emotion/react": "^11.8.2",
-    "@emotion/styled": "^11.8.1",
-    "@mui/icons-material": "^5.8.4",
-    "@mui/lab": "^5.0.0-alpha.66",
-    "@mui/material": "^5.3.1",
-    "@mui/styles": "^5.3.0",
-    "@storybook/addon-docs": "^6.5.10",
-    "tss-react": "^4.0.0-beta.3"
-  },
   "peerDependencies": {
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "@emotion/react": "^11.5.0",
+    "@emotion/styled": "^11.3.0",
+    "@types/react": "^17.0.0 || ^18.0.0",
+    "react": "^17.0.0 || ^18.0.0",
+    "react-dom": "^17.0.0 || ^18.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@emotion/react": {
+      "optional": true
+    },
+    "@emotion/styled": {
+      "optional": true
+    },
+    "@types/react": {
+      "optional": true
+    }
   },
   "engines": {
     "node": "16.x.x",
