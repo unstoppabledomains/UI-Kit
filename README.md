@@ -8,11 +8,11 @@ UI Kit can be installed with either `npm` or `yarn`. React and React DOM must be
 installed as well (either 17th or 18th versions are required):
 
 ```shell
-yarn add @unstoppabledomains/ui-kit react react-dom
+npm install --save @unstoppabledomains/ui-kit react react-dom
 ```
 
 ```shell
-npm install --save @unstoppabledomains/ui-kit react react-dom
+yarn add @unstoppabledomains/ui-kit react react-dom
 ```
 
 ## Updating UI Kit
@@ -20,23 +20,24 @@ npm install --save @unstoppabledomains/ui-kit react react-dom
 UI Kit can be updated with either `npm` or `yarn`:
 
 ```shell
-yarn upgrade @unstoppabledomains/ui-kit --latest
+npm update @unstoppabledomains/ui-kit --save
 ```
 
 ```shell
-npm update @unstoppabledomains/ui-kit --save
+yarn upgrade @unstoppabledomains/ui-kit --latest
 ```
 
 ## Using UI Kit
 
-Create a new project:
+Create a new project, e.g. with [create-react-app](https://create-react-app.dev/docs/getting-started):
 
 ```shell
-mkdir ud-ui-kit-consumer && cd $_
-yarn init -y
+npx create-react-app ud-ui-kit-consumer --template typescript
+cd ud-ui-kit-consumer
+npm install --save @unstoppabledomains/ui-kit
 ```
 
-Install the required dependencies from the section above.
+You're ready to use UI Kit components in your project.
 
 ### Importing MUI components
 
@@ -55,16 +56,26 @@ import {LoadingButton} from '@unstoppabledomains/ui-kit/dist/lab';
 import {indigo as indigoColor} from '@unstoppabledomains/ui-kit/dist/colors';
 ```
 
-```typescript
-import React from 'react';
-import { Button } from '@unstoppabledomains/ui-kit/dist/components';
+The supported MUI imports mapping is as follows:
 
-const App = () => {
-  return <Button variant="contained>Hello World</Button>;
+```json
+{
+   "@mui/material": "unstoppabledomains/ui-kit/dist/components",
+   "@mui/lab": "@unstoppabledomains/ui-kit/dist/lab",
+   "@mui/icons-material": "@unstoppabledomains/ui-kit/dist/icons",
+   "@mui/material/colors": "@unstoppabledomains/ui-kit/dist/colors",
 }
 ```
 
-To apply Unstoppable Domains website theme, use the `ThemeProvider` with the UI
+`@unstoppabledomains/ui-kit/dist/styles` path contains light and dark themes used on the
+Unstoppable Domains website, as well as some constants specific to UD, and helper functions
+for creating styles with the help of `tss-react` library:
+
+```typescript
+import {darkTheme, useTheme, MAX_PAGE_CONTENT_WIDTH, MAX_ARTICLE_CONTENT_WIDTH, makeStyles, useStyles, withStyles} from '@unstoppabledomains/ui-kit/dist/styles'; // all supported import names at this path
+```
+
+For example, to render a MUI component with the Unstoppable Domains website theme applied, use the `ThemeProvider` with the UI
 Kit `lightTheme` or `darkTheme` applied:
 
 ```typescript
