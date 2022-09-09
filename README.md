@@ -42,7 +42,7 @@ You're ready to use UI Kit components in your project.
 ### Importing MUI components
 
 All [Material UI](https://mui.com/material-ui/getting-started/usage/)
-components, hooks, types, icons, and colors with the default props applied can
+components, hooks, types, icons, and colors can
 be re-exported from the UI Kit by using these imports respectively:
 
 ```typescript
@@ -68,7 +68,7 @@ The supported MUI imports mapping is as follows:
 ```
 
 `@unstoppabledomains/ui-kit/dist/styles` path contains light and dark themes used on the
-Unstoppable Domains website, as well as some constants specific to UD, and helper functions
+[Unstoppable Domains website](https://unstoppabledomains.com/), as well as some constants specific to UD, and helper functions
 for creating styles with the help of `tss-react` library:
 
 ```typescript
@@ -148,7 +148,7 @@ Update the `package.json` file with the new version number:
 ```
 
 Create a pull request to the UI Kit with the desired changes and wait for it to
-be merged. Then publish the package to `npm`:
+be merged. Then publish the package to `npm` (also make sure you're a member of [@unstoppabledomains NPM organization](https://www.npmjs.com/~unstoppabledomains)):
 
 ```shell
 yarn publish
