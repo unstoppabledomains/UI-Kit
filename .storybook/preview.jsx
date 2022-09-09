@@ -1,4 +1,4 @@
-import {ThemeProvider} from '@mui/material/styles';
+import {ThemeProvider} from '@mui/material';
 import theme from '../src/styles/theme';
 
 export const parameters = {

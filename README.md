@@ -15,8 +15,8 @@ yarn add @unstoppabledomains/ui-kit
 ```
 
 Note that the UI Kit has peer dependencies on the React and the React DOM. If
-you are not already using them in your project, you can install with (either
-17th or 18th versions are required):
+you are not already using them in your project, you'd need to install them
+(either 17th or 18th versions are required):
 
 ```shell
 // with npm
@@ -101,7 +101,7 @@ theme applied, use the `ThemeProvider` with the UI Kit `lightTheme` or
 
 ```typescript
 import React from 'react';
-import { ThemeProvider, Button } from '@unstoppabledomains/ui-kit/components';
+import {ThemeProvider, Button} from '@unstoppabledomains/ui-kit/components';
 import theme from '@unstoppabledomains/ui-kit/styles/theme'; // lightTheme is exported as default
 
 const App = () => {
