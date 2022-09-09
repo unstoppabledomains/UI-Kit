@@ -49,30 +49,30 @@ be re-exported from the UI Kit by using these imports respectively:
 import {
   Typography,
   useMediaQuery,
-} from '@unstoppabledomains/ui-kit/dist/components';
-import type {Theme} from '@unstoppabledomains/ui-kit/dist/components';
-import {Edit} from '@unstoppabledomains/ui-kit/dist/icons';
-import {LoadingButton} from '@unstoppabledomains/ui-kit/dist/lab';
-import {indigo as indigoColor} from '@unstoppabledomains/ui-kit/dist/colors';
+} from '@unstoppabledomains/ui-kit/components';
+import type {Theme} from '@unstoppabledomains/ui-kit/components';
+import {Edit} from '@unstoppabledomains/ui-kit/icons';
+import {LoadingButton} from '@unstoppabledomains/ui-kit/lab';
+import {indigo as indigoColor} from '@unstoppabledomains/ui-kit/colors';
 ```
 
 The supported MUI imports mapping is as follows:
 
 ```json
 {
-   "@mui/material": "unstoppabledomains/ui-kit/dist/components",
-   "@mui/lab": "@unstoppabledomains/ui-kit/dist/lab",
-   "@mui/icons-material": "@unstoppabledomains/ui-kit/dist/icons",
-   "@mui/material/colors": "@unstoppabledomains/ui-kit/dist/colors",
+   "@mui/material": "unstoppabledomains/ui-kit/components",
+   "@mui/lab": "@unstoppabledomains/ui-kit/lab",
+   "@mui/icons-material": "@unstoppabledomains/ui-kit/icons",
+   "@mui/material/colors": "@unstoppabledomains/ui-kit/colors",
 }
 ```
 
-`@unstoppabledomains/ui-kit/dist/styles` path contains light and dark themes used on the
+`@unstoppabledomains/ui-kit/styles` path contains light and dark themes used on the
 [Unstoppable Domains website](https://unstoppabledomains.com/), as well as some constants specific to UD, and helper functions
 for creating styles with the help of `tss-react` library:
 
 ```typescript
-import {darkTheme, useTheme, MAX_PAGE_CONTENT_WIDTH, MAX_ARTICLE_CONTENT_WIDTH, makeStyles, useStyles, withStyles} from '@unstoppabledomains/ui-kit/dist/styles'; // all supported import names at this path
+import {darkTheme, useTheme, MAX_PAGE_CONTENT_WIDTH, MAX_ARTICLE_CONTENT_WIDTH, makeStyles, useStyles, withStyles} from '@unstoppabledomains/ui-kit/styles'; // all supported import names at this path
 ```
 
 For example, to render a MUI component with the Unstoppable Domains website theme applied, use the `ThemeProvider` with the UI
@@ -80,8 +80,8 @@ Kit `lightTheme` or `darkTheme` applied:
 
 ```typescript
 import React from 'react';
-import { ThemeProvider, Button } from '@unstoppabledomains/ui-kit/dist/components';
-import { lightTheme } from '@unstoppabledomains/ui-kit/dist/styles';
+import { ThemeProvider, Button } from '@unstoppabledomains/ui-kit/components';
+import { lightTheme } from '@unstoppabledomains/ui-kit/styles';
 
 const App = () => {
   return (
@@ -129,9 +129,7 @@ or **Linux shell**).
 
 Run `yarn build` to create a `dist` which contains all the built entities.
 
-### Publishing to `npm`
-
-_To be clarified_
+### Publishing to `npm` registry
 
 Make sure to document the changes in the `CHANGELOG.md` file:
 
@@ -148,11 +146,13 @@ Update the `package.json` file with the new version number:
 ```
 
 Create a pull request to the UI Kit with the desired changes and wait for it to
-be merged. Then publish the package to `npm` (also make sure you're a member of [@unstoppabledomains NPM organization](https://www.npmjs.com/~unstoppabledomains)):
+be merged. Then publish the package to `npm` (also make sure you're a member of [@unstoppabledomains organization](https://www.npmjs.com/~unstoppabledomains) and your publishing access token is added to `~/.npmrc`):
 
 ```shell
-yarn publish
+npm run flat-publish
 ```
+
+`npm run flat-publish` must be used instead of `npm publish` as it publishes directly from the `dist` folder with necessary package files copied over. It is important to publish from `dist` to support importing paths without the `dist` part, e.g. `@unstoppabledomains/ui-kit/components` instead of `@unstoppabledomains/ui-kit/dist/components`.
 
 ## Storybook
 
