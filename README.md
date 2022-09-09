@@ -68,6 +68,14 @@ The supported MUI imports mapping is as follows:
 }
 ```
 
+The reason why there're separate paths for `@mui/lab`, `@mui/material`, and
+`@mui/icons-material` re-exports, and not just an option to import everything
+directly from @unstoppabledomains/ui-kit root is that they all have duplicate
+exports.
+
+A separate path for re-exporting `@mui/material/colors` modules exists for
+distinguishing the colors from other re-exports
+
 `@unstoppabledomains/ui-kit/styles` path contains light and dark themes used on
 the [Unstoppable Domains website](https://unstoppabledomains.com/), as well as
 some constants specific to UD, and helper functions for creating styles with the
@@ -192,7 +200,7 @@ page.
 To create standalone HTML files for the Storybook documentation:
 
 ```shell
-yarn build-storybook
+yarn build:storybook
 ```
 
 ## Linting and formatting
