@@ -47,11 +47,7 @@ Kit by using these imports, respectively:
 
 ```typescript
 import {Typography, useMediaQuery} from '@unstoppabledomains/ui-kit';
-import type {
-  Theme,
-  OverridableComponent,
-  TablePaginationActionsProps,
-} from '@unstoppabledomains/ui-kit';
+import type {Theme} from '@unstoppabledomains/ui-kit';
 import {Edit} from '@unstoppabledomains/ui-kit/icons';
 import {LoadingButton} from '@unstoppabledomains/ui-kit/lab';
 import {indigo as indigoColor} from '@unstoppabledomains/ui-kit/colors';
@@ -70,7 +66,7 @@ The supported MUI imports mapping is as follows:
 
 The reason why there're separate paths for `@mui/lab`, `@mui/material`, and
 `@mui/icons-material` re-exports, and not just an option to import everything
-directly from @unstoppabledomains/ui-kit root is that they all have duplicate
+directly from `@unstoppabledomains/ui-kit` root is that they all have duplicate
 exports.
 
 A separate path for re-exporting `@mui/material/colors` modules exists for

@@ -1,6 +1,6 @@
 {
   "name": "@unstoppabledomains/ui-kit",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": false,
   "description": "A set of common Unstoppable Domains components",
   "homepage": "https://github.com/unstoppabledomains/UI-Kit#readme",
@@ -15,7 +15,7 @@
   "type": "module",
   "scripts": {
     "build": "rm -rf dist && yarn build:modules && yarn build:storybook && yarn build:types",
-    "build:modules": "babel src --out-dir dist --extensions='.ts','.tsx' --presets=@babel/preset-typescript,@babel/preset-env --plugins=@babel/plugin-transform-runtime",
+    "build:modules": "babel src --out-dir dist --extensions '.ts' --presets @babel/preset-typescript",
     "build:storybook": "build-storybook",
     "build:types": "tsc",
     "copy-package-files": "cp -rf package.json README.md LICENSE CHANGELOG.md dist",
@@ -37,8 +37,6 @@
   "devDependencies": {
     "@babel/cli": "^7.18.10",
     "@babel/core": "^7.19.0",
-    "@babel/plugin-transform-runtime": "^7.18.10",
-    "@babel/preset-env": "^7.19.0",
     "@babel/preset-typescript": "^7.18.6",
     "@storybook/addon-docs": "^6.5.10",
     "@storybook/addon-essentials": "^6.5.9",
