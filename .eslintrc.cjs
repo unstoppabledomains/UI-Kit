@@ -46,6 +46,14 @@ module.exports = {
       'error',
       {extensions: ['.js', '.jsx', '.ts', '.tsx', '.mdx']},
     ],
-    '@typescript-eslint/object-curly-spacing': ['error', 'never'],
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": [
+          "**/*.stories.*",
+          "**/.storybook/**/*.*"
+        ]
+      }
+    ]
   },
 };
