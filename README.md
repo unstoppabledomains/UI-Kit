@@ -165,17 +165,15 @@ Update the `package.json` file with the new version number:
 ```
 
 Create a pull request to the UI Kit with the desired changes and wait for it to
-be merged. Then publish the package to `npm` (also make sure you're a member of
-[@unstoppabledomains organization](https://www.npmjs.com/~unstoppabledomains)
+be merged. Then make a production build folder and publish the package to `npm` from it
+(also make sure you're a member of [@unstoppabledomains organization](https://www.npmjs.com/~unstoppabledomains)
 and your publishing access token is added to `~/.npmrc`):
 
 ```shell
-npm run flat-publish
+yarn dist && cd dist && npm publish
 ```
 
-`npm run flat-publish` must be used instead of `npm publish` as it publishes
-directly from the `dist` folder with necessary package files copied over. It is
-important to publish from `dist` to support importing paths without the `dist`
+It is important to publish from `dist` to support importing paths without the `dist`
 part, e.g. `@unstoppabledomains/ui-kit/components` instead of
 `@unstoppabledomains/ui-kit/dist/components`.
 

@@ -1,3 +1,9 @@
+### 0.1.3
+
+- Remove `main` field from `package.json`
+- Remove `flat-publish` script
+- Update readme
+
 ### 0.1.2
 
 - Add `main` field to `package.json`
