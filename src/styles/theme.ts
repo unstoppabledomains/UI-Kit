@@ -4,6 +4,7 @@ import type {
   Theme,
 } from '@mui/material';
 import {createTheme, responsiveFontSizes} from '@mui/material';
+
 import type {CSSObject} from 'tss-react';
 
 export const MAX_PAGE_CONTENT_WIDTH = 1020;
@@ -619,6 +620,7 @@ const addThemeOverrides = (theme: Theme) => {
 export const lightTheme = addThemeOverrides(
   createTheme(buildThemeOptions('light')),
 );
+
 export const darkTheme = addThemeOverrides(
   createTheme(buildThemeOptions('dark')),
 );
