@@ -1,3 +1,7 @@
+### 0.1.4
+
+- Add `main` field to `package.json`
+
 ### 0.1.3
 
 - Remove `main` field from `package.json`
