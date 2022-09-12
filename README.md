@@ -70,7 +70,7 @@ directly from `@unstoppabledomains/ui-kit` root is that they all have duplicate
 exports.
 
 A separate path for re-exporting `@mui/material/colors` modules exists for
-distinguishing the colors from other re-exports
+distinguishing the colors from other re-exports.
 
 `@unstoppabledomains/ui-kit/styles` path contains light and dark themes used on
 the [Unstoppable Domains website](https://unstoppabledomains.com/), as well as
@@ -144,7 +144,7 @@ or **Linux shell**).
 
 ### Creating a distribution package
 
-Run `yarn build` to create a `dist` which contains all the built entities. It
+Run `yarn dist` to create a `dist` which contains all the built entities. It
 will also build types (put under `dist` alongside the .js files) and storybook
 static files.
 

@@ -1,3 +1,10 @@
+### 0.1.2
+
+- Add `main` field to `package.json`
+- Set `compatible with` range for `eslint` and `prettier` packages
+- Add `dist` script
+- Update readme
+
 ### 0.1.1
 
 - Fix babel build command
