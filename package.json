@@ -1,8 +1,19 @@
 {
   "name": "@unstoppabledomains/ui-kit",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "private": false,
   "description": "A set of common Unstoppable Domains components",
+  "keywords": [
+    "react",
+    "react-component",
+    "mui",
+    "material-ui",
+    "tss",
+    "storybook",
+    "stories",
+    "ui",
+    "kit"
+  ],
   "homepage": "https://github.com/unstoppabledomains/UI-Kit#readme",
   "bugs": {
     "url": "https://github.com/unstoppabledomains/UI-Kit/issues"
@@ -23,7 +34,7 @@
     "dist": "yarn build && yarn copy-package-files",
     "eslint:check": "eslint \"**/*.{js,ts,tsx,json,md,mdx}\"",
     "eslint:fix": "eslint \"**/*.{js,ts,tsx,json,md,mdx}\" --fix",
-    "prepare": "husky install",
+    "postinstall": "husky install",
     "prettier:check": "prettier --check --config .prettierrc --ignore-path .prettierignore \"**/*.{js,ts,tsx,json,md,mdx}\"",
     "prettier:fix": "prettier --write -l --config .prettierrc --ignore-path .prettierignore \"**/*.{js,ts,tsx,json,md,mdx}\"",
     "storybook": "start-storybook -p 6006"
@@ -77,20 +88,16 @@
     "typescript": "^4.7.4"
   },
   "peerDependencies": {
-    "@emotion/react": "^11.0.0",
-    "@emotion/styled": "^11.0.0",
     "@types/react": "^17.0.0 || ^18.0.0",
+    "@types/react-dom": "^17.0.0 || ^18.0.0",
     "react": "^17.0.0 || ^18.0.0",
     "react-dom": "^17.0.0 || ^18.0.0"
   },
   "peerDependenciesMeta": {
-    "@emotion/react": {
-      "optional": true
-    },
-    "@emotion/styled": {
-      "optional": true
-    },
     "@types/react": {
+      "optional": true
+    },
+    "@types/react-dom": {
       "optional": true
     }
   },
