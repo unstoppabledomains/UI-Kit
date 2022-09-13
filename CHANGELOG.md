@@ -1,3 +1,11 @@
+### 0.1.7
+
+- Moved husky install command from postinstall to prepare
+
+### 0.1.6
+
+- Prettified readme
+
 ### 0.1.5
 
 - Update readme
