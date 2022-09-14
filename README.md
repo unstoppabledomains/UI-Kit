@@ -96,25 +96,15 @@ const App = () => {
 }
 ```
 
-### Importing UD components
+### Importing UD-specific components
 
-Common components used at
-[Unstoppable Domains website](https://unstoppabledomains.com/) will be provided
-at the root import path soon.
+Some components are very different from MUI components, in such cases they will have unique names
+not to conflict with MUI convention. Example: `DomainSearchCard`. As a result such components
+will be documented with Storybook with a specific set of props.
 
-Once a UD component whose name collides with a MUI component name becomes
-available for importing at `@unstoppabledomains/ui-kit` path, the MUI component
-becomes overwritten with the styled version used at UD.
-
-For example, considering `Alert` component has been implemented at UI Kit, and
-`Link` has not:
-
-```typescript
-import {
-  Alert, // UD version is ready and MUI version is not available anymore
-  Link, // UD version is not ready yet so MUI version is imported instead
-} from '@unstoppabledomains/ui-kit';
-```
+There are cases when UD & MUI components have similarities, such as `Modal` or `Button`. In such
+cases UD will inherit MUI component props and will extend them to support UD-specific props. New
+props will be documented in Storybook, with a reference to the MUI component documentation.
 
 ## Development and contributing
 
