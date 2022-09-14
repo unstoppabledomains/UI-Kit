@@ -84,7 +84,7 @@ theme applied, use the `ThemeProvider` with the UI Kit `lightTheme` or
 
 ```typescript
 import React from 'react';
-import {ThemeProvider, Button} from '@unstoppabledomains/ui-kit/components';
+import {ThemeProvider, Button} from '@unstoppabledomains/ui-kit';
 import theme from '@unstoppabledomains/ui-kit/styles/theme'; // lightTheme is exported as default
 
 const App = () => {
@@ -166,8 +166,8 @@ yarn dist && cd dist && npm publish
 
 > **_NOTE:_** It is important to publish from `dist` so as not to break the API,
 > which supports importing paths without the `dist` part, e.g.
-> `@unstoppabledomains/ui-kit/components` instead of
-> `@unstoppabledomains/ui-kit/dist/components`.
+> `@unstoppabledomains/ui-kit/icons` instead of
+> `@unstoppabledomains/ui-kit/dist/icons`.
 
 ### Storybook
 

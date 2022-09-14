@@ -1,3 +1,7 @@
+### 0.1.8
+
+- Fix readme code snippet
+
 ### 0.1.7
 
 - Moved husky install command from postinstall to prepare
