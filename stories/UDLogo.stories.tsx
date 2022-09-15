@@ -8,13 +8,19 @@ export default {
   component: UDLogo,
   argTypes: {
     theme: {
+      options: Object.values(UDLogoTheme).filter(
+        (value) => typeof value === 'string',
+      ),
+      description:
+        'Theme of the logo. Defines the colors of SVG <path> elements.',
+      mapping: UDLogoTheme,
       control: {
         type: 'select',
-        options: [
-          UDLogoTheme.Primary,
-          UDLogoTheme.White,
-          UDLogoTheme.WhiteWithRay,
-        ],
+        labels: {
+          [UDLogoTheme.Primary]: 'Primary',
+          [UDLogoTheme.White]: 'White',
+          [UDLogoTheme.WhiteWithRay]: 'WhiteWithRay',
+        },
       },
     },
   },
