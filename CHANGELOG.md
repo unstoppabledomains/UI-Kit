@@ -1,7 +1,9 @@
 ### 0.2.0
 
-- Add builds for ESM and modules
-- Add UDLogo component
+- Add builds for CJS
+- Add UDLogo components
+- Add stories for UDLogo components
+- Move theme exports from `styles/theme` to `theme`
 
 ### 0.1.9
 

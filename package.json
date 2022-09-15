@@ -23,26 +23,26 @@
     "url": "git+https://github.com/unstoppabledomains/UI-Kit.git"
   },
   "license": "MIT",
-  "main": "index.js",
-  "types": "index.d.ts",
   "sideEffects": false,
+  "main": "index.js",
   "module": "esm/index.js",
+  "types": "index.d.ts",
   "scripts": {
-    "build": "rm -rf dist && yarn build:modules && yarn build:esm && yarn build:types",
-    "build:modules": "babel src --out-dir dist --extensions \".ts,.tsx\"",
+    "build": "rm -rf dist && yarn build:cjs && yarn build:esm && yarn build:types",
+    "build:cjs": "BABEL_ENV=cjs babel src --out-dir dist --extensions \".ts,.tsx\"",
     "build:esm": "BABEL_ENV=esm babel src --out-dir dist/esm --extensions \".ts,.tsx\"",
     "build:storybook": "build-storybook",
     "build:types": "tsc --project tsconfig.build.json",
+    "chromatic": "npx chromatic --project-token=process.env.CHROMATIC_PROJECT_TOKEN",
     "copy-package-files": "cp -rf package.json README.md LICENSE CHANGELOG.md dist",
-    "dist": "yarn build && yarn copy-package-files && yarn create-modules",
-    "create-modules": "node ./scripts/createModulePackages.js",
+    "dist": "yarn build && yarn copy-package-files && yarn package-modules",
     "eslint:check": "eslint \"**/*.{js,ts,tsx,json,md,mdx}\"",
     "eslint:fix": "eslint \"**/*.{js,ts,tsx,json,md,mdx}\" --fix",
+    "package-modules": "node ./scripts/createModulePackages.js",
     "prepare": "([ -d ./.git ] && husky install) || echo \"Skipping husky install since package does not have .git folder\"",
     "prettier:check": "prettier --check --config .prettierrc --ignore-path .prettierignore \"**/*.{js,ts,tsx,json,md,mdx}\"",
     "prettier:fix": "prettier --write -l --config .prettierrc --ignore-path .prettierignore \"**/*.{js,ts,tsx,json,md,mdx}\"",
-    "storybook": "start-storybook -p 6006",
-    "chromatic": "npx chromatic --project-token=process.env.CHROMATIC_PROJECT_TOKEN"
+    "storybook": "start-storybook -p 6006"
   },
   "lint-staged": {
     "**/*.{js,ts,tsx,json,md,mdx}": [
