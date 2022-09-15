@@ -6,6 +6,7 @@
     "emitDeclarationOnly": true,
     "outDir": "dist",
     "esModuleInterop": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "jsx": "react"
   }
 }

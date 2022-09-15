@@ -20,24 +20,29 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/unstoppabledomains/UI-Kit"
+    "url": "git+https://github.com/unstoppabledomains/UI-Kit.git"
   },
   "license": "MIT",
-  "type": "module",
   "main": "index.js",
+  "types": "index.d.ts",
+  "sideEffects": false,
+  "module": "esm/index.js",
   "scripts": {
-    "build": "rm -rf dist && yarn build:modules && yarn build:storybook && yarn build:types",
-    "build:modules": "babel src --out-dir dist --extensions '.ts' --presets @babel/preset-typescript",
+    "build": "rm -rf dist && yarn build:modules && yarn build:esm && yarn build:types",
+    "build:modules": "babel src --out-dir dist --extensions \".ts,.tsx\"",
+    "build:esm": "BABEL_ENV=esm babel src --out-dir dist/esm --extensions \".ts,.tsx\"",
     "build:storybook": "build-storybook",
     "build:types": "tsc",
     "copy-package-files": "cp -rf package.json README.md LICENSE CHANGELOG.md dist",
-    "dist": "yarn build && yarn copy-package-files",
+    "dist": "yarn build && yarn copy-package-files && yarn create-modules",
+    "create-modules": "node ./scripts/createModulePackages.js",
     "eslint:check": "eslint \"**/*.{js,ts,tsx,json,md,mdx}\"",
     "eslint:fix": "eslint \"**/*.{js,ts,tsx,json,md,mdx}\" --fix",
     "prepare": "([ -d ./.git ] && husky install) || echo \"Skipping husky install since package does not have .git folder\"",
     "prettier:check": "prettier --check --config .prettierrc --ignore-path .prettierignore \"**/*.{js,ts,tsx,json,md,mdx}\"",
     "prettier:fix": "prettier --write -l --config .prettierrc --ignore-path .prettierignore \"**/*.{js,ts,tsx,json,md,mdx}\"",
-    "storybook": "start-storybook -p 6006"
+    "storybook": "start-storybook -p 6006",
+    "chromatic": "npx chromatic --project-token=31c6d1cab8d1"
   },
   "lint-staged": {
     "**/*.{js,ts,tsx,json,md,mdx}": [
@@ -56,6 +61,9 @@
   "devDependencies": {
     "@babel/cli": "^7.18.10",
     "@babel/core": "^7.19.0",
+    "@babel/plugin-transform-runtime": "^7.19.1",
+    "@babel/preset-env": "^7.19.1",
+    "@babel/preset-react": "^7.18.6",
     "@babel/preset-typescript": "^7.18.6",
     "@storybook/addon-docs": "^6.5.10",
     "@storybook/addon-essentials": "^6.5.9",
@@ -66,6 +74,7 @@
     "@types/react-dom": "^17.0.2",
     "@typescript-eslint/eslint-plugin": "^5.31.0",
     "@typescript-eslint/parser": "^5.31.0",
+    "chromatic": "^6.9.0",
     "eslint": "8.22.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-typescript": "^17.0.0",

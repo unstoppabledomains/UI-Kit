@@ -23,7 +23,7 @@ module.exports = {
       extends: 'plugin:mdx/recommended',
     },
     {
-      files: ['*.ts', '*.tsx'],
+      files: ['**/*.ts', '**/*.tsx'],
       plugins: ['@typescript-eslint'],
       extends: ['airbnb-typescript', 'plugin:@typescript-eslint/recommended'],
       parserOptions: {
@@ -38,22 +38,30 @@ module.exports = {
       },
       rules: {
         '@typescript-eslint/object-curly-spacing': ['error', 'never'],
+        'react/require-default-props': 'off',
+        'react/jsx-props-no-spreading': 'off',
+        'react/function-component-definition': 'off',
+        'no-restricted-exports': 'off',
       },
     },
   ],
   rules: {
+    'arrow-body-style': 'off',
+    'no-use-before-define': [
+      'error',
+      {
+        functions: false,
+      },
+    ],
     'react/jsx-filename-extension': [
       'error',
       {extensions: ['.js', '.jsx', '.ts', '.tsx', '.mdx']},
     ],
-    "import/no-extraneous-dependencies": [
-      "error",
+    'import/no-extraneous-dependencies': [
+      'error',
       {
-        "devDependencies": [
-          "**/*.stories.*",
-          "**/.storybook/**/*.*"
-        ]
-      }
-    ]
+        devDependencies: ['**/*.stories.*', '**/.storybook/**/*.*'],
+      },
+    ],
   },
 };
