@@ -1,3 +1,8 @@
+### 0.2.0
+
+- Add builds for ESM and modules
+- Add UDLogo component
+
 ### 0.1.9
 
 - Clarify the readme doc about UD-specific components
