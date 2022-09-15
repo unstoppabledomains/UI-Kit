@@ -9,6 +9,13 @@ createModulePackages()
     console.error(err);
   });
 
+/**
+ * Puts a package.json into all child directories (except `esm`) of the built `dist` dir.
+ *
+ * @param {string} packagesDirPath
+ * @param {number} level
+ * @returns {Promise<Awaited<void>[]>}
+ */
 async function createModulePackages(
   packagesDirPath = path.resolve(__dirname, '../dist'),
   level = 1,
@@ -39,7 +46,7 @@ async function createModulePackages(
     return writeFile(
       `${packageDirPath}/package.json`,
       JSON.stringify(
-        createPackageJsonFile(`${subDistDir}/${packageName}`, level),
+        generatePackageJsonFileContents(`${subDistDir}/${packageName}`, level),
         null,
         2,
       ),
@@ -49,7 +56,15 @@ async function createModulePackages(
   return Promise.all(createPackageJsonFiles);
 }
 
-function createPackageJsonFile(packageName, level = 1) {
+/**
+ * Generates a package.json that contains information about ESM for bundlers so that imports
+ * like `import Button from '@unstoppabledomains/ui-kit/components/Button'` are tree-shakeable.
+ *
+ * @param {string} packageName
+ * @param {number} level
+ * @returns {{types: string, module: string, main: string, sideEffects: boolean}}
+ */
+function generatePackageJsonFileContents(packageName, level = 1) {
   const parentPaths = '../'.repeat(level);
 
   return {
