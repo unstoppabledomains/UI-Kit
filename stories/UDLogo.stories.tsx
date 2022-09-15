@@ -1,7 +1,7 @@
 import React from 'react';
 import type {ComponentStory} from '@storybook/react';
 import {Grid} from '@mui/material';
-import UDLogo, {UDLogoTheme} from '../src/components/UDLogo/UDLogo';
+import UDLogo, {UDLogoTheme} from '../src/components/UDLogo';
 
 export default {
   title: 'Components/UDLogo',

@@ -28,7 +28,7 @@ module.exports = {
       extends: ['airbnb-typescript', 'plugin:@typescript-eslint/recommended'],
       parserOptions: {
         extraFileExtensions: ['.json', '.md'],
-        ecmaVersion: 2020,
+        ecmaVersion: 2022,
         ecmaFeatures: {
           jsx: true,
         },
@@ -42,6 +42,12 @@ module.exports = {
         'react/jsx-props-no-spreading': 'off',
         'react/function-component-definition': 'off',
         'no-restricted-exports': 'off',
+        'import/no-extraneous-dependencies': [
+          'error',
+          {
+            devDependencies: ['**/*.stories.*', '**/.storybook/**/*.*'],
+          },
+        ],
       },
     },
   ],
@@ -56,12 +62,6 @@ module.exports = {
     'react/jsx-filename-extension': [
       'error',
       {extensions: ['.js', '.jsx', '.ts', '.tsx', '.mdx']},
-    ],
-    'import/no-extraneous-dependencies': [
-      'error',
-      {
-        devDependencies: ['**/*.stories.*', '**/.storybook/**/*.*'],
-      },
     ],
   },
 };
