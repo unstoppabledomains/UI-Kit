@@ -10,11 +10,12 @@ createModulePackages()
   });
 
 /**
- * Recursively puts a package.json into all child directories (except `esm`) of the built `dist` dir.
+ * Recursively puts a package.json into all child directories (excluding `esm`) of the built `dist` dir,
+ * starting with the top-level modules (e.g. `dist/colors`, `dist/components`, and so on).
  *
- * @param {string} packagesDirPath
- * @param {number} level
- * @returns {Promise<Awaited<void>[]>}
+ * @param {string} [packagesDirPath] - Parent directory to start from.
+ * @param {number} [level] - Level of the current directory.
+ * @returns {Promise<Awaited<void>[]>} - Array of promises that resolve when all package.json files are created.
  */
 async function createModulePackages(
   packagesDirPath = path.resolve(__dirname, '../dist'),
@@ -61,9 +62,9 @@ async function createModulePackages(
  * about both the ECMAScript Modules (i.e. ESM or ES Modules) and CommonJS Modules (CJS)
  * for bundlers to support tree-shakeable imports and tools like Jest to parse non-standard JavaScript syntax.
  *
- * @param {string} packageName
- * @param {number} level
- * @returns {{types: string, module: string, main: string, sideEffects: boolean}}
+ * @param {string} packageName - Name of the package.
+ * @param {number} [level] - Level of the current directory.
+ * @returns {{sideEffects: boolean, module: string, main: string, types: string}} - Contents of the package.json file.
  */
 function generatePackageJsonFileContents(packageName, level = 1) {
   const parentPaths = '../'.repeat(level);

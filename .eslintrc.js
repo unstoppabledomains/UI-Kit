@@ -14,6 +14,7 @@ module.exports = {
     'plugin:json/recommended',
     'prettier',
     'plugin:markdown/recommended',
+    'plugin:storybook/recommended',
   ],
   parser: '@typescript-eslint/parser',
   plugins: ['unused-imports', 'promise', 'react', 'tss-unused-classes'],
@@ -40,6 +41,7 @@ module.exports = {
         '@typescript-eslint/object-curly-spacing': ['error', 'never'],
         'react/require-default-props': 'off',
         'react/jsx-props-no-spreading': 'off',
+        'react/destructuring-assignment': 'off',
         'react/function-component-definition': 'off',
         'no-restricted-exports': 'off',
         'import/no-extraneous-dependencies': [
@@ -61,7 +63,9 @@ module.exports = {
     ],
     'react/jsx-filename-extension': [
       'error',
-      {extensions: ['.js', '.jsx', '.ts', '.tsx', '.mdx']},
+      {
+        extensions: ['.js', '.jsx', '.ts', '.tsx', '.mdx'],
+      },
     ],
   },
 };
