@@ -10,7 +10,7 @@ createModulePackages()
   });
 
 /**
- * Puts a package.json into all child directories (except `esm`) of the built `dist` dir.
+ * Recursively puts a package.json into all child directories (except `esm`) of the built `dist` dir.
  *
  * @param {string} packagesDirPath
  * @param {number} level
@@ -57,8 +57,9 @@ async function createModulePackages(
 }
 
 /**
- * Generates a package.json that contains information about ESM for bundlers so that imports
- * like `import Button from '@unstoppabledomains/ui-kit/components/Button'` are tree-shakeable.
+ * Generates contents for each package.json file that contains information
+ * about both the ECMAScript Modules (i.e. ESM or ES Modules) and CommonJS Modules (CJS)
+ * for bundlers to support tree-shakeable imports and tools like Jest to parse non-standard JavaScript syntax.
  *
  * @param {string} packageName
  * @param {number} level
