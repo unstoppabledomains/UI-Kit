@@ -62,16 +62,16 @@ async function createModulePackages(
  * about both the ECMAScript Modules (i.e. ESM or ES Modules) and CommonJS Modules (CJS)
  * for bundlers to support tree-shakeable imports and tools like Jest to parse non-standard JavaScript syntax.
  *
- * @param {string} packageName - Name of the package.
+ * @param {string} packagePath - Path of the package relative to the `dist` directory.
  * @param {number} [level] - Level of the current directory.
  * @returns {{sideEffects: boolean, module: string, main: string, types: string}} - Contents of the package.json file.
  */
-function generatePackageJsonFileContents(packageName, level = 1) {
+function generatePackageJsonFileContents(packagePath, level = 1) {
   const parentPaths = '../'.repeat(level);
 
   return {
     sideEffects: false,
-    module: `${parentPaths}esm${packageName}/index.js`,
+    module: `${parentPaths}esm${packagePath}/index.js`,
     main: './index.js',
     types: './index.d.ts',
   };

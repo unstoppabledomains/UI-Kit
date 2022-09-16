@@ -44,12 +44,6 @@ module.exports = {
         'react/destructuring-assignment': 'off',
         'react/function-component-definition': 'off',
         'no-restricted-exports': 'off',
-        'import/no-extraneous-dependencies': [
-          'error',
-          {
-            devDependencies: ['**/*.stories.*', '**/.storybook/**/*.*'],
-          },
-        ],
       },
     },
   ],
@@ -65,6 +59,12 @@ module.exports = {
       'error',
       {
         extensions: ['.js', '.jsx', '.ts', '.tsx', '.mdx'],
+      },
+    ],
+    'import/no-extraneous-dependencies': [
+      'error',
+      {
+        devDependencies: ['**/*.stories.*', '**/.storybook/**/*.*'],
       },
     ],
   },
