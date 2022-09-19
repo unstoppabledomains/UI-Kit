@@ -1,8 +1,8 @@
 ### 0.2.0
 
 - Add builds for CJS
-- Add UDLogo components
-- Add stories for UDLogo components
+- Add Logo components
+- Add stories for Logo components
 - Move theme exports from `styles/theme` to `theme`
 
 ### 0.1.9

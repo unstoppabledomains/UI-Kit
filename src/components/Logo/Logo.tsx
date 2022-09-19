@@ -29,6 +29,7 @@ const usePathColors = (type: LogoTheme): Array<string> => {
 
 type UDLogoProps = SvgIconProps & {
   theme?: LogoTheme;
+  inverse?: boolean;
 };
 
 const Logo = ({

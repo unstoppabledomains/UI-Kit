@@ -12,15 +12,18 @@ module.exports = function config(api) {
     ],
   ];
 
+  const ignore = ['**/*.stories.tsx'];
+
   if (api.env() === 'cjs') {
     return {
+      ignore,
       plugins: ['@babel/plugin-transform-runtime'],
       presets: ['@babel/preset-env', ...presets],
     };
   }
 
   if (api.env() === 'esm') {
-    return {presets};
+    return {ignore, presets};
   }
 
   return {};
