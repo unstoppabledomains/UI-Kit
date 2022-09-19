@@ -98,13 +98,15 @@ const App = () => {
 
 ### Importing UD-specific components
 
-Some components are very different from MUI components, in such cases they will have unique names
-not to conflict with MUI convention. Example: `DomainSearchCard`. As a result such components
-will be documented with Storybook with a specific set of props.
+Some components are very different from MUI components, in such cases they will
+have unique names not to conflict with MUI convention. Example:
+`DomainSearchCard`. As a result such components will be documented with
+Storybook with a specific set of props.
 
-There are cases when UD & MUI components have similarities, such as `Modal` or `Button`. In such
-cases UD will inherit MUI component props and will extend them to support UD-specific props. New
-props will be documented in Storybook, with a reference to the MUI component documentation.
+There are cases when UD & MUI components have similarities, such as `Modal` or
+`Button`. In such cases UD will inherit MUI component props and will extend them
+to support UD-specific props. New props will be documented in Storybook, with a
+reference to the MUI component documentation.
 
 ## Development and contributing
 
@@ -178,8 +180,6 @@ To create standalone HTML files for the Storybook documentation:
 ```shell
 yarn build:storybook
 ```
-
-There are no available stories currently.
 
 ### Linting and code formatting
 

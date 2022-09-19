@@ -6,7 +6,7 @@ type Props = {
   inverse?: boolean;
 };
 
-const LogoWithTextIcon: FC<Props> = ({className, inverse}) => {
+const LogoWithText: FC<Props> = ({className, inverse}) => {
   const path1Fill = inverse ? '#00C9FF' : '#00C9FF';
   const path2Fill = inverse ? '#FFFCF0' : '#0D67FE';
 
@@ -103,4 +103,4 @@ const LogoWithTextIcon: FC<Props> = ({className, inverse}) => {
   );
 };
 
-export default LogoWithTextIcon;
+export default LogoWithText;

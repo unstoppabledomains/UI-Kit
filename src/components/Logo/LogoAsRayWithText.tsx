@@ -5,7 +5,7 @@ type Props = {
   className?: string;
 };
 
-const LogoWithTextIconRays: FC<Props> = ({className}) => {
+const LogoAsRayWithText: FC<Props> = ({className}) => {
   return (
     <svg
       width="150"
@@ -20,4 +20,4 @@ const LogoWithTextIconRays: FC<Props> = ({className}) => {
   );
 };
 
-export default LogoWithTextIconRays;
+export default LogoAsRayWithText;

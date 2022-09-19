@@ -2,21 +2,25 @@ import React from 'react';
 import type {SvgIconProps} from '@mui/material';
 import {SvgIcon, useTheme} from '@mui/material';
 
-import UDLogoAsRay from '../UDLogoAsRay/UDLogoAsRay';
+import LogoAsRay from './LogoAsRay';
+import LogoWithText from './LogoWithText';
+import LogoAsRayWithText from './LogoAsRayWithText';
 
-export enum UDLogoTheme {
+export enum LogoTheme {
   Primary,
   White,
   WhiteWithRay,
+  PrimaryWithText,
+  BlackWithTextAndRay,
 }
 
-const usePathColors = (type: UDLogoTheme): Array<string> => {
+const usePathColors = (type: LogoTheme): Array<string> => {
   const {
     palette: {secondary, primary, white},
   } = useTheme();
 
   switch (type) {
-    case UDLogoTheme.White:
+    case LogoTheme.White:
       return [secondary.main, white];
     default:
       return [secondary.main, primary.main];
@@ -24,17 +28,25 @@ const usePathColors = (type: UDLogoTheme): Array<string> => {
 };
 
 type UDLogoProps = SvgIconProps & {
-  theme?: UDLogoTheme;
+  theme?: LogoTheme;
 };
 
-const UDLogo = ({
-  theme = UDLogoTheme.Primary,
+const Logo = ({
+  theme = LogoTheme.Primary,
   ...props
 }: UDLogoProps): JSX.Element => {
   const [pathFillColor1, pathFillColor2] = usePathColors(theme);
 
-  if (theme === UDLogoTheme.WhiteWithRay) {
-    return <UDLogoAsRay {...props} />;
+  if (theme === LogoTheme.WhiteWithRay) {
+    return <LogoAsRay {...props} />;
+  }
+
+  if (theme === LogoTheme.PrimaryWithText) {
+    return <LogoWithText {...props} />;
+  }
+
+  if (theme === LogoTheme.BlackWithTextAndRay) {
+    return <LogoAsRayWithText {...props} />;
   }
 
   return (
@@ -51,4 +63,4 @@ const UDLogo = ({
   );
 };
 
-export default UDLogo;
+export default Logo;

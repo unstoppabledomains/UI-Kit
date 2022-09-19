@@ -44,6 +44,7 @@ module.exports = {
         'react/destructuring-assignment': 'off',
         'react/function-component-definition': 'off',
         'no-restricted-exports': 'off',
+        'import/prefer-default-export': 'off',
       },
     },
   ],

@@ -13,8 +13,8 @@ createModulePackages()
  * Recursively puts a package.json into all child directories (excluding `esm`) of the built `dist` dir,
  * starting with the top-level modules (e.g. `dist/colors`, `dist/components`, and so on).
  *
- * @param {string} [packagesDirPath] - Parent directory to start from.
- * @param {number} [level] - Level of the current directory.
+ * @param {string} [packagesDirPath] - Parent directory whose children will be processed (starting with `dist`).
+ * @param {number} [level] - Level of the parent directory relatively to `dist`.
  * @returns {Promise<Awaited<void>[]>} - Array of promises that resolve when all package.json files are created.
  */
 async function createModulePackages(
@@ -32,22 +32,25 @@ async function createModulePackages(
   const createPackageJsonFiles = packageNames.map(async (packageName) => {
     const packageDirPath = `${packagesDirPath}/${packageName}`;
 
-    const pkgDir = await readdir(packageDirPath, {
+    const packageDir = await readdir(packageDirPath, {
       withFileTypes: true,
     });
 
-    const containsDirs = pkgDir.some((dir) => dir.isDirectory());
+    const containsDirs = packageDir.some((dir) => dir.isDirectory());
 
     if (containsDirs) {
       await createModulePackages(packageDirPath, level + 1);
     }
 
-    const [, subDistDir] = packagesDirPath.split('dist');
+    const [, subDistDirName] = packagesDirPath.split('dist');
 
     return writeFile(
       `${packageDirPath}/package.json`,
       JSON.stringify(
-        generatePackageJsonFileContents(`${subDistDir}/${packageName}`, level),
+        generatePackageJsonFileContents(
+          `${subDistDirName}/${packageName}`,
+          level,
+        ),
         null,
         2,
       ),
@@ -62,8 +65,8 @@ async function createModulePackages(
  * about both the ECMAScript Modules (i.e. ESM or ES Modules) and CommonJS Modules (CJS)
  * for bundlers to support tree-shakeable imports and tools like Jest to parse non-standard JavaScript syntax.
  *
- * @param {string} packagePath - Path of the package relative to the `dist` directory.
- * @param {number} [level] - Level of the current directory.
+ * @param {string} packagePath - Path of the package relatively to the `dist` directory.
+ * @param {number} [level] - Level of the current directory relatively to the `dist` directory.
  * @returns {{sideEffects: boolean, module: string, main: string, types: string}} - Contents of the package.json file.
  */
 function generatePackageJsonFileContents(packagePath, level = 1) {
