@@ -179,7 +179,7 @@ To create standalone HTML files for the Storybook documentation:
 yarn build:storybook
 ```
 
-Storybook is available at https://unstoppabledomains.github.io/ui-kit/.
+Storybook is available at https://unstoppabledomains.github.io/UI-Kit.
 
 ### Linting and code formatting
 
