@@ -69,13 +69,11 @@ import {
   makeStyles,
   useStyles,
   withStyles,
-} from '@unstoppabledomains/ui-kit/styles'; // all supported import names at this path
-import {
   lightTheme,
   darkTheme,
   MAX_PAGE_CONTENT_WIDTH,
   MAX_ARTICLE_CONTENT_WIDTH,
-} from '@unstoppabledomains/ui-kit/styles/theme'; // all supported import names at this path
+} from '@unstoppabledomains/ui-kit/styles'; // all supported import names at this path
 ```
 
 For example, to render a MUI component with the Unstoppable Domains website
@@ -85,7 +83,7 @@ theme applied, use the `ThemeProvider` with the UI Kit `lightTheme` or
 ```typescript
 import React from 'react';
 import {ThemeProvider, Button} from '@unstoppabledomains/ui-kit';
-import theme from '@unstoppabledomains/ui-kit/styles/theme'; // lightTheme is exported as default
+import theme from '@unstoppabledomains/ui-kit/styles'; // lightTheme is exported as default
 
 const App = () => {
   return (
@@ -98,13 +96,15 @@ const App = () => {
 
 ### Importing UD-specific components
 
-Some components are very different from MUI components, in such cases they will have unique names
-not to conflict with MUI convention. Example: `DomainSearchCard`. As a result such components
-will be documented with Storybook with a specific set of props.
+Some components are very different from MUI components, in such cases they will
+have unique names not to conflict with MUI convention. Example:
+`DomainSearchCard`. As a result such components will be documented with
+Storybook with a specific set of props.
 
-There are cases when UD & MUI components have similarities, such as `Modal` or `Button`. In such
-cases UD will inherit MUI component props and will extend them to support UD-specific props. New
-props will be documented in Storybook, with a reference to the MUI component documentation.
+There are cases when UD & MUI components have similarities, such as `Modal` or
+`Button`. In such cases UD will inherit MUI component props and will extend them
+to support UD-specific props. New props will be documented in Storybook, with a
+reference to the MUI component documentation.
 
 ## Development and contributing
 
@@ -179,7 +179,7 @@ To create standalone HTML files for the Storybook documentation:
 yarn build:storybook
 ```
 
-There are no available stories currently.
+Storybook is available at https://unstoppabledomains.github.io/UI-Kit.
 
 ### Linting and code formatting
 

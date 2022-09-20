@@ -1,5 +1,6 @@
+import React from 'react';
 import {ThemeProvider} from '@mui/material';
-import theme from '../src/styles/theme';
+import {lightTheme} from '../src/styles';
 
 export const parameters = {
   actions: {argTypesRegex: '^on[A-Z].*'},
@@ -12,5 +13,5 @@ export const parameters = {
 };
 
 export const decorators = [
-  (Story) => <ThemeProvider theme={theme}>{Story()}</ThemeProvider>,
+  (Story) => <ThemeProvider theme={lightTheme}>{Story()}</ThemeProvider>,
 ];

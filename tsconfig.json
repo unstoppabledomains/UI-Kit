@@ -1,11 +1,17 @@
 {
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "stories/**/*", ".storybook/**/*"],
   "compilerOptions": {
+    "baseUrl": "./",
     "allowJs": true,
     "declaration": true,
     "emitDeclarationOnly": true,
     "outDir": "dist",
     "esModuleInterop": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "jsx": "react",
+    "paths": {
+      "styles": ["./src/styles/index.ts"],
+      "components/*": ["./src/components/*"]
+    }
   }
 }

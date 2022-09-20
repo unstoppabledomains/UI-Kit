@@ -1,14 +1,30 @@
+# Change Log
+
+All notable changes to this project will be documented in this file. This
+project adheres to [Semantic Versioning](http://semver.org/).
+
+### 0.2.1
+
+- Fixed broken Storybook link in readme
+
+### 0.2.0
+
+- Added builds for CJS
+- Added Logo components
+- Added stories for Logo components
+- Moved theme exports from `styles/theme` to `theme`
+
 ### 0.1.9
 
-- Clarify the readme doc about UD-specific components
+- Clarified the readme doc about UD-specific components
 
 ### 0.1.8
 
-- Fix readme code snippet
+- Fixed readme code snippet
 
 ### 0.1.7
 
-- Moved husky install command from postinstall to prepare
+- Moved `husky install` command from `postinstall` to `prepare`
 
 ### 0.1.6
 
@@ -16,31 +32,31 @@
 
 ### 0.1.5
 
-- Update readme
+- Updated readme
 
 ### 0.1.4
 
-- Add `main` field to `package.json`
+- Added `main` field to `package.json`
 
 ### 0.1.3
 
-- Remove `main` field from `package.json`
-- Remove `flat-publish` script
-- Update readme
+- Removed `main` field from `package.json`
+- Removed `flat-publish` script
+- Updated readme
 
 ### 0.1.2
 
-- Add `main` field to `package.json`
+- Added `main` field to `package.json`
 - Set `compatible with` range for `eslint` and `prettier` packages
-- Add `dist` script
-- Update readme
+- Added `dist` script
+- Updated readme
 
 ### 0.1.1
 
-- Fix babel build command
-- Remove `@babel/plugin-transform-runtime` package
-- Remove `@babel/preset-env` package
-- Update readme (remove yet unsupported type imports from the code examples)
+- Fixed babel build command
+- Removed `@babel/plugin-transform-runtime` package
+- Removed `@babel/preset-env` package
+- Updated readme (remove yet unsupported type imports from the code examples)
 
 ### 0.1.0
 
