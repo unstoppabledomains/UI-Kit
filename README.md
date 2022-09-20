@@ -167,7 +167,7 @@ website components.
 To run Storybook:
 
 ```shell
-yarn storybook
+yarn storybook:start
 ```
 
 This command will open up http://localhost:6006/ in your browser with the
@@ -176,7 +176,7 @@ introductory page.
 To create standalone HTML files for the Storybook documentation:
 
 ```shell
-yarn build:storybook
+yarn storybook:build
 ```
 
 Storybook is available at https://unstoppabledomains.github.io/UI-Kit.

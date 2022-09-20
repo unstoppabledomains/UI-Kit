@@ -243,11 +243,11 @@ const buildThemeOptions = (mode: 'light' | 'dark'): ThemeOptions => ({
     main: {
       marginLeft: 'auto',
       marginRight: 'auto',
-      paddingLeft: 8 * 2,
-      paddingRight: 8 * 2,
+      paddingLeft: 8 * 2.5,
+      paddingRight: 8 * 2.5,
       width: '100%',
       backgroundColor: 'inherit',
-      maxWidth: 1052,
+      maxWidth: 1256,
     },
     box: {
       marginTop: 16,
@@ -387,9 +387,9 @@ const buildThemeOptions = (mode: 'light' | 'dark'): ThemeOptions => ({
       900: '#591F19',
     },
     neutralShades: {
-      50: '#F9FAFF',
+      50: '#F5F5F5',
       75: '#F0F0F1',
-      100: '#F2F2F2',
+      100: '#EDEDEE',
       150: '#DCDDE1',
       200: '#DDDDDF',
       300: '#C8C8CB',
