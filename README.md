@@ -69,13 +69,11 @@ import {
   makeStyles,
   useStyles,
   withStyles,
-} from '@unstoppabledomains/ui-kit/styles'; // all supported import names at this path
-import {
   lightTheme,
   darkTheme,
   MAX_PAGE_CONTENT_WIDTH,
   MAX_ARTICLE_CONTENT_WIDTH,
-} from '@unstoppabledomains/ui-kit/styles/theme'; // all supported import names at this path
+} from '@unstoppabledomains/ui-kit/styles'; // all supported import names at this path
 ```
 
 For example, to render a MUI component with the Unstoppable Domains website
@@ -85,7 +83,7 @@ theme applied, use the `ThemeProvider` with the UI Kit `lightTheme` or
 ```typescript
 import React from 'react';
 import {ThemeProvider, Button} from '@unstoppabledomains/ui-kit';
-import theme from '@unstoppabledomains/ui-kit/styles/theme'; // lightTheme is exported as default
+import theme from '@unstoppabledomains/ui-kit/styles'; // lightTheme is exported as default
 
 const App = () => {
   return (
@@ -180,6 +178,8 @@ To create standalone HTML files for the Storybook documentation:
 ```shell
 yarn build:storybook
 ```
+
+Storybook is available at https://unstoppabledomains.github.io/ui-kit/.
 
 ### Linting and code formatting
 
