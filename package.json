@@ -31,7 +31,6 @@
     "build": "rm -rf dist && yarn build:cjs && yarn build:esm && yarn build:types",
     "build:cjs": "BABEL_ENV=cjs babel src --out-dir dist --extensions \".ts,.tsx\"",
     "build:esm": "BABEL_ENV=esm babel src --out-dir dist/esm --extensions \".ts,.tsx\"",
-    "build:storybook": "build-storybook",
     "build:types": "tsc --project tsconfig.build.json",
     "copy-package-files": "cp -rf package.json README.md LICENSE CHANGELOG.md dist",
     "dist": "yarn build && yarn copy-package-files && yarn package-modules",
@@ -41,8 +40,9 @@
     "prepare": "([ -d ./.git ] && husky install) || echo \"Skipping husky install since package does not have .git folder\"",
     "prettier:check": "prettier --check --config .prettierrc --ignore-path .prettierignore \"**/*.{js,ts,tsx,json,md,mdx}\"",
     "prettier:fix": "prettier --write -l --config .prettierrc --ignore-path .prettierignore \"**/*.{js,ts,tsx,json,md,mdx}\"",
-    "storybook": "start-storybook -p 6006",
-    "deploy-storybook": "storybook-to-ghpages"
+    "storybook:build": "build-storybook",
+    "storybook:deploy": "storybook-to-ghpages",
+    "storybook:start": "start-storybook -p 6006"
   },
   "lint-staged": {
     "**/*.{js,ts,tsx,json,md,mdx}": [
