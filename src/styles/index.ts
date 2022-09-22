@@ -302,7 +302,7 @@ const buildThemeOptions = (mode: 'light' | 'dark'): ThemeOptions => ({
       dark: '#00b6cc',
     },
     background: {
-      default: mode === 'dark' ? '#121212' : '#F9FAFF',
+      default: mode === 'dark' ? '#121212' : '#F5F5F5',
     },
     backgroundWithAlpha: {
       default: (alpha) =>
@@ -321,7 +321,7 @@ const buildThemeOptions = (mode: 'light' | 'dark'): ThemeOptions => ({
     profileImageGradient:
       'linear-gradient(45deg, #BD47F7 0%, #5D59F8 52.08%, #38BDD1 100%)',
     mobileNavGradient:
-      'linear-gradient(272deg, #F9FAFF 25%, rgba(249, 250, 255, 0) 100%)',
+      'linear-gradient(272deg, #F5F5F5 25%, rgba(249, 250, 255, 0) 100%)',
     pressedPaper: '#F3F4FB',
     primaryShades: {
       100: '#F0F5FF',
