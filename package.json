@@ -32,6 +32,7 @@
     "build:cjs": "BABEL_ENV=cjs babel src --out-dir dist --extensions \".ts,.tsx\"",
     "build:esm": "BABEL_ENV=esm babel src --out-dir dist/esm --extensions \".ts,.tsx\"",
     "build:types": "tsc --project tsconfig.build.json",
+    "tsc": "tsc --noEmit --emitDeclarationOnly false",
     "copy-package-files": "cp -rf package.json README.md LICENSE CHANGELOG.md dist",
     "dist": "yarn build && yarn copy-package-files && yarn package-modules",
     "eslint:check": "eslint \"**/*.{js,ts,tsx,json,md,mdx}\"",
