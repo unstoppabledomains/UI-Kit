@@ -1,7 +1,7 @@
 import React from 'react';
 import type {SvgIconProps} from '@mui/material';
 import {SvgIcon} from '@mui/material';
-import {makeStyles} from 'styles';
+import {makeStyles} from '../../styles';
 
 const useStyles = makeStyles()(() => ({id: {}}));
 

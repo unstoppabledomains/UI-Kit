@@ -2,7 +2,7 @@ import type {SvgIconProps} from '@mui/material';
 import {SvgIcon} from '@mui/material';
 import type {ForwardedRef} from 'react';
 import React from 'react';
-import {makeStyles} from 'styles';
+import {makeStyles} from '../../styles';
 
 const useStyles = makeStyles()(() => ({id: {}}));
 

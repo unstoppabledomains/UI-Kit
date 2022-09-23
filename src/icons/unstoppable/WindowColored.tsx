@@ -1,14 +1,14 @@
 import type {SvgIconProps} from '@mui/material';
 import {SvgIcon} from '@mui/material';
 import React from 'react';
-import {makeStyles} from 'styles';
+import {makeStyles} from '../../styles';
 
 const useStyles = makeStyles()(() => ({id: {}}));
 
-const TransferColored = (props: SvgIconProps) => {
+const WindowColored = (props: SvgIconProps) => {
   const {classes} = useStyles();
   const paths = [
-    'M50 16.666L45.3 21.366L50 26.0993L57.2333 33.3327H26.6667C17.4667 33.3327 10 40.7994 10 49.9994V63.3327H16.6667V49.9994C16.6667 44.4994 21.1667 39.9994 26.6667 39.9994H57.2333L50 47.2327L45.3 51.9327L50 56.666L70 36.666L50 16.666Z',
+    'M63.3333 13.333H16.6667C12.9667 13.333 10 16.333 10 19.9997V59.9997C10 63.6663 12.9667 66.6663 16.6667 66.6663H63.3333C67 66.6663 70 63.6663 70 59.9997V19.9997C70 16.333 67.0333 13.333 63.3333 13.333ZM63.3333 59.9997H16.6667V26.6663H63.3333V59.9997Z',
   ];
   const uuid = classes.id;
   const ids = Array.from({length: paths.length}).map((_, i) => `${uuid}${i}`);
@@ -22,9 +22,9 @@ const TransferColored = (props: SvgIconProps) => {
         <linearGradient
           id={ids[0]}
           x1="10"
-          y1="63.3327"
-          x2="55.2308"
-          y2="5.17884"
+          y1="66.6663"
+          x2="62.9655"
+          y2="7.08013"
           gradientUnits="userSpaceOnUse"
         >
           <stop stopColor="#BD47F7" />
@@ -36,4 +36,4 @@ const TransferColored = (props: SvgIconProps) => {
   );
 };
 
-export default TransferColored;
+export default WindowColored;
