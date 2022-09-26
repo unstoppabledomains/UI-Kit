@@ -2,7 +2,7 @@ import type {SvgIconProps} from '@mui/material';
 import {SvgIcon} from '@mui/material';
 import React from 'react';
 
-const ContentCopy = React.forwardRef<SVGSVGElement | null, SvgIconProps>(
+const CopyContent = React.forwardRef<SVGSVGElement | null, SvgIconProps>(
   (props, ref) => {
     return (
       <SvgIcon {...props} ref={ref}>
@@ -12,4 +12,4 @@ const ContentCopy = React.forwardRef<SVGSVGElement | null, SvgIconProps>(
   },
 );
 
-export default ContentCopy;
+export default CopyContent;

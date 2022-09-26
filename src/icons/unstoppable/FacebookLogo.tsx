@@ -2,7 +2,7 @@ import type {SvgIconProps} from '@mui/material';
 import {SvgIcon} from '@mui/material';
 import React from 'react';
 
-const Facebook = React.forwardRef<SVGSVGElement | null, SvgIconProps>(
+const FacebookLogo = React.forwardRef<SVGSVGElement | null, SvgIconProps>(
   (props, ref) => {
     return (
       <SvgIcon {...props} ref={ref}>
@@ -12,4 +12,4 @@ const Facebook = React.forwardRef<SVGSVGElement | null, SvgIconProps>(
   },
 );
 
-export default Facebook;
+export default FacebookLogo;

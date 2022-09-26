@@ -2,7 +2,7 @@ import type {SvgIconProps} from '@mui/material';
 import {SvgIcon} from '@mui/material';
 import React from 'react';
 
-const Warning = (props: SvgIconProps) => {
+const Caution = (props: SvgIconProps) => {
   return (
     <SvgIcon viewBox="0 0 16 16" {...props}>
       <path
@@ -21,4 +21,4 @@ const Warning = (props: SvgIconProps) => {
   );
 };
 
-export default Warning;
+export default Caution;

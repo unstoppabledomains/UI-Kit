@@ -3,7 +3,7 @@ import {SvgIcon} from '@mui/material';
 import type {ForwardedRef} from 'react';
 import React from 'react';
 
-const Upload = React.forwardRef(
+const SendFile = React.forwardRef(
   (props: SvgIconProps, ref: ForwardedRef<SVGSVGElement>) => {
     return (
       <SvgIcon {...props} ref={ref}>
@@ -13,4 +13,4 @@ const Upload = React.forwardRef(
   },
 );
 
-export default Upload;
+export default SendFile;

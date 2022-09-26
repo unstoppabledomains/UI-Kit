@@ -3,7 +3,7 @@ import {SvgIcon} from '@mui/material';
 import type {ForwardedRef} from 'react';
 import React from 'react';
 
-const Unpublished = React.forwardRef(
+const Unclaimable = React.forwardRef(
   (props: SvgIconProps, ref: ForwardedRef<SVGSVGElement>) => {
     return (
       <SvgIcon {...props} ref={ref}>
@@ -13,4 +13,4 @@ const Unpublished = React.forwardRef(
   },
 );
 
-export default Unpublished;
+export default Unclaimable;

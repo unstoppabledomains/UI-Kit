@@ -2,7 +2,7 @@ import type {SvgIconProps} from '@mui/material';
 import {SvgIcon} from '@mui/material';
 import React from 'react';
 
-const Star = React.forwardRef<SVGSVGElement | null, SvgIconProps>(
+const StarQuadrangular = React.forwardRef<SVGSVGElement | null, SvgIconProps>(
   (props, ref) => {
     return (
       <SvgIcon viewBox="0 0 24 24" {...props} ref={ref}>
@@ -12,4 +12,4 @@ const Star = React.forwardRef<SVGSVGElement | null, SvgIconProps>(
   },
 );
 
-export default Star;
+export default StarQuadrangular;

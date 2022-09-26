@@ -39,7 +39,7 @@ module.exports = {
       },
       rules: {
         '@typescript-eslint/object-curly-spacing': ['error', 'never'],
-        '@typescript-eslint/indent': 'off', // Indentation is handled by Prettier
+        '@typescript-eslint/indent': 'off',
         'react/require-default-props': 'off',
         'react/jsx-props-no-spreading': 'off',
         'react/destructuring-assignment': 'off',

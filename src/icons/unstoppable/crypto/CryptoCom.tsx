@@ -2,7 +2,7 @@ import type {SvgIconProps} from '@mui/material';
 import {SvgIcon} from '@mui/material';
 import React from 'react';
 
-const CryptoComCoin = React.forwardRef<
+const CryptoCom = React.forwardRef<
   SVGSVGElement,
   {
     iconRef?: React.ForwardedRef<SVGSVGElement>;
@@ -36,4 +36,4 @@ const CryptoComCoin = React.forwardRef<
   );
 });
 
-export default CryptoComCoin;
+export default CryptoCom;

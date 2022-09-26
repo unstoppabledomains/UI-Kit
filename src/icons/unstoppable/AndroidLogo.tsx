@@ -3,7 +3,7 @@ import {SvgIcon} from '@mui/material';
 import type {ForwardedRef} from 'react';
 import React from 'react';
 
-const Android = React.forwardRef(
+const AndroidLogo = React.forwardRef(
   (props: SvgIconProps, ref: ForwardedRef<SVGSVGElement>) => {
     return (
       <SvgIcon {...props} ref={ref}>
@@ -13,4 +13,4 @@ const Android = React.forwardRef(
   },
 );
 
-export default Android;
+export default AndroidLogo;

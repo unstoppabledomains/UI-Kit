@@ -2,7 +2,7 @@ import type {SvgIconProps} from '@mui/material';
 import {SvgIcon} from '@mui/material';
 import React from 'react';
 
-const Fab = React.forwardRef<
+const Fabric = React.forwardRef<
   SVGSVGElement,
   {
     iconRef?: React.ForwardedRef<SVGSVGElement>;
@@ -22,4 +22,4 @@ const Fab = React.forwardRef<
   );
 });
 
-export default Fab;
+export default Fabric;

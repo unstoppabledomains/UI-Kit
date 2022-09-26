@@ -2,7 +2,7 @@ import type {SvgIconProps} from '@mui/material';
 import {SvgIcon} from '@mui/material';
 import React from 'react';
 
-const ICON = React.forwardRef<
+const ICX = React.forwardRef<
   SVGSVGElement,
   {
     iconRef?: React.ForwardedRef<SVGSVGElement>;
@@ -21,4 +21,4 @@ const ICON = React.forwardRef<
   );
 });
 
-export default ICON;
+export default ICX;

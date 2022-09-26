@@ -5,7 +5,7 @@ import {makeStyles} from '../../styles';
 
 const useStyles = makeStyles()(() => ({id: {}}));
 
-const VerifiedGradient = React.forwardRef<SVGSVGElement | null, SvgIconProps>(
+const CertifiedGradient = React.forwardRef<SVGSVGElement | null, SvgIconProps>(
   (props, ref) => {
     const {classes} = useStyles();
     const uuid = classes.id;
@@ -36,4 +36,4 @@ const VerifiedGradient = React.forwardRef<SVGSVGElement | null, SvgIconProps>(
   },
 );
 
-export default VerifiedGradient;
+export default CertifiedGradient;

@@ -2,7 +2,7 @@ import type {SvgIconProps} from '@mui/material';
 import {SvgIcon} from '@mui/material';
 import React from 'react';
 
-const Verified = React.forwardRef<SVGSVGElement | null, SvgIconProps>(
+const Certified = React.forwardRef<SVGSVGElement | null, SvgIconProps>(
   (props, ref) => {
     return (
       <SvgIcon {...props} ref={ref}>
@@ -19,4 +19,4 @@ const Verified = React.forwardRef<SVGSVGElement | null, SvgIconProps>(
   },
 );
 
-export default Verified;
+export default Certified;

@@ -5,7 +5,7 @@ import {makeStyles} from '../../styles';
 
 const useStyles = makeStyles()(() => ({id: {}}));
 
-const SellColored = (props: SvgIconProps) => {
+const TallyColored = (props: SvgIconProps) => {
   const {classes} = useStyles();
   const paths = [
     'M71.367 38.0327L41.9337 8.59935C40.7003 7.36602 39.0003 6.66602 37.2337 6.66602H13.3337C9.66699 6.66602 6.66699 9.66602 6.66699 13.3327V37.2327C6.66699 38.9994 7.36699 40.6993 8.63366 41.9327L38.067 71.366C40.667 73.966 44.9003 73.966 47.5003 71.366L71.4003 47.466C74.0003 44.866 74.0003 40.666 71.367 38.0327ZM42.767 66.666L13.3337 37.2327V13.3327H37.2337L66.667 42.766L42.767 66.666Z',
@@ -49,4 +49,4 @@ const SellColored = (props: SvgIconProps) => {
   );
 };
 
-export default SellColored;
+export default TallyColored;

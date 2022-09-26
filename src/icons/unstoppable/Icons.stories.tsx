@@ -2,9 +2,9 @@ import React from 'react';
 import type {SvgIconProps} from '@mui/material';
 import {Grid, Typography} from '@mui/material';
 
-import * as nftIcons from './nft';
 import * as generalIcons from './index';
 import * as cryptoIcons from './crypto';
+import * as nftIcons from './nft';
 
 export default {
   title: 'Components/Icons',
@@ -43,92 +43,44 @@ const defaultArgs: Pick<SvgIconProps, 'fontSize' | 'color'> = {
   fontSize: 'medium' as const,
 };
 
-export const GeneralIcons = (args: typeof defaultArgs) => (
-  <Grid container>
-    {Object.entries(generalIcons).map(([key, Icon]) => (
-      <Grid
-        item
-        key={key}
-        padding={2}
-        justifyContent="center"
-        alignContent="center"
-        alignItems="center"
-      >
+const [GeneralIconsTemplate, CryptoIconsTemplate, NftIconsTemplate] = [
+  generalIcons,
+  cryptoIcons,
+  nftIcons,
+].map((icons) => {
+  return (args: typeof defaultArgs) => (
+    <Grid container>
+      {Object.entries(icons).map(([key, Icon]) => (
         <Grid
-          container
-          width={104}
-          direction="column"
+          item
+          key={key}
+          padding={2}
           justifyContent="center"
+          alignContent="center"
           alignItems="center"
         >
-          <Icon {...args} width={60} height={60} />
-          <Typography fontSize={16} align="center">
-            {key}
-          </Typography>
+          <Grid
+            container
+            width={104}
+            direction="column"
+            justifyContent="center"
+            alignItems="center"
+          >
+            <Icon {...args} sx={{width: 60, height: 60}} />
+            <Typography fontSize={18} align="center">
+              {key}
+            </Typography>
+          </Grid>
         </Grid>
-      </Grid>
-    ))}
-  </Grid>
-);
+      ))}
+    </Grid>
+  );
+});
+
+export const GeneralIcons = GeneralIconsTemplate.bind({});
+export const CryptoIcons = CryptoIconsTemplate.bind({});
+export const NftIcons = NftIconsTemplate.bind({});
 
 GeneralIcons.args = defaultArgs;
-
-export const CryptoIcons = (args: typeof defaultArgs) => (
-  <Grid container>
-    {Object.entries(cryptoIcons).map(([key, Icon]) => (
-      <Grid
-        item
-        key={key}
-        padding={2}
-        justifyContent="center"
-        alignContent="center"
-        alignItems="center"
-      >
-        <Grid
-          container
-          width={104}
-          direction="column"
-          justifyContent="center"
-          alignItems="center"
-        >
-          <Icon {...args} width={60} height={60} />
-          <Typography fontSize={16} align="center">
-            {key}
-          </Typography>
-        </Grid>
-      </Grid>
-    ))}
-  </Grid>
-);
-
 CryptoIcons.args = defaultArgs;
-
-export const NftIcons = (args: typeof defaultArgs) => (
-  <Grid container>
-    {Object.entries(nftIcons).map(([key, Icon]) => (
-      <Grid
-        item
-        key={key}
-        padding={2}
-        justifyContent="center"
-        alignContent="center"
-        alignItems="center"
-      >
-        <Grid
-          container
-          width={104}
-          direction="column"
-          justifyContent="center"
-          alignItems="center"
-        >
-          <Icon {...args} width={60} height={60} />
-          <Typography fontSize={16} align="center">
-            {key}
-          </Typography>
-        </Grid>
-      </Grid>
-    ))}
-  </Grid>
-);
-
 NftIcons.args = defaultArgs;
