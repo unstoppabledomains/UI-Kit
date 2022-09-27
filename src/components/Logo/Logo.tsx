@@ -1,10 +1,10 @@
-import React from 'react';
 import type {SvgIconProps} from '@mui/material';
 import {SvgIcon, useTheme} from '@mui/material';
+import React from 'react';
 
 import LogoAsRay from './LogoAsRay';
-import LogoWithText from './LogoWithText';
 import LogoAsRayWithText from './LogoAsRayWithText';
+import LogoWithText from './LogoWithText';
 
 export enum LogoTheme {
   Primary,

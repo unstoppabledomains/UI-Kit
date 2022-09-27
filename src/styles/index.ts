@@ -1,19 +1,18 @@
-import {createMakeAndWithStyles} from 'tss-react';
 import {useTheme, createTheme, responsiveFontSizes} from '@mui/material';
 import type {
   SimplePaletteColorOptions,
   ThemeOptions,
   Theme,
 } from '@mui/material';
-
+import {createMakeAndWithStyles} from 'tss-react';
 import type {CSSObject} from 'tss-react';
 
 export const {makeStyles, useStyles, withStyles} = createMakeAndWithStyles({
   useTheme,
 });
 
-export const MAX_PAGE_CONTENT_WIDTH = 1020;
 export const MAX_ARTICLE_CONTENT_WIDTH = 760;
+export const MAX_PAGE_CONTENT_WIDTH = 1020;
 
 type PrimaryShades = {
   100: string;
@@ -622,12 +621,12 @@ const addThemeOverrides = (theme: Theme) => {
   return responsiveFontSizes(theme);
 };
 
-export const lightTheme = addThemeOverrides(
-  createTheme(buildThemeOptions('light')),
-);
-
 export const darkTheme = addThemeOverrides(
   createTheme(buildThemeOptions('dark')),
+);
+
+export const lightTheme = addThemeOverrides(
+  createTheme(buildThemeOptions('light')),
 );
 
 export default lightTheme;

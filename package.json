@@ -1,6 +1,6 @@
 {
   "name": "@unstoppabledomains/ui-kit",
-  "version": "0.2.3",
+  "version": "0.2.4-alpha.0",
   "private": false,
   "description": "A set of common Unstoppable Domains components",
   "keywords": [
@@ -89,6 +89,7 @@
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-react": "^7.30.1",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-sort-exports": "^0.7.0",
     "eslint-plugin-storybook": "^0.6.4",
     "eslint-plugin-tss-unused-classes": "^0.0.3",
     "eslint-plugin-unused-imports": "^2.0.0",

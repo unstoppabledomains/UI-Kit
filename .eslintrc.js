@@ -17,7 +17,14 @@ module.exports = {
     'plugin:storybook/recommended',
   ],
   parser: '@typescript-eslint/parser',
-  plugins: ['unused-imports', 'promise', 'react', 'tss-unused-classes'],
+  plugins: [
+    'import',
+    'unused-imports',
+    'promise',
+    'react',
+    'tss-unused-classes',
+    'sort-exports',
+  ],
   overrides: [
     {
       files: '*.mdx',
@@ -46,6 +53,23 @@ module.exports = {
         'react/function-component-definition': 'off',
         'no-restricted-exports': 'off',
         'import/prefer-default-export': 'off',
+        'sort-exports/sort-exports': 'error',
+        'import/order': [
+          'error',
+          {
+            'newlines-between': 'always',
+            alphabetize: {
+              order: 'asc',
+            },
+            groups: [
+              'builtin',
+              'external',
+              'internal',
+              'parent',
+              ['index', 'sibling'],
+            ],
+          },
+        ],
       },
     },
   ],

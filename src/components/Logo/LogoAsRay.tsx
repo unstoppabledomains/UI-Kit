@@ -1,7 +1,6 @@
-import React from 'react';
-
 import type {SvgIconProps} from '@mui/material';
 import {SvgIcon} from '@mui/material';
+import React from 'react';
 
 const LogoAsRay = (props: SvgIconProps) => (
   <SvgIcon viewBox="0 0 94 94" {...props}>
