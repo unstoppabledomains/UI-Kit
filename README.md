@@ -2,6 +2,10 @@
 
 A set of common Unstoppable Domains components 🧩
 
+[![license](https://badgen.net/github/license/unstoppabledomains/ui-kit)](https://github.com/unstoppabledomains/UI-Kit/blob/main/LICENSE)
+[![npm](https://badgen.net/npm/v/@unstoppabledomains/ui-kit)](https://www.npmjs.com/package/@unstoppabledomains/ui-kit)
+![node](https://badgen.net/npm/node/@unstoppabledomains/ui-kit)
+
 ## Installation
 
 Install the package in your project directory:
