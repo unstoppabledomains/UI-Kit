@@ -43,7 +43,10 @@
     "prettier:fix": "prettier --write -l --config .prettierrc --ignore-path .prettierignore \"**/*.{js,ts,tsx,json,md,mdx}\"",
     "storybook:build": "build-storybook",
     "storybook:deploy": "storybook-to-ghpages",
-    "storybook:start": "start-storybook -p 6006"
+    "storybook:start": "start-storybook -p 6006",
+    "test": "jest",
+    "test:coverage": "jest --coverage",
+    "test:watch": "jest --watch"
   },
   "lint-staged": {
     "**/*.{js,ts,tsx,json,md,mdx}": [
@@ -94,11 +97,21 @@
     "eslint-plugin-tss-unused-classes": "^0.0.3",
     "eslint-plugin-unused-imports": "^2.0.0",
     "husky": "^8.0.1",
+    "jest-environment-jsdom": "^27.4.7",
     "lint-staged": "^13.0.3",
     "prettier": "^2.7.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "typescript": "^4.7.4"
+    "typescript": "^4.7.4",
+    "@storybook/testing-react": "^1.3.0",
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^12.1.2",
+    "@testing-library/react-hooks": "^7.0.2",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^27.4.0",
+    "jest": "^27.4.7",
+    "ts-jest": "^27.1.3",
+    "ts-node": "^10.9.1"
   },
   "peerDependencies": {
     "@types/react": "^17.0.0 || ^18.0.0",

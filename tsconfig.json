@@ -1,5 +1,11 @@
 {
-  "include": ["src/**/*", "stories/**/*", ".storybook/**/*"],
+  "include": [
+    "src/**/*",
+    "stories/**/*",
+    ".storybook/**/*",
+    "tests/**/*",
+    "*.ts"
+  ],
   "compilerOptions": {
     "baseUrl": "./",
     "allowJs": true,
@@ -11,7 +17,8 @@
     "jsx": "react",
     "paths": {
       "styles": ["./src/styles/index.ts"],
-      "components/*": ["./src/components/*"]
+      "components/*": ["./src/components/*"],
+      "tests/*": ["./tests/*"]
     }
   }
 }

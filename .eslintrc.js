@@ -51,6 +51,7 @@ module.exports = {
         'react/jsx-props-no-spreading': 'off',
         'react/destructuring-assignment': 'off',
         'react/function-component-definition': 'off',
+        'react/prop-types': 'off',
         'no-restricted-exports': 'off',
         'import/prefer-default-export': 'off',
         'sort-exports/sort-exports': 'error',
