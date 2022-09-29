@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file. This
 project adheres to [Semantic Versioning](http://semver.org/).
 
+### 0.2.4
+
+- Added Unstoppable Domains icons
+
 ### 0.2.3
 
 - Updated `theme` default background color shade to match the new color palette
@@ -20,7 +24,6 @@ project adheres to [Semantic Versioning](http://semver.org/).
 
 - Added builds for CJS
 - Added Logo components
-- Added stories for Logo components
 - Moved theme exports from `styles/theme` to `theme`
 
 ### 0.1.9

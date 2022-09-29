@@ -1,5 +1,11 @@
 {
-  "include": ["src/**/*", "stories/**/*", ".storybook/**/*"],
+  "include": [
+    "src/**/*",
+    "stories/**/*",
+    ".storybook/**/*",
+    "tests/**/*",
+    "*.ts"
+  ],
   "compilerOptions": {
     "baseUrl": "./",
     "allowJs": true,

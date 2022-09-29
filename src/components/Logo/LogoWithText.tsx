@@ -1,4 +1,3 @@
-import type {FC} from 'react';
 import React from 'react';
 
 type Props = {
@@ -6,7 +5,7 @@ type Props = {
   inverse?: boolean;
 };
 
-const LogoWithText: FC<Props> = ({className, inverse}) => {
+const LogoWithText = ({className, inverse}: Props) => {
   const path1Fill = inverse ? '#00C9FF' : '#00C9FF';
   const path2Fill = inverse ? '#FFFCF0' : '#0D67FE';
 
@@ -17,6 +16,7 @@ const LogoWithText: FC<Props> = ({className, inverse}) => {
       viewBox="0 0 180 48"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      data-testid="primaryWithTextLogo"
       className={className}
     >
       <path

@@ -2,6 +2,10 @@
 
 A set of common Unstoppable Domains components 🧩
 
+[![license](https://badgen.net/github/license/unstoppabledomains/ui-kit)](https://github.com/unstoppabledomains/UI-Kit/blob/main/LICENSE)
+[![npm](https://badgen.net/npm/v/@unstoppabledomains/ui-kit)](https://www.npmjs.com/package/@unstoppabledomains/ui-kit)
+![node](https://badgen.net/npm/node/@unstoppabledomains/ui-kit)
+
 ## Installation
 
 Install the package in your project directory:
@@ -143,21 +147,7 @@ The script will also build `*.d.ts.` types (put under `dist` alongside the
 ```
 
 3. Create a pull request to the UI Kit with the desired changes and wait for it
-   to be merged.
-
-4. Create a distribution package folder and publish the package to `npm` from it
-   (also, make sure you're a member of
-   [@unstoppabledomains organization](https://www.npmjs.com/~unstoppabledomains)
-   and your publishing access token is added to `~/.npmrc`):
-
-```shell
-yarn dist && cd dist && npm publish
-```
-
-> **_NOTE:_** It is important to publish from `dist` so as not to break the API,
-> which supports importing paths without the `dist` part, e.g.
-> `@unstoppabledomains/ui-kit/icons` instead of
-> `@unstoppabledomains/ui-kit/dist/icons`.
+   to be merged and published
 
 ### Storybook
 
@@ -180,6 +170,16 @@ yarn storybook:build
 ```
 
 Storybook is available at https://unstoppabledomains.github.io/UI-Kit.
+
+### Testing
+
+To run the tests (`src/**/*.test.tsx` files):
+
+```shell
+yarn test # run all tests
+yarn test:watch # run all tests in watch mode
+yarn test:coverage # run all tests and generate coverage report
+```
 
 ### Linting and code formatting
 
