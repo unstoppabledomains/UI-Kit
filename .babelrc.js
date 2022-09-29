@@ -12,7 +12,7 @@ module.exports = function config(api) {
     ],
   ];
 
-  const ignore = ['**/*.stories.tsx'];
+  const ignore = ['**/*.stories.tsx', '**/*.test.ts', '**/*.test.tsx'];
 
   if (api.env() === 'cjs') {
     return {
