@@ -14,7 +14,7 @@ const ThetaFuel = React.forwardRef<
 >(({iconRef, ...props}, ref) => {
   const {classes} = useStyles();
   const uuid = classes.id;
-  const ids = Array.from({length: 2}).map((_, i) => `${uuid}${i}`);
+  const ids = Array.from({length: 2}).map((_, i) => `theta-fuel${uuid}-${i}`);
 
   return (
     <SvgIcon viewBox="0 0 1000 1000" {...props} ref={iconRef || ref}>

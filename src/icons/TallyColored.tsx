@@ -13,7 +13,9 @@ const TallyColored = (props: SvgIconProps) => {
     'M21.667 26.666C24.4284 26.666 26.667 24.4274 26.667 21.666C26.667 18.9046 24.4284 16.666 21.667 16.666C18.9056 16.666 16.667 18.9046 16.667 21.666C16.667 24.4274 18.9056 26.666 21.667 26.666Z',
   ];
   const uuid = classes.id;
-  const ids = Array.from({length: paths.length}).map((_, i) => `${uuid}${i}`);
+  const ids = Array.from({length: paths.length}).map(
+    (_, i) => `tally-colored-${uuid}-${i}`,
+  );
 
   return (
     <SvgIcon viewBox="0 0 80 80" {...props}>

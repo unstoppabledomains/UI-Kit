@@ -10,7 +10,7 @@ const useStyles = makeStyles()(() => ({id: {}}));
 const OpenSea = React.forwardRef((props: SvgIconProps, ref: any) => {
   const {classes} = useStyles();
   const uuid = classes.id;
-  const ids = Array.from({length: 4}).map((_, i) => `${uuid}${i}`);
+  const ids = Array.from({length: 4}).map((_, i) => `open-sea-${uuid}-${i}`);
 
   return (
     <SvgIcon viewBox="0 0 56 56" {...props} ref={ref}>

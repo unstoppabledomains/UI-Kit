@@ -25,7 +25,9 @@ const Klever = React.forwardRef<
       d: 'M2344.998,1505h-849.995V655L2344.998,1505z',
     },
   ];
-  const ids = Array.from({length: paths.length}).map((_, i) => `${uuid}${i}`);
+  const ids = Array.from({length: paths.length}).map(
+    (_, i) => `klever-${uuid}-${i}`,
+  );
 
   return (
     <SvgIcon viewBox="1170 330 1500 1500" {...props} ref={iconRef || ref}>

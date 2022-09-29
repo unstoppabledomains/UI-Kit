@@ -12,7 +12,9 @@ const FolderColored = (props: SvgIconProps) => {
     'M46.6667 13.9997H28L23.3334 9.33301H9.33335C6.76669 9.33301 4.69002 11.433 4.69002 13.9997L4.66669 41.9997C4.66669 44.5663 6.76669 46.6663 9.33335 46.6663H46.6667C49.2334 46.6663 51.3334 44.5663 51.3334 41.9997V18.6663C51.3334 16.0997 49.2334 13.9997 46.6667 13.9997ZM46.6667 41.9997H9.33335V18.6663H46.6667V41.9997Z',
   ];
   const uuid = classes.id;
-  const ids = Array.from({length: paths.length}).map((_, i) => `${uuid}${i}`);
+  const ids = Array.from({length: paths.length}).map(
+    (_, i) => `folder-colored-${uuid}-${i}`,
+  );
 
   return (
     <SvgIcon viewBox="0 0 56 56" {...props}>

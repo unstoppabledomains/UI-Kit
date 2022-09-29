@@ -1,5 +1,5 @@
-import type {SvgIconProps} from '@mui/material';
-import {Grid, Typography, Tooltip} from '@mui/material';
+import type {SvgIconProps, Theme} from '@mui/material';
+import {Grid, Typography, Tooltip, Button} from '@mui/material';
 import React from 'react';
 
 import {makeStyles} from '../styles';
@@ -50,48 +50,98 @@ const useStyles = makeStyles()(() => ({
     width: 60,
     height: 60,
   },
+  tooltip: {
+    maxWidth: 'none',
+    padding: '10px 20px',
+  },
+  copyButton: {
+    color: 'white',
+    marginLeft: 10,
+    height: 30,
+    '&:hover': {
+      color: 'black',
+      backgroundColor: 'white',
+    },
+  },
 }));
+
+const subPaths = ['', 'crypto/', 'nft/'];
 
 const [GeneralIconsTemplate, CryptoIconsTemplate, NftIconsTemplate] = [
   generalIcons,
   cryptoIcons,
   nftIcons,
-].map((icons) => {
+].map((icons, idx) => {
   return (args: typeof defaultArgs) => {
     const {classes} = useStyles();
 
     return (
       <Grid container>
-        {Object.entries(icons).map(([key, Icon]) => (
-          <Grid
-            item
-            key={key}
-            padding={2}
-            justifyContent="center"
-            alignContent="center"
-            alignItems="center"
-          >
+        {Object.entries(icons).map(([key, Icon]) => {
+          const namedImport = `import {${key}} from '@unstoppabledomains/ui-kit/icons';`;
+          const defaultImport = `import ${key} from '@unstoppabledomains/ui-kit/icons/${subPaths[idx]}${key}';`;
+          const tooltipContent = (
+            <Typography variant="body1" component="div">
+              {namedImport}
+              <Button
+                className={classes.copyButton}
+                onClick={() => navigator.clipboard.writeText(namedImport)}
+              >
+                Copy
+              </Button>
+              <br />
+              <i>or</i>
+              <br />
+              {defaultImport}
+              <Button
+                className={classes.copyButton}
+                onClick={() => navigator.clipboard.writeText(defaultImport)}
+              >
+                Copy
+              </Button>
+            </Typography>
+          );
+
+          return (
             <Grid
-              container
-              width={104}
-              direction="column"
+              item
+              key={key}
+              padding={2}
               justifyContent="center"
+              alignContent="center"
               alignItems="center"
             >
-              <Icon {...args} className={classes.icon} />
-              <Tooltip title={key}>
-                <Typography
-                  fontSize={18}
-                  align="center"
-                  noWrap
-                  sx={{width: 100}}
+              <Tooltip
+                title={tooltipContent}
+                classes={{tooltip: classes.tooltip}}
+              >
+                <Grid
+                  container
+                  width={170}
+                  direction="column"
+                  justifyContent="center"
+                  alignItems="center"
                 >
-                  {key}
-                </Typography>
+                  <Icon
+                    {...args}
+                    className={classes.icon}
+                    stopColor="#62626A"
+                  />
+                  <Tooltip title={key}>
+                    <Typography
+                      fontSize={14}
+                      align="center"
+                      noWrap
+                      sx={{width: 160, marginTop: '10px'}}
+                    >
+                      {key}
+                    </Typography>
+                  </Tooltip>
+                </Grid>
               </Tooltip>
             </Grid>
-          </Grid>
-        ))}
+          );
+        })}
       </Grid>
     );
   };

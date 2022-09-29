@@ -14,7 +14,7 @@ const MANA = React.forwardRef<
 >(({iconRef, ...props}, ref) => {
   const {classes} = useStyles();
   const uuid = classes.id;
-  const ids = Array.from({length: 1}).map((_, i) => `${uuid}${i}`);
+  const ids = Array.from({length: 1}).map((_, i) => `mana-${uuid}-${i}`);
 
   return (
     <SvgIcon viewBox="0 0 32 32" {...props} ref={iconRef || ref}>

@@ -19,7 +19,9 @@ const Nimiq = React.forwardRef<
       d: 'M63.3,25.4L50,2.6C49,1,47.2,0,45.3,0H18.7c-1.9,0-3.7,1-4.6,2.6L0.7,25.4c-1,1.6-1,3.6,0,5.3l13.3,22.7c1,1.6,2.7,2.6,4.6,2.6h26.7c1.9,0,3.7-1,4.7-2.6l13.3-22.8C64.2,29,64.2,27,63.3,25.4z',
     },
   ];
-  const ids = Array.from({length: paths.length}).map((_, i) => `${uuid}${i}`);
+  const ids = Array.from({length: paths.length}).map(
+    (_, i) => `nimiq-${uuid}-${i}`,
+  );
 
   return (
     <SvgIcon viewBox="0 0 64 56" {...props} ref={iconRef || ref}>

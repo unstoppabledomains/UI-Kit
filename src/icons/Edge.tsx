@@ -33,7 +33,9 @@ const Edge = React.forwardRef(
       },
     ];
     const uuid = classes.id;
-    const ids = Array.from({length: paths.length}).map((_, i) => `${uuid}${i}`);
+    const ids = Array.from({length: paths.length}).map(
+      (_, i) => `edge-${uuid}-${i}`,
+    );
 
     return (
       <SvgIcon {...props} ref={ref}>

@@ -9,7 +9,9 @@ const useStyles = makeStyles()(() => ({id: {}}));
 const ProfilePlaceholder = (props: SvgIconProps) => {
   const {classes} = useStyles();
   const uuid = classes.id;
-  const ids = Array.from({length: 3}).map((_, i) => `${uuid}${i}`);
+  const ids = Array.from({length: 3}).map(
+    (_, i) => `profile-placeholder-${uuid}-${i}`,
+  );
 
   return (
     <SvgIcon viewBox="0 0 132 132" {...props}>
@@ -53,8 +55,12 @@ const ProfilePlaceholder = (props: SvgIconProps) => {
           y2="72"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stopColor="white" />
-          <stop offset="1" stopColor="white" stopOpacity="0.4" />
+          <stop stopColor={props.stopColor || 'white'} />
+          <stop
+            offset="1"
+            stopColor={props.stopColor || 'white'}
+            stopOpacity="0.4"
+          />
         </linearGradient>
         <linearGradient
           id={ids[2]}
@@ -64,8 +70,12 @@ const ProfilePlaceholder = (props: SvgIconProps) => {
           y2="200"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stopColor="white" />
-          <stop offset="1" stopColor="white" stopOpacity="0.4" />
+          <stop stopColor={props.stopColor || 'white'} />
+          <stop
+            offset="1"
+            stopColor={props.stopColor || 'white'}
+            stopOpacity="0.4"
+          />
         </linearGradient>
       </defs>
     </SvgIcon>

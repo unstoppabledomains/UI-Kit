@@ -25,7 +25,9 @@ const Solana = React.forwardRef<
       d: 'M333.1,120.1c-2.4-2.4-5.7-3.8-9.2-3.8H6.5c-5.8,0-8.7,7-4.6,11.1l62.7,62.7c2.4,2.4,5.7,3.8,9.2,3.8h317.4c5.8,0,8.7-7,4.6-11.1L333.1,120.1z',
     },
   ];
-  const ids = Array.from({length: paths.length}).map((_, i) => `${uuid}${i}`);
+  const ids = Array.from({length: paths.length}).map(
+    (_, i) => `solana-${uuid}-${i}`,
+  );
 
   return (
     <SvgIcon viewBox="0 0 397.7 311.7" {...props} ref={iconRef || ref}>

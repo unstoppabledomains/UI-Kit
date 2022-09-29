@@ -10,7 +10,9 @@ const CertifiedGradient = React.forwardRef<SVGSVGElement | null, SvgIconProps>(
   (props, ref) => {
     const {classes} = useStyles();
     const uuid = classes.id;
-    const ids = Array.from({length: 1}).map((_, i) => `${uuid}${i}`);
+    const ids = Array.from({length: 1}).map(
+      (_, i) => `certified-gradient-${uuid}-${i}`,
+    );
 
     return (
       <SvgIcon viewBox="0 0 20 20" {...props} ref={ref}>

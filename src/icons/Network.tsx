@@ -8,7 +8,7 @@ const useStyles = makeStyles()(() => ({id: {}}));
 
 const Network = (props: SvgIconProps) => {
   const {classes} = useStyles();
-  const uuid = classes.id;
+  const uuid = `network-${classes.id}`;
 
   return (
     <SvgIcon viewBox="0 0 40 40" {...props}>

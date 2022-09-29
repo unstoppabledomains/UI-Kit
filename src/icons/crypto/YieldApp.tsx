@@ -15,7 +15,7 @@ const Yield = React.forwardRef<
 >(({iconRef, ...props}, ref) => {
   const {classes} = useStyles();
   const uuid = classes.id;
-  const ids = Array.from({length: 1}).map((_, i) => `${uuid}${i}`);
+  const ids = Array.from({length: 1}).map((_, i) => `yield-app-${uuid}-${i}`);
 
   return (
     <SvgIcon viewBox="0 0 1728 1728" {...props} ref={iconRef || ref}>
