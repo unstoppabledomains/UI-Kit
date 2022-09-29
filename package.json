@@ -1,6 +1,6 @@
 {
   "name": "@unstoppabledomains/ui-kit",
-  "version": "0.2.4-alpha.1",
+  "version": "0.2.4",
   "private": false,
   "description": "A set of common Unstoppable Domains components",
   "keywords": [
