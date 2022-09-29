@@ -185,6 +185,16 @@ yarn storybook:build
 
 Storybook is available at https://unstoppabledomains.github.io/UI-Kit.
 
+### Testing
+
+To run the tests (`src/**/*.test.tsx` files):
+
+```shell
+yarn test # run all tests
+yarn test:watch # run all tests in watch mode
+yarn test:coverage # run all tests and generate coverage report
+```
+
 ### Linting and code formatting
 
 ```shell

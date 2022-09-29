@@ -47,7 +47,7 @@ const Logo = ({theme = LogoTheme.Primary, ...props}: UDLogoProps) => {
 
     default:
       return (
-        <SvgIcon viewBox="0 0 40 40" data-testid="primaryLogo" {...props}>
+        <SvgIcon viewBox="0 0 40 40" data-testid={`${theme}Logo`} {...props}>
           <path
             d="M38.3333 3.90803V16.5517L1.66666 31.4942L38.3333 3.90803Z"
             fill={pathFillColor1}

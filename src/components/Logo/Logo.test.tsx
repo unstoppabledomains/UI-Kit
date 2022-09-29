@@ -1,6 +1,5 @@
+import {render, waitFor} from '@testing-library/react';
 import React from 'react';
-
-import {render} from '../../../tests/test-utils';
 
 import Logo, {LogoTheme} from './Logo';
 
@@ -9,4 +8,13 @@ describe('<Logo />', () => {
     const {container} = render(<Logo />);
     expect(container.firstChild).toBeInTheDocument();
   });
+
+  for (const theme of Object.values(LogoTheme)) {
+    it(`renders a Logo icon for: ${theme}`, async () => {
+      const {getByTestId} = render(<Logo theme={theme} />);
+      await waitFor(() =>
+        expect(getByTestId(`${theme}Logo`)).toBeInTheDocument(),
+      );
+    });
+  }
 });
