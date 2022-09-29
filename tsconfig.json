@@ -17,8 +17,7 @@
     "jsx": "react",
     "paths": {
       "styles": ["./src/styles/index.ts"],
-      "components/*": ["./src/components/*"],
-      "tests/*": ["./tests/*"]
+      "components/*": ["./src/components/*"]
     }
   }
 }
