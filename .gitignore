@@ -9,12 +9,15 @@ storybook-static/
 .DS_Store
 ._*
 
-# misc
-.idea/
-.vscode/
-dist/
-
 # Logs
 logs
 *.log
 npm-debug.log*
+
+# testing
+coverage/
+
+# misc
+.idea/
+.vscode/
+dist/
