@@ -213,7 +213,7 @@ const buildThemeOptions = (mode: 'light' | 'dark'): ThemeOptions => ({
     },
   },
   typography: {
-    fontFamily: "'Open Sans', sans-serif",
+    fontFamily: "'Inter', sans-serif",
     fontWeightMedium: 600,
     h1: {
       fontWeight: 700,
