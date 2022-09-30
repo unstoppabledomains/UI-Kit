@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file. This
 project adheres to [Semantic Versioning](http://semver.org/).
 
+### 0.2.5
+
+- Replace font `Open Sans` with `Inter`
+
 ### 0.2.4
 
 - Added Unstoppable Domains icons
