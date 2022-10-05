@@ -86,6 +86,7 @@ export {default as PancakeSwap} from './PancakeSwap';
 export {default as Polkadot} from './Polkadot';
 export {default as Polymath} from './Polymath';
 export {default as Qtum} from './Qtum';
+export {default as Railgun} from './Railgun';
 export {default as Ravencoin} from './Ravencoin';
 export {default as Ripple} from './Ripple';
 export {default as SAND} from './SAND';
