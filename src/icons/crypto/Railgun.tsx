@@ -14,7 +14,7 @@ const Railgun = React.forwardRef<
 >(({iconRef, ...props}, ref) => {
   const {classes} = useStyles();
   const uuid = classes.id;
-  const ids = Array.from({length: 41}).map((_, i) => `${uuid}${i}`);
+  const ids = Array.from({length: 41}).map((_, i) => `railgun-${uuid}-${i}`);
 
   return (
     <SvgIcon viewBox="0 0 256 256" {...props} ref={iconRef || ref}>
