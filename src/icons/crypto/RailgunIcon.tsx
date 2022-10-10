@@ -2,7 +2,7 @@ import type {SvgIconProps} from '@mui/material';
 import {SvgIcon} from '@mui/material';
 import React from 'react';
 
-const Railgun = React.forwardRef<
+const RailgunIcon = React.forwardRef<
   SVGSVGElement,
   {
     iconRef?: React.ForwardedRef<SVGSVGElement>;
@@ -612,4 +612,4 @@ const Railgun = React.forwardRef<
   );
 });
 
-export default Railgun;
+export default RailgunIcon;
