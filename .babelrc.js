@@ -12,18 +12,19 @@ module.exports = function config(api) {
     ],
   ];
 
+  const plugins = [['react-remove-properties', {properties: ['data-testid']}]];
   const ignore = ['**/*.stories.tsx', '**/*.test.ts', '**/*.test.tsx'];
 
   if (api.env() === 'cjs') {
     return {
       ignore,
-      plugins: ['@babel/plugin-transform-runtime'],
+      plugins: ['@babel/plugin-transform-runtime', ...plugins],
       presets: ['@babel/preset-env', ...presets],
     };
   }
 
   if (api.env() === 'esm') {
-    return {ignore, presets};
+    return {ignore, presets, plugins};
   }
 
   return {};
