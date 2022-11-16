@@ -9,14 +9,16 @@ const Verge = React.forwardRef<
   } & SvgIconProps
 >(({iconRef, ...props}, ref) => {
   return (
-    <SvgIcon viewBox="0 0 32 32" {...props} ref={iconRef || ref}>
-      <g fill="none">
-        <circle cx="16" cy="16" r="16" fill="#00CBFF" />
-        <path
-          fill="#FFF"
-          d="M9.61 10.335L8 7h16l-1.592 3.335H24L15.951 27 8 10.335h1.61zm0 0l6.438 13.33 6.36-13.33H9.611z"
+    <SvgIcon viewBox="0 0 283.5 283.5" {...props} ref={iconRef || ref}>
+      <g>
+        <polygon
+          style={{fill: '#37BDE2'}}
+          points="216.5,15.8 141.7,187.8 67,15.8 32.3,15.8 141.7,267.7 251.2,15.8"
         />
-        <path fill="#FFF" opacity=".504" d="M16 24.5L8 7h15.999z" />
+        <polygon
+          style={{fill: '#37BDE2'}}
+          points="141.7,108.4 180.9,15.8 102.5,15.8"
+        />
       </g>
     </SvgIcon>
   );
