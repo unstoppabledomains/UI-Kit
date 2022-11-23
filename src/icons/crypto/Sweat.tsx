@@ -2,7 +2,7 @@ import type {SvgIconProps} from '@mui/material';
 import {SvgIcon} from '@mui/material';
 import React from 'react';
 
-const Sweat = React.forwardRef<
+const SWEAT = React.forwardRef<
   SVGSVGElement,
   {
     iconRef?: React.ForwardedRef<SVGSVGElement>;
@@ -26,4 +26,4 @@ const Sweat = React.forwardRef<
   );
 });
 
-export default Sweat;
+export default SWEAT;

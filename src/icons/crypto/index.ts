@@ -98,7 +98,7 @@ export {default as Solana} from './Solana';
 export {default as StellarLumens} from './StellarLumens';
 export {default as Stratis} from './Stratis';
 export {default as Sui} from './Sui';
-export {default as Sweat} from './Sweat';
+export {default as SWEAT} from './SWEAT';
 export {default as Switcheo} from './Switcheo';
 export {default as THETA} from './THETA';
 export {default as TRON} from './TRON';
