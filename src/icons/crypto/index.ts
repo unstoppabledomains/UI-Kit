@@ -95,7 +95,7 @@ export {default as Ripple} from './Ripple';
 export {default as SAND} from './SAND';
 export {default as SGB} from './SGB';
 export {default as SHIB} from './SHIB';
-export {default as SWEAT} from './SWEAT';
+export {default as SWEAT} from './Sweat';
 export {default as SafeMoon} from './SafeMoon';
 export {default as SmartCash} from './SmartCash';
 export {default as Solana} from './Solana';
