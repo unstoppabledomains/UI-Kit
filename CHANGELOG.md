@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file. This
 project adheres to [Semantic Versioning](http://semver.org/).
 
+### 0.2.11
+
+- Add `DESO` crypto icon
+- Add `FLR` crypto icon
+- Add `SGB` crypto icon
+
 ### 0.2.10
 
 - Added `SWEAT` crypto icon
