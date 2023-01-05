@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. This
 project adheres to [Semantic Versioning](http://semver.org/).
 
+### 0.2.12
+
+- Add `POKT` crypto icon
+- Add `XLA` crypto icon
+- Add `KAI` crypto icon
+- Add `APT` crypto icon
+
 ### 0.2.11
 
 - Add `DESO` crypto icon
