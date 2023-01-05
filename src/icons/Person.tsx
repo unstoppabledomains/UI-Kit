@@ -1,13 +1,13 @@
 import type {SvgIconProps} from '@mui/material';
 import {SvgIcon} from '@mui/material';
-import React from 'react';
+import React, {ForwardedRef} from 'react';
 
 import {makeStyles} from '../styles';
 
 const useStyles = makeStyles()(() => ({id: {}}));
 
-const Person = React.forwardRef<SVGSVGElement | null, SvgIconProps>(
-  (props, ref) => {
+const Person = React.forwardRef(
+  (props: SvgIconProps, ref: ForwardedRef<SVGSVGElement>) => {
     const {classes} = useStyles();
     const uuid = classes.id;
 
