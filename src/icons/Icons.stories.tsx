@@ -45,10 +45,23 @@ const defaultArgs: Pick<SvgIconProps, 'fontSize' | 'color'> = {
   fontSize: 'medium' as const,
 };
 
-const useStyles = makeStyles()(() => ({
+const useStyles = makeStyles()((theme: Theme) => ({
   icon: {
     width: 60,
     height: 60,
+  },
+  title: {
+    boxSizing: 'border-box',
+    width: 180,
+    padding: theme.spacing(0.5),
+    border: '1px solid #e1e9f6',
+    borderRadius: theme.spacing(1),
+    marginTop: theme.spacing(1.25),
+    fontSize: theme.typography.body2.fontSize,
+    fontFamily: 'monospace',
+    backgroundColor: '#f0f6f9',
+    color: '#003378',
+    textAlign: 'center',
   },
   tooltip: {
     maxWidth: 'none',
@@ -127,16 +140,9 @@ const [GeneralIconsTemplate, CryptoIconsTemplate, NftIconsTemplate] = [
                     className={classes.icon}
                     stopColor="#62626A"
                   />
-                  <Tooltip title={key}>
-                    <Typography
-                      fontSize={14}
-                      align="center"
-                      noWrap
-                      sx={{width: 160, marginTop: '10px'}}
-                    >
-                      {key}
-                    </Typography>
-                  </Tooltip>
+                  <Typography noWrap className={classes.title}>
+                    {key}
+                  </Typography>
                 </Grid>
               </Tooltip>
             </Grid>
