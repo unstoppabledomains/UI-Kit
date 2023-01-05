@@ -2,7 +2,7 @@ import type {SvgIconProps} from '@mui/material';
 import {SvgIcon} from '@mui/material';
 import React from 'react';
 
-const KardiaChain = React.forwardRef<
+const Aptos = React.forwardRef<
   SVGSVGElement,
   {
     iconRef?: React.ForwardedRef<SVGSVGElement>;
@@ -22,4 +22,4 @@ const KardiaChain = React.forwardRef<
   );
 });
 
-export default KardiaChain;
+export default Aptos;
