@@ -1,5 +1,9 @@
-import type {SvgIconProps, Theme} from '@mui/material';
-import {Grid, Typography, Tooltip, Button} from '@mui/material';
+import Button from '@mui/material/Button';
+import Grid from '@mui/material/Grid';
+import {type SvgIconProps} from '@mui/material/SvgIcon';
+import Tooltip from '@mui/material/Tooltip';
+import Typography from '@mui/material/Typography';
+import type {Theme} from '@mui/material/styles';
 import React from 'react';
 
 import {makeStyles} from '../styles';
