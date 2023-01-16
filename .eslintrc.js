@@ -96,5 +96,31 @@ module.exports = {
         devDependencies: ['**/*.stories.*', '**/.storybook/**/*.*'],
       },
     ],
+    'no-restricted-imports': [
+      'error',
+      {
+        patterns: [
+          {
+            // https://mui.com/material-ui/guides/minimizing-bundle-size#option-one-use-path-imports
+            group: ['@mui/*/*/*'],
+            message: `Please use second-level imports: '@mui/*/*'. `,
+          },
+        ],
+        paths: [
+          {
+            name: '@mui/material',
+            message: `Please use '@mui/material/*' path imports instead. `,
+          },
+          {
+            name: '@mui/icons-material',
+            message: `Please use '@mui/icons-material/*' path imports instead. `,
+          },
+          {
+            name: '@mui/lab',
+            message: `Please use '@mui/lab/*' path imports instead. `,
+          },
+        ],
+      },
+    ],
   },
 };

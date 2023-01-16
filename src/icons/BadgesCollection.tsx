@@ -1,5 +1,4 @@
-import type {SvgIconProps} from '@mui/material/SvgIcon';
-import SvgIcon from '@mui/material/SvgIcon';
+import SvgIcon, {type SvgIconProps} from '@mui/material/SvgIcon';
 import type {ForwardedRef} from 'react';
 import React from 'react';
 

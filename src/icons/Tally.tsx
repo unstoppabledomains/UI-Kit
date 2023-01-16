@@ -1,5 +1,4 @@
-import type {SvgIconProps} from '@mui/material/SvgIcon';
-import SvgIcon from '@mui/material/SvgIcon';
+import SvgIcon, {type SvgIconProps} from '@mui/material/SvgIcon';
 import React from 'react';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
