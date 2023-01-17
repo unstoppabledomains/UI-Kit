@@ -8,26 +8,13 @@ const Scala = React.forwardRef<
   } & SvgIconProps
 >(({iconRef, ...props}, ref) => {
   return (
-    <SvgIcon viewBox="0 0 267.052 207.024" {...props} ref={iconRef || ref}>
-      <defs>
-        <clipPath id="_clipPath_Pqln0aUdci1qfthfTDJl56fMtqwbKkur">
-          <rect width="267.052" height="207.024" />
-        </clipPath>
-      </defs>
-      <g clipPath="url(#_clipPath_Pqln0aUdci1qfthfTDJl56fMtqwbKkur)">
-        <rect
-          x="0.021"
-          y="0"
-          width="267.032"
-          height="42"
-          transform="matrix(1,0,0,1,0,0)"
-          fill="rgb(35,139,255)"
-        />
-        <path
-          d=" M 55.159 207.024 L 133.521 128.641 L 211.898 207.024 L 267.052 207.024 L 133.541 73.508 L 133.521 73.508 L 133.521 73.508 L 0 207.024 L 55.159 207.024 L 55.159 207.024 Z "
-          fill="rgb(32,42,52)"
-        />
-      </g>
+    <SvgIcon viewBox="0 0 24 24" {...props} ref={iconRef || ref}>
+      <circle cx="12" cy="12" r="12" fill="#248BFF" />
+      <path
+        d="M12 10.5L5.5 17H8.5L12 13.5L15.5 17H18.5L12 10.5Z"
+        fill="#E6F5FF"
+      />
+      <rect x="6" y="7" width="12" height="2" fill="#E6F5FF" />
     </SvgIcon>
   );
 });
