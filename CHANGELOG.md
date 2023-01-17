@@ -6,7 +6,7 @@ project adheres to [Semantic Versioning](http://semver.org/).
 ### 0.2.13
 
 - Add `GTH` crypto icon
-- Add `XLA` crypto icon
+- Fix `XLA` crypto icon
 - Fix `APT` crypto icon
 
 ### 0.2.12
