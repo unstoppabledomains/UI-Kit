@@ -126,6 +126,7 @@ export {default as Verge} from './Verge';
 export {default as WAXP} from './WAXP';
 export {default as Wanchain} from './Wanchain';
 export {default as WavesTech} from './WavesTech';
+export {default as XLA} from './XLA';
 export {default as XinFin} from './XinFin';
 export {default as YearnFinance} from './YearnFinance';
 export {default as YieldApp} from './YieldApp';
