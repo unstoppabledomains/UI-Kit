@@ -1,5 +1,4 @@
-import type {SvgIconProps} from '@mui/material';
-import {SvgIcon} from '@mui/material';
+import SvgIcon, {type SvgIconProps} from '@mui/material/SvgIcon';
 import type {SVGProps} from 'react';
 import React from 'react';
 

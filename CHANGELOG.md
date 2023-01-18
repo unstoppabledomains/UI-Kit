@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file. This
 project adheres to [Semantic Versioning](http://semver.org/).
 
+### 0.2.14
+
+- Replace top-level MUI imports with path imports
+
 ### 0.2.13
 
 - Add `GTH` crypto icon

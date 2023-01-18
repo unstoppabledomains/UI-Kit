@@ -1,9 +1,11 @@
-import {useTheme, createTheme, responsiveFontSizes} from '@mui/material';
-import type {
-  SimplePaletteColorOptions,
-  ThemeOptions,
-  Theme,
-} from '@mui/material';
+import {
+  useTheme,
+  createTheme,
+  responsiveFontSizes,
+  type SimplePaletteColorOptions,
+  type ThemeOptions,
+  type Theme,
+} from '@mui/material/styles';
 import {createMakeAndWithStyles} from 'tss-react';
 import type {CSSObject} from 'tss-react';
 

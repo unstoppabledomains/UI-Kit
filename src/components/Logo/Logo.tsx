@@ -1,5 +1,5 @@
-import type {SvgIconProps} from '@mui/material';
-import {SvgIcon, useTheme} from '@mui/material';
+import SvgIcon, {type SvgIconProps} from '@mui/material/SvgIcon';
+import {useTheme} from '@mui/material/styles';
 import React from 'react';
 
 import LogoAsRay from './LogoAsRay';
