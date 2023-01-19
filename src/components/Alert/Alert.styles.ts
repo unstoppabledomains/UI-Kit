@@ -69,7 +69,7 @@ export const useStyles = makeStyles<{
       padding: 0,
       marginLeft: theme.spacing(2.25),
     },
-    title: {
+    heading: {
       ...theme.typography.body2,
       fontWeight: theme.typography.fontWeightMedium,
       color: theme.palette.common.black,
@@ -77,7 +77,7 @@ export const useStyles = makeStyles<{
       marginRight: theme.spacing(hasAction ? 2.25 : 0),
       fontSize: titleFontSize,
     },
-    subtitle: {
+    body: {
       ...theme.typography.body2,
       lineHeight: '1.25rem',
       color: theme.palette.greyShades[600],

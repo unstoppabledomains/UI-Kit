@@ -3,23 +3,26 @@ import ErrorIcon from '@mui/icons-material/ErrorOutlineOutlined';
 import InfoIcon from '@mui/icons-material/InfoOutlined';
 import WarningIcon from '@mui/icons-material/WarningAmberOutlined';
 import MuiAlert from '@mui/material/Alert';
-import type {AlertProps, AlertClasses} from '@mui/material/Alert';
+import type {
+  AlertProps as MuiAlertProps,
+  AlertClasses,
+} from '@mui/material/Alert';
 import MuiAlertTitle from '@mui/material/AlertTitle';
 import type {FC, ReactNode} from 'react';
 import React from 'react';
 
 import {useStyles} from './Alert.styles';
 
-export type AlertSize = 'small' | 'medium';
-
-type Props = AlertProps & {
-  title?: ReactNode;
+export type AlertProps = MuiAlertProps & {
+  heading?: ReactNode;
   size?: AlertSize;
-  classes?: Partial<AlertClasses & {subtitle: string}>;
+  classes?: Partial<AlertClasses & {heading: string; body: string}>;
 };
 
-const Alert: FC<Props> = ({
-  title,
+export type AlertSize = 'small' | 'medium';
+
+const Alert: FC<AlertProps> = ({
+  heading,
   severity = 'info',
   size = 'small',
   variant = 'standard',
@@ -32,16 +35,16 @@ const Alert: FC<Props> = ({
     hasAction: !!props.action || !!props.onClose,
   });
 
-  if (!title && !children) {
-    throw new Error('Alert must have either title or children');
+  if (!heading && !children) {
+    throw new Error('Alert must have either heading or children');
   }
 
   return (
     <MuiAlert
       {...props}
       classes={{
-        icon: classes.icon,
         ...props.classes,
+        icon: cx(classes.icon, props.classes?.icon),
         message: cx(classes.message, props.classes?.message),
         action: cx(
           classes.action,
@@ -59,13 +62,13 @@ const Alert: FC<Props> = ({
       severity={severity}
       variant={variant}
     >
-      {!!title && (
-        <MuiAlertTitle classes={{root: classes.title}}>{title}</MuiAlertTitle>
+      {!!heading && (
+        <MuiAlertTitle className={cx(classes.heading, props.classes?.heading)}>
+          {heading}
+        </MuiAlertTitle>
       )}
       {!!children && (
-        <div className={cx(classes.subtitle, props.classes?.subtitle)}>
-          {children}
-        </div>
+        <div className={cx(classes.body, props.classes?.body)}>{children}</div>
       )}
     </MuiAlert>
   );

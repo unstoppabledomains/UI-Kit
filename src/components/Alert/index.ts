@@ -1,1 +1,2 @@
-export {default as Alert, AlertSize} from './Alert';
+export * from './Alert';
+export {default as Alert} from './Alert';
