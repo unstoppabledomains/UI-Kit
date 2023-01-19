@@ -19,7 +19,7 @@ export type AlertProps = MuiAlertProps & {
   classes?: Partial<AlertClasses & {heading: string; body: string}>;
 };
 
-export type AlertSize = 'small' | 'medium';
+export type AlertSize = 'small' | 'medium' | 'large';
 
 const Alert: FC<AlertProps> = ({
   heading,
@@ -32,6 +32,7 @@ const Alert: FC<AlertProps> = ({
   const {classes, cx} = useStyles({
     severity,
     size,
+    variant,
     hasAction: !!props.action || !!props.onClose,
   });
 

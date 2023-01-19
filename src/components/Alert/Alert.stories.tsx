@@ -7,37 +7,23 @@ export default {
   title: 'Components/Alert',
   component: Alert,
   argTypes: {
-    severity: {
+    heading: {
+      description: 'A slot for rendering title-like element above the content',
       control: {
-        type: 'select',
-        options: ['info', 'success', 'warning', 'error'],
+        type: 'text',
       },
     },
     size: {
       description: 'Defines the sizes of the title, icon and inner paddings',
       control: {
-        type: 'select',
-        options: ['small', 'medium'],
-      },
-    },
-    title: {
-      control: {
-        type: 'text',
+        type: 'radio',
+        options: ['small', 'medium', 'large'],
       },
     },
     children: {
+      description: 'A slot for rendering the content of the alert',
       control: {
         type: 'text',
-      },
-    },
-    classNames: {
-      control: {
-        type: null,
-      },
-    },
-    icon: {
-      control: {
-        type: null,
       },
     },
   },
@@ -45,33 +31,30 @@ export default {
 
 const textProps = {
   warning: {
-    title: 'Please fill IPFS hash input to launch website',
-    subtitle:
-      'Don’t worry, we are actively working on developing Android App for our users.',
+    heading: 'Please fill IPFS hash input to launch website',
+    body: 'Don’t worry, we are actively working on developing Android App for our users.',
   },
   error: {
-    title: 'Unable to detect a web3 wallet',
-    subtitle:
-      'It looks like you did not install it yet, or have multiple wallets installed.',
+    heading: 'Unable to detect a web3 wallet',
+    body: 'It looks like you did not install it yet, or have multiple wallets installed.',
   },
   success: {
-    title: 'Claim Process Started',
-    subtitle:
-      'Your domains are now being deployed into the blockchain and your crypto-wallet.',
+    heading: 'Claim Process Started',
+    body: 'Your domains are now being deployed into the blockchain and your crypto-wallet.',
   },
   info: {
-    title: "Please select another method for claiming if you can't use iOS app",
-    subtitle:
-      'Don’t worry, we are actively working on developing Android App for our users.',
+    heading:
+      "Please select another method for claiming if you can't use iOS app",
+    body: 'Don’t worry, we are actively working on developing Android App for our users.',
   },
 };
 
 const Template: ComponentStory<typeof Alert> = (args) => {
-  const {title, subtitle} = textProps[args.severity || 'info'];
+  const {heading, body} = textProps[args.severity || 'info'];
 
   return (
-    <Alert {...args} title={args.title || title}>
-      {args.children || subtitle}
+    <Alert {...args} heading={args.heading || heading}>
+      {args.children || body}
     </Alert>
   );
 };
@@ -79,8 +62,30 @@ const Template: ComponentStory<typeof Alert> = (args) => {
 export const Default = Template.bind({});
 
 Default.args = {
-  severity: 'warning',
-  size: 'small',
+  severity: 'info',
+  size: 'medium',
 };
 
-Default.parameters = {controls: {exclude: ['elevation', 'square', 'ref']}};
+Default.parameters = {
+  controls: {
+    exclude: [
+      'action',
+      'classes',
+      'closeText',
+      'color',
+      'components',
+      'componentsProps',
+      'icon',
+      'role',
+      'iconMapping',
+      'slotProps',
+      'slots',
+      'className',
+      'style',
+      'elevation',
+      'square',
+      'ref',
+      'sx',
+    ],
+  },
+};
