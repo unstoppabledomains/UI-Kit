@@ -57,6 +57,7 @@ module.exports = {
         'no-restricted-syntax': 'off',
         'import/prefer-default-export': 'off',
         'sort-exports/sort-exports': 'error',
+        'react/button-has-type': 'off',
         'import/order': [
           'error',
           {
@@ -90,12 +91,7 @@ module.exports = {
         extensions: ['.js', '.jsx', '.ts', '.tsx', '.mdx'],
       },
     ],
-    'import/no-extraneous-dependencies': [
-      'error',
-      {
-        devDependencies: ['**/*.stories.*', '**/.storybook/**/*.*'],
-      },
-    ],
+    'import/no-extraneous-dependencies': 'off',
     'no-restricted-imports': [
       'error',
       {

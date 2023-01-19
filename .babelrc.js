@@ -12,7 +12,18 @@ module.exports = function config(api) {
     ],
   ];
 
-  const plugins = [['react-remove-properties', {properties: ['data-testid']}]];
+  const plugins = [
+    ['react-remove-properties', {properties: ['data-testid']}],
+    [
+      require.resolve('babel-plugin-module-resolver'),
+      {
+        alias: {
+          styles: './src/styles',
+          components: './src/components',
+        },
+      },
+    ],
+  ];
   const ignore = ['**/*.stories.tsx', '**/*.test.ts', '**/*.test.tsx'];
 
   if (api.env() === 'cjs') {

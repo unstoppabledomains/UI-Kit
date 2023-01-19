@@ -1,6 +1,6 @@
 {
   "name": "@unstoppabledomains/ui-kit",
-  "version": "0.2.14",
+  "version": "0.3.0",
   "private": false,
   "description": "A set of common Unstoppable Domains components",
   "keywords": [
@@ -86,6 +86,7 @@
     "@types/react-dom": "^17.0.2",
     "@typescript-eslint/eslint-plugin": "^5.31.0",
     "@typescript-eslint/parser": "^5.31.0",
+    "babel-plugin-module-resolver": "^5.0.0",
     "babel-plugin-react-remove-properties": "^0.3.0",
     "eslint": "8.22.0",
     "eslint-config-airbnb": "^19.0.4",
