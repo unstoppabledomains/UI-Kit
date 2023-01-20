@@ -55,12 +55,15 @@
     ]
   },
   "dependencies": {
-    "@emotion/react": "^11.0.0",
-    "@emotion/styled": "^11.0.0",
-    "@mui/icons-material": "^5.8.4",
-    "@mui/lab": "^5.0.0-alpha.66",
-    "@mui/material": "^5.3.1",
-    "tss-react": "^4.0.0"
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@mui/icons-material": "^5.11.0",
+    "@mui/lab": "^5.0.0-alpha.116",
+    "@mui/material": "^5.11.5",
+    "@mui/system": "^5.11.5",
+    "@mui/x-data-grid": "^5.17.20",
+    "@mui/x-date-pickers": "^5.0.15",
+    "tss-react": "^4.5.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.18.10",
