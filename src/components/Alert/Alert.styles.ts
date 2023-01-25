@@ -113,7 +113,7 @@ export const useStyles = makeStyles<{
       display: 'flex',
       flexDirection: 'row',
       alignItems: 'center',
-      justifyContent: size === 'large' ? 'center' : 'space-between',
+      ...(size === 'large' && {justifyContent: 'center'}),
       width: '100%',
       padding,
       borderRadius,
