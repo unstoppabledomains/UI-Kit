@@ -14,7 +14,7 @@ export default {
       },
     },
     size: {
-      description: 'Defines the sizes of the title, icon and inner paddings',
+      description: 'Defines the sizes of the title, icon, and inner paddings',
       control: {
         type: 'radio',
         options: ['small', 'medium', 'large'],

@@ -5,7 +5,7 @@ import WarningIcon from '@mui/icons-material/WarningAmberOutlined';
 import MuiAlert from '@mui/material/Alert';
 import type {
   AlertProps as MuiAlertProps,
-  AlertClasses,
+  AlertClasses as MuiAlertClasses,
 } from '@mui/material/Alert';
 import MuiAlertTitle from '@mui/material/AlertTitle';
 import type {FC, ReactNode} from 'react';
@@ -13,10 +13,14 @@ import React from 'react';
 
 import {useStyles} from './Alert.styles';
 
+export type AlertClasses = Partial<
+  MuiAlertClasses & {heading: string; body: string}
+>;
+
 export type AlertProps = MuiAlertProps & {
   heading?: ReactNode;
   size?: AlertSize;
-  classes?: Partial<AlertClasses & {heading: string; body: string}>;
+  classes?: AlertClasses;
 };
 
 export type AlertSize = 'small' | 'medium' | 'large';
