@@ -7,4 +7,4 @@ export * from './components';
 export * from '@mui/material';
 
 // TODO: remove explicit Alert re-exports once @mui/material wildcard re-export is removed
-export {Alert, AlertProps} from './components/Alert';
+export {Alert, AlertClasses, AlertProps} from './components/Alert';
