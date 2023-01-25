@@ -3,7 +3,7 @@ import {Theme} from '@mui/material/styles';
 import {AlertSize} from 'components/Alert/Alert';
 import {makeStyles} from 'styles';
 
-const getStylesBySeverity = (theme?: Theme) => ({
+const getStylesBySeverityAndVariant = (theme?: Theme) => ({
   warning: {
     standard: {
       backgroundColor: theme?.palette.warningShades[200],
@@ -78,19 +78,19 @@ const getStylesBySize = (theme: Theme) => ({
   small: {
     padding: theme.spacing(1.125, 2),
     iconFontSize: '1rem',
-    titleFontSize: '0.875rem',
+    headingFontSize: '0.875rem',
     borderRadius: theme.shape.borderRadius,
   },
   medium: {
     padding: theme.spacing(1.75, 3),
     iconFontSize: '1.25rem',
-    titleFontSize: '1rem',
+    headingFontSize: '1rem',
     borderRadius: theme.shape.borderRadius,
   },
   large: {
     padding: theme.spacing(1.5, 0),
     iconFontSize: '1.25rem',
-    titleFontSize: '1rem',
+    headingFontSize: '1rem',
     borderRadius: 0,
     borderLeft: 'none',
     borderRight: 'none',
@@ -104,8 +104,8 @@ export const useStyles = makeStyles<{
   hasAction: boolean;
 }>()((theme: Theme, {severity, variant, size, hasAction}) => {
   const {backgroundColor, borderColor, iconColor} =
-    getStylesBySeverity(theme)[severity][variant];
-  const {padding, iconFontSize, titleFontSize, borderRadius, ...rest} =
+    getStylesBySeverityAndVariant(theme)[severity][variant];
+  const {padding, iconFontSize, headingFontSize, borderRadius, ...rest} =
     getStylesBySize(theme)[size];
 
   return {
@@ -133,11 +133,15 @@ export const useStyles = makeStyles<{
     },
     heading: {
       ...theme.typography.body2,
+      lineHeight: theme.spacing(size === 'small' ? 2.5 : 3),
       fontWeight: theme.typography.fontWeightMedium,
-      color: theme.palette[variant === 'filled' ? 'white' : 'black'],
+      color:
+        variant === 'filled'
+          ? theme.palette.white
+          : theme.palette.greyShades[900],
       marginTop: 0,
       marginRight: theme.spacing(hasAction ? 2.25 : 0),
-      fontSize: titleFontSize,
+      fontSize: headingFontSize,
     },
     body: {
       ...theme.typography.body2,
