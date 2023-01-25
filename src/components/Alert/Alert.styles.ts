@@ -164,6 +164,7 @@ export const useStyles = makeStyles<{
       marginLeft: size === 'large' ? 0 : 'auto',
       '.MuiSvgIcon-root': {
         fontSize: iconFontSize,
+        color: iconColor,
       },
     },
     closeAction: {
