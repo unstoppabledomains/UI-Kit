@@ -1,7 +1,6 @@
 import type {ComponentStory} from '@storybook/react';
 import React from 'react';
-
-import {makeStyles} from '../../styles';
+import {makeStyles} from 'styles';
 
 import Logo, {LogoTheme} from './Logo';
 
@@ -30,9 +29,10 @@ export default {
   },
   parameters: {
     backgrounds: {
-      default: 'dark',
+      default: 'grey',
       values: [
         {name: 'dark', value: '#121212'},
+        {name: 'grey', value: '#D8DAE6'},
         {name: 'light', value: '#F9FAFF'},
       ],
     },
