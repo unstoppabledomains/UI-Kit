@@ -14,7 +14,15 @@ const PUSDC = React.forwardRef<
   return (
     <g style={{position: 'relative'}} {...props} ref={iconRef || ref}>
       <USDCoin style={{width: '100%', height: '100%'}} />
-      <Polygon36x36 style={{position: 'absolute', bottom: 0, right: 0}} />
+      <Polygon36x36
+        style={{
+          position: 'absolute',
+          bottom: 0,
+          right: 0,
+          width: '40%',
+          height: '40%',
+        }}
+      />
     </g>
   );
 });
