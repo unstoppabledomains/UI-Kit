@@ -9,10 +9,11 @@ const PWETH = React.forwardRef<
   SVGSVGElement,
   {
     iconRef?: React.ForwardedRef<SVGSVGElement>;
+    style?: React.CSSProperties;
   } & SvgIconProps
->(({iconRef, ...props}, ref) => {
+>(({iconRef, style = {}, ...props}, ref) => {
   return (
-    <g style={{position: 'relative'}} {...props} ref={iconRef || ref}>
+    <g style={{position: 'relative', ...style}} {...props} ref={iconRef || ref}>
       <Ethereum style={{width: '100%', height: '100%'}} />
       <Polygon36x36
         style={{

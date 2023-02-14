@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file. This
 project adheres to [Semantic Versioning](http://semver.org/).
 
+### 0.3.3
+
+- Add styles prop to `PWETH`, `PUSDC` crypto icons to avoid overwriting existing
+  styles
+
 ### 0.3.2
 
 - Fix styles for `PWETH`, `PUSDC` crypto icons
