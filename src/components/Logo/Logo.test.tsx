@@ -1,4 +1,4 @@
-import {render, waitFor} from '@testing-library/react';
+import {render, waitFor, screen} from '@testing-library/react';
 import React from 'react';
 
 import Logo, {LogoTheme} from './Logo';
@@ -11,9 +11,9 @@ describe('<Logo />', () => {
 
   for (const theme of Object.values(LogoTheme)) {
     it(`renders a Logo icon for: ${theme}`, async () => {
-      const {getByTestId} = render(<Logo theme={theme} />);
+      render(<Logo theme={theme} />);
       await waitFor(() =>
-        expect(getByTestId(`${theme}Logo`)).toBeInTheDocument(),
+        expect(screen.getByTestId(`${theme}Logo`)).toBeInTheDocument(),
       );
     });
   }
