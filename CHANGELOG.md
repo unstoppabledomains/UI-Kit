@@ -5,7 +5,7 @@ project adheres to [Semantic Versioning](http://semver.org/).
 
 ### 0.3.1
 
-- Added `PWETH`, `PUSDC`, `APECoin` crypto icons
+- Added `PWETH`, `PUSDC`, `ApeCoin` crypto icons
 
 ### 0.3.0
 
