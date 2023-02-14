@@ -88,6 +88,8 @@ export {default as Nimiq} from './Nimiq';
 export {default as OKT} from './OKT';
 export {default as ONEINCH} from './ONEINCH';
 export {default as Ontology} from './Ontology';
+export {default as PUSDC} from './PUSDC';
+export {default as PWETH} from './PWETH';
 export {default as PancakeSwap} from './PancakeSwap';
 export {default as PocketNetwork} from './PocketNetwork';
 export {default as Polkadot} from './Polkadot';
