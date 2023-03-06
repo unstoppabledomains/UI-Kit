@@ -58,6 +58,7 @@ export {default as Gala} from './Gala';
 export {default as Gas} from './Gas';
 export {default as Gather} from './Gather';
 export {default as GroestIcoin} from './GroestIcoin';
+export {default as HI} from './HI';
 export {default as Harmony} from './Harmony';
 export {default as Hedera} from './Hedera';
 export {default as Helium} from './Helium';
