@@ -77,6 +77,7 @@ export {default as Lisk} from './Lisk';
 export {default as Litecoin} from './Litecoin';
 export {default as Loopring} from './Loopring';
 export {default as MANA} from './MANA';
+export {default as MContent} from './MContent';
 export {default as MOON} from './MOON';
 export {default as Mobix} from './Mobix';
 export {default as Monero} from './Monero';
