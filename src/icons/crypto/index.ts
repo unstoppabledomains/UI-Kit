@@ -32,7 +32,7 @@ export {default as Chainlink} from './Chainlink';
 export {default as Compound} from './Compound';
 export {default as CompoundTether} from './CompoundTether';
 export {default as Cosmos} from './Cosmos';
-export {default as CryptoCom} from './CryptoCom';
+export {default as Cronos} from './CRO';
 export {default as Dai} from './Dai';
 export {default as Dash} from './Dash';
 export {default as Decred} from './Decred';
