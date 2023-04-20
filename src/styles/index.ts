@@ -418,6 +418,11 @@ const buildThemeOptions = (mode: 'light' | 'dark'): ThemeOptions => ({
 const addThemeOverrides = (theme: Theme) => {
   /* eslint-disable no-param-reassign */
   theme.components = {
+    MuiTooltip: {
+      defaultProps: {
+        enterTouchDelay: 0,
+      },
+    },
     MuiTabs: {
       defaultProps: {
         textColor: 'primary',
