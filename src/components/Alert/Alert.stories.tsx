@@ -32,7 +32,7 @@ export default {
 const textProps = {
   warning: {
     heading: 'Please fill IPFS hash input to launch website',
-    body: 'Don’t worry, we are actively working on developing Android App for our users.',
+    body: 'Don’t worry, we are actively working on developing <strong>Android</strong> App for our users.',
   },
   error: {
     heading: 'Unable to detect a web3 wallet',
@@ -45,7 +45,7 @@ const textProps = {
   info: {
     heading:
       "Please select another method for claiming if you can't use iOS app",
-    body: 'Don’t worry, we are actively working on developing Android App for our users.',
+    body: 'Don’t worry, we are actively working on developing <strong>Android</strong> App for our users.',
   },
 };
 

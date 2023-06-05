@@ -72,8 +72,13 @@ const Alert: FC<AlertProps> = ({
           {heading}
         </MuiAlertTitle>
       )}
-      {!!children && (
-        <div className={cx(classes.body, props.classes?.body)}>{children}</div>
+      {Boolean(children) && (
+        <div
+          className={cx(classes.body, props.classes?.body)}
+          {...(typeof children === 'string'
+            ? {dangerouslySetInnerHTML: {__html: children}}
+            : {children})}
+        />
       )}
     </MuiAlert>
   );
