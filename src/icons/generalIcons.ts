@@ -15,6 +15,7 @@ export {default as DiscordOutlined} from './DiscordOutlined';
 export {default as DownloadFile} from './DownloadFile';
 export {default as DraperAssociates} from './DraperAssociates';
 export {default as Edge} from './Edge';
+export {default as Ens} from './Ens';
 export {default as Eye} from './Eye';
 export {default as FacebookCircle} from './FacebookCircle';
 export {default as Firefox} from './Firefox';

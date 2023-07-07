@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file. This
 project adheres to [Semantic Versioning](http://semver.org/).
 
+### 0.3.10
+
+- Add `Ens` icon
+
 ### 0.3.9
 
 - Adds support for HTML content inside `Alert` component
