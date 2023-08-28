@@ -587,6 +587,13 @@ const addThemeOverrides = (theme: Theme) => {
         },
       },
     },
+    MuiPaper: {
+      styleOverrides: {
+        root: {
+          boxShadow: `0px 0px 0px 1px ${theme.palette.greyShades[75]}, 0px 1px 0px 0px ${theme.palette.greyShades[75]}`,
+        },
+      },
+    },
   };
 
   if (theme.palette.mode === 'light' && theme.components) {
