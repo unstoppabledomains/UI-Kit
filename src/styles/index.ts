@@ -537,6 +537,9 @@ const addThemeOverrides = (theme: Theme) => {
     },
     MuiAlert: {
       styleOverrides: {
+        root: {
+          boxShadow: 'none',
+        },
         standardError: {
           background: theme.palette.dangerShades[100],
           color: theme.palette.dangerShades[900],
@@ -584,6 +587,13 @@ const addThemeOverrides = (theme: Theme) => {
       styleOverrides: {
         root: {
           wordBreak: 'normal',
+        },
+      },
+    },
+    MuiPaper: {
+      styleOverrides: {
+        root: {
+          boxShadow: `0px 0px 0px 1px ${theme.palette.greyShades[75]}`,
         },
       },
     },
