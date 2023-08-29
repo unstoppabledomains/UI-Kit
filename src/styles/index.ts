@@ -537,6 +537,9 @@ const addThemeOverrides = (theme: Theme) => {
     },
     MuiAlert: {
       styleOverrides: {
+        root: {
+          boxShadow: 'none',
+        },
         standardError: {
           background: theme.palette.dangerShades[100],
           color: theme.palette.dangerShades[900],
