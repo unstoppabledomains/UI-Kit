@@ -43,5 +43,6 @@ export {default as Transfer} from './Transfer';
 export {default as TransferColored} from './TransferColored';
 export {default as TrustWallet} from './TrustWallet';
 export {default as TwitterVerified} from './TwitterVerified';
+export {default as TwitterX} from './TwitterX';
 export {default as Unclaimable} from './Unclaimable';
 export {default as WindowColored} from './WindowColored';
