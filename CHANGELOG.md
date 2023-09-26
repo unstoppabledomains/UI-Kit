@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file. This
 project adheres to [Semantic Versioning](http://semver.org/).
 
+### 0.3.14
+
+- Use NPM registry when publishing new package versions
+
 ### 0.3.13
 
 - Add `TwitterX` (X, formerly Twitter) icon
