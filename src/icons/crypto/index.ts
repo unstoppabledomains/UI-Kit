@@ -84,6 +84,7 @@ export {default as Mobix} from './Mobix';
 export {default as Monero} from './Monero';
 export {default as NEARProtocol} from './NEARProtocol';
 export {default as NEM} from './NEM';
+export {default as NIBI} from './NIBI';
 export {default as Nano} from './Nano';
 export {default as Neblio} from './Neblio';
 export {default as Neo} from './Neo';
