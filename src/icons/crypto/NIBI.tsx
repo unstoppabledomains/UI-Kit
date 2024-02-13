@@ -1,5 +1,8 @@
 import SvgIcon, {type SvgIconProps} from '@mui/material/SvgIcon';
 import React from 'react';
+import {makeStyles} from 'styles';
+
+const useStyles = makeStyles()(() => ({id: {}}));
 
 const NIBI = React.forwardRef<
   SVGSVGElement,
@@ -7,14 +10,19 @@ const NIBI = React.forwardRef<
     iconRef?: React.ForwardedRef<SVGSVGElement>;
   } & SvgIconProps
 >(({iconRef, ...props}, ref) => {
+  const {classes} = useStyles();
+  const uuid = classes.id;
+
+  const ids = Array.from({length: 2}).map((_, i) => `nibi-${uuid}-${i}`);
+
   return (
     <SvgIcon viewBox="0 0 24 24" {...props} ref={iconRef || ref}>
       <path
-        fill="url(#a)"
+        fill={`url(#${ids[0]})`}
         d="M18 0H6a6 6 0 0 0-6 6v12a6 6 0 0 0 6 6h12a6 6 0 0 0 6-6V6a6 6 0 0 0-6-6Z"
       />
       <path
-        fill="url(#b)"
+        fill={`url(#${ids[1]})`}
         fillRule="evenodd"
         d="M6.325 6.857 12.162 3 18 6.857v7.971L6.325 6.859ZM6 9.171l12 7.972L12.162 21 6 17.143V9.17Z"
         clipRule="evenodd"
@@ -25,7 +33,7 @@ const NIBI = React.forwardRef<
       />
       <defs>
         <linearGradient
-          id="a"
+          id={ids[0]}
           x1={7.673}
           x2={17.573}
           y1={0.023}
@@ -37,7 +45,7 @@ const NIBI = React.forwardRef<
           <stop offset={1} stopColor="#9D91F4" stopOpacity={0.8} />
         </linearGradient>
         <linearGradient
-          id="b"
+          id={ids[1]}
           x1={20.174}
           x2={2.312}
           y1={29.026}
