@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file. This
 project adheres to [Semantic Versioning](http://semver.org/).
 
+### 0.3.19
+
+- UPDATE `nibiru` icon v2
+
 ### 0.3.18
 
 - UPDATE `nibiru` icon
