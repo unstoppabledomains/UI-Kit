@@ -11,6 +11,7 @@ export {default as Augur} from './Augur';
 export {default as Avalanche} from './Avalanche';
 export {default as AxieInfinity} from './AxieInfinity';
 export {default as Balancer} from './Balancer';
+export {default as Base} from './Base';
 export {default as BasicAttentionToken} from './BasicAttentionToken';
 export {default as Beam} from './Beam';
 export {default as BinanceCoin} from './BinanceCoin';
