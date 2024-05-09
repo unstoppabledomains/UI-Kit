@@ -1,7 +1,7 @@
 import SvgIcon, {type SvgIconProps} from '@mui/material/SvgIcon';
 import React from 'react';
 
-const WrappedETH = React.forwardRef<
+const WETH = React.forwardRef<
   SVGSVGElement,
   {
     iconRef?: React.ForwardedRef<SVGSVGElement>;
@@ -170,4 +170,4 @@ const WrappedETH = React.forwardRef<
   );
 });
 
-export default WrappedETH;
+export default WETH;
