@@ -137,6 +137,7 @@ export {default as Verse} from './Verse';
 export {default as WAXP} from './WAXP';
 export {default as Wanchain} from './Wanchain';
 export {default as WavesTech} from './WavesTech';
+export {default as WrappedETH} from './WrappedETH';
 export {default as XLAYER} from './XLAYER';
 export {default as XinFin} from './XinFin';
 export {default as YearnFinance} from './YearnFinance';
