@@ -135,6 +135,7 @@ export {default as VeThorToken} from './VeThorToken';
 export {default as Verge} from './Verge';
 export {default as Verse} from './Verse';
 export {default as WAXP} from './WAXP';
+export {default as WETH} from './WETH';
 export {default as Wanchain} from './Wanchain';
 export {default as WavesTech} from './WavesTech';
 export {default as XLAYER} from './XLAYER';
