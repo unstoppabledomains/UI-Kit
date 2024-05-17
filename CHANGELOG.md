@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file. This
 project adheres to [Semantic Versioning](http://semver.org/).
 
+### 0.3.23
+
+- ADD `IconPlate` icon
+- ADD `CheckCircleIcon` icon
+- ADD `ChecklistIcon` icon
+- ADD `CopyIcon` icon
+- ADD `CrownVipIcon` icon
+- ADD `HandOutlinedIcon` icon
+- ADD `HeartIcon` icon
+- ADD `PencilFilledIcon` icon
+- ADD `PencilOutlinedIcon` icon
+- ADD `ShieldIcon` icon
+- ADD `ShieldKeyHoleIcon` icon
+- ADD `SyncIcon` icon
+- ADD `TrashIcon` icon
+- ADD `WalletIcon` icon
+- ADD `WarningIcon` icon
+
 ### 0.3.22
 
 - ADD `WETH` icon
