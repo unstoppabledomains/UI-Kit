@@ -14,7 +14,6 @@ project adheres to [Semantic Versioning](http://semver.org/).
 - ADD `HeartIcon` icon
 - ADD `PencilFilledIcon` icon
 - ADD `PencilOutlinedIcon` icon
-- ADD `ShieldIcon` icon
 - ADD `ShieldKeyHoleIcon` icon
 - ADD `SyncIcon` icon
 - ADD `TrashIcon` icon
