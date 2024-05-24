@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file. This
 project adheres to [Semantic Versioning](http://semver.org/).
 
+### 0.3.24
+
+- ADD `UnstoppableWalletIcon` icon
+
 ### 0.3.23
 
 - ADD `IconPlate` icon
