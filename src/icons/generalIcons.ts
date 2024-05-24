@@ -57,6 +57,7 @@ export {default as TrustWallet} from './TrustWallet';
 export {default as TwitterVerified} from './TwitterVerified';
 export {default as TwitterX} from './TwitterX';
 export {default as Unclaimable} from './Unclaimable';
+export {default as UnstoppableWalletIcon} from './UnstoppableWalletIcon';
 export {default as WalletIcon} from './WalletIcon';
 export {default as WarningIcon} from './WarningIcon';
 export {default as WindowColored} from './WindowColored';
