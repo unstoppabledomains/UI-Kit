@@ -1,6 +1,6 @@
 {
   "name": "@unstoppabledomains/ui-kit",
-  "version": "0.4.0",
+  "version": "0.4.0-canary.0",
   "private": false,
   "description": "A set of common Unstoppable Domains components",
   "keywords": [
