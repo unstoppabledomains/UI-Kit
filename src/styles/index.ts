@@ -160,8 +160,6 @@ interface ThemeExtends {
 }
 
 declare module '@mui/material/styles' {
-  // eslint-disable-next-line @typescript-eslint/no-empty-interface
-  // interface TypographyStyle extends CSSObject {}
   // eslint-disable-next-line @typescript-eslint/no-empty-interface, @typescript-eslint/no-shadow
   interface Theme extends ThemeExtends {}
   // eslint-disable-next-line @typescript-eslint/no-empty-interface, @typescript-eslint/no-shadow
