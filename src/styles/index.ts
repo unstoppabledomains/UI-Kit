@@ -7,7 +7,6 @@ import {
   type Theme,
 } from '@mui/material/styles';
 import {createMakeAndWithStyles} from 'tss-react';
-import type {CSSObject} from 'tss-react';
 
 export const {makeStyles, useStyles, withStyles} = createMakeAndWithStyles({
   useTheme,
@@ -162,7 +161,7 @@ interface ThemeExtends {
 
 declare module '@mui/material/styles' {
   // eslint-disable-next-line @typescript-eslint/no-empty-interface
-  interface TypographyStyle extends CSSObject {}
+  // interface TypographyStyle extends CSSObject {}
   // eslint-disable-next-line @typescript-eslint/no-empty-interface, @typescript-eslint/no-shadow
   interface Theme extends ThemeExtends {}
   // eslint-disable-next-line @typescript-eslint/no-empty-interface, @typescript-eslint/no-shadow

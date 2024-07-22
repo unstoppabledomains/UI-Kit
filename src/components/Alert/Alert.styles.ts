@@ -2,6 +2,7 @@ import {AlertColor} from '@mui/material/Alert';
 import {Theme} from '@mui/material/styles';
 import {AlertSize} from 'components/Alert/Alert';
 import {makeStyles} from 'styles';
+import type {CSSObject} from 'tss-react';
 
 const getStylesBySeverityAndVariant = (theme?: Theme) => ({
   warning: {
@@ -142,13 +143,13 @@ export const useStyles = makeStyles<{
       marginTop: 0,
       marginRight: theme.spacing(hasAction ? 2.25 : 0),
       fontSize: headingFontSize,
-    },
+    } as CSSObject, // Ensuring the type compatibility "typography.body2" from @mui with "CSSObject"
     body: {
       ...theme.typography.body2,
       lineHeight: '1.25rem',
       color: theme.palette.greyShades[variant === 'filled' ? 50 : 600],
       marginRight: theme.spacing(hasAction ? 2.25 : 0),
-    },
+    } as CSSObject, // Ensuring the type compatibility "typography.body2" from @mui with "CSSObject"
     icon: {
       padding: 0,
       opacity: 1,
