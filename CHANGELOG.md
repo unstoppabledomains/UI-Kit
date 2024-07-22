@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file. This
 project adheres to [Semantic Versioning](http://semver.org/).
 
+### 0.4.0
+
+- Migrate to React 18
+- Bump node version to 18.17.1
+- Bump dependencies
+
 ### 0.3.24
 
 - ADD `UnstoppableWalletIcon` icon

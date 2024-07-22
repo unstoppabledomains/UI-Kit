@@ -1,12 +1,21 @@
-module.exports = {
-  stories: ['../stories/Introduction.stories.mdx', '../src/**/*.stories.tsx'],
+const config = {
+  stories: ['../stories/Introduction.mdx', '../src/**/*.stories.tsx'],
+
   addons: [
     '@storybook/addon-docs',
     '@storybook/addon-links',
     '@storybook/addon-essentials',
     '@storybook/addon-interactions',
+    '@storybook/addon-mdx-gfm',
+    '@storybook/addon-webpack5-compiler-swc',
+    '@chromatic-com/storybook',
   ],
-  framework: '@storybook/react',
+
+  framework: {
+    name: '@storybook/react-webpack5',
+    options: {fastRefresh: true},
+  },
+
   typescript: {
     check: false,
     checkOptions: {},
@@ -22,4 +31,8 @@ module.exports = {
           : true,
     },
   },
+
+  docs: {},
 };
+
+export default config;
