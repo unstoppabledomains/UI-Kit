@@ -69,6 +69,7 @@ export {default as HuobiToken} from './HuobiToken';
 export {default as ICX} from './ICX';
 export {default as InternetComputer} from './InternetComputer';
 export {default as Iota} from './Iota';
+export {default as Kadena} from './Kadena';
 export {default as KardiaChain} from './KardiaChain';
 export {default as Kava} from './Kava';
 export {default as Kin} from './Kin';
