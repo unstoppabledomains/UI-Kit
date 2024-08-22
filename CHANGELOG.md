@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file. This
 project adheres to [Semantic Versioning](http://semver.org/).
 
+### 0.3.26
+
+- ADD `AfricaRare` icon
+- ADD `Kadena` icon
+
 ### 0.3.25
 
 - ADD `FARMS` icon

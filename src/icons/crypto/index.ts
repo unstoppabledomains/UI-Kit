@@ -1,4 +1,5 @@
 export {default as Aeternity} from './Aeternity';
+export {default as AfricaRare} from './AfricaRare';
 export {default as Algorand} from './Algorand';
 export {default as Amp} from './Amp';
 export {default as Ampleforth} from './Ampleforth';
