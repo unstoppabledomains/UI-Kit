@@ -48,6 +48,7 @@ export {default as EnjinCoin} from './EnjinCoin';
 export {default as Ergo} from './Ergo';
 export {default as Ethereum, Ethereum36x36, Ethereum64x64} from './Ethereum';
 export {default as EthereumClassic} from './EthereumClassic';
+export {default as FARMS} from './FARMS';
 export {default as FLR} from './FLR';
 export {default as Fabric} from './Fabric';
 export {default as Fantom} from './Fantom';

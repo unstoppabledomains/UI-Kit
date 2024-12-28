@@ -9,6 +9,10 @@ project adheres to [Semantic Versioning](http://semver.org/).
 - Bump node version to 18.17.1
 - Bump dependencies
 
+### 0.3.25
+
+- ADD `FARMS` icon
+
 ### 0.3.24
 
 - ADD `UnstoppableWalletIcon` icon
