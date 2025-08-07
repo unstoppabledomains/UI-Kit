@@ -114,7 +114,7 @@ const useStyles = makeStyles<{size: number; variant: IconPlateVariant}>()(
 );
 
 type Props = {
-  children: JSX.Element;
+  children?: JSX.Element;
   size?: number; // width & height; default 32px
   variant?: IconPlateVariant;
   className?: string;
@@ -133,7 +133,18 @@ const IconPlate = ({
       <div className={classes.ellipse1} />
       <div className={classes.ellipse2} />
       <div className={classes.ellipse3} />
-      <div className={classes.icon}>{children}</div>
+      <div className={classes.icon}>
+        {children || (
+          <div
+            style={{
+              width: size * 0.75,
+              height: size * 0.75,
+              backgroundColor: '#62626A',
+              borderRadius: '50%',
+            }}
+          />
+        )}
+      </div>
     </div>
   );
 };

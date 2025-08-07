@@ -139,11 +139,7 @@ const [GeneralIconsTemplate, CryptoIconsTemplate, NftIconsTemplate] = [
                   justifyContent="center"
                   alignItems="center"
                 >
-                  <Icon
-                    {...args}
-                    className={classes.icon}
-                    stopColor="#62626A"
-                  />
+                  <Icon {...args} className={classes.icon} />
                   <Typography noWrap className={classes.title}>
                     {key}
                   </Typography>
