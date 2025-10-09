@@ -3,6 +3,75 @@
 All notable changes to this project will be documented in this file. This
 project adheres to [Semantic Versioning](http://semver.org/).
 
+### 0.3.25
+
+- ADD `FARMS` icon
+
+### 0.3.24
+
+- ADD `UnstoppableWalletIcon` icon
+
+### 0.3.23
+
+- ADD `IconPlate` icon
+- ADD `CheckCircleIcon` icon
+- ADD `ChecklistIcon` icon
+- ADD `CopyIcon` icon
+- ADD `CrownVipIcon` icon
+- ADD `HandOutlinedIcon` icon
+- ADD `HeartIcon` icon
+- ADD `PencilFilledIcon` icon
+- ADD `PencilOutlinedIcon` icon
+- ADD `ShieldKeyHoleIcon` icon
+- ADD `SyncIcon` icon
+- ADD `TrashIcon` icon
+- ADD `WalletIcon` icon
+- ADD `WarningIcon` icon
+
+### 0.3.22
+
+- ADD `WETH` icon
+
+### 0.3.21
+
+- ADD `XLAYER` icon
+
+### 0.3.20
+
+- ADD `Base` icon
+
+### 0.3.19
+
+- UPDATE `nibiru` icon v2
+
+### 0.3.18
+
+- UPDATE `nibiru` icon
+
+### 0.3.17
+
+- ADD `nibiru` icon
+
+### 0.3.16
+
+- Add `Arbitrum`, `Optimism`, and `Stacks` icons
+
+### 0.3.15
+
+- Fix `TwitterX` icon inner positioning
+
+### 0.3.14
+
+- Use NPM registry when publishing new package versions
+
+### 0.3.13
+
+- Add `TwitterX` (X, formerly Twitter) icon
+
+### 0.3.12
+
+- Update `Polygon` icon
+
 ### 0.3.11
 
 - Update `MuiPaper` component styles
