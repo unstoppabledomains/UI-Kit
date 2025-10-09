@@ -1,4 +1,4 @@
-import {VerifiedRounded as VerifiedRoundedIcon} from '@mui/icons-material';
+import VerifiedRoundedIcon from '@mui/icons-material/VerifiedRounded';
 import React from 'react';
 
 type Props = {

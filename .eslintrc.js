@@ -57,6 +57,7 @@ module.exports = {
         'no-restricted-syntax': 'off',
         'import/prefer-default-export': 'off',
         'sort-exports/sort-exports': 'error',
+        'react/button-has-type': 'off',
         'import/order': [
           'error',
           {
@@ -90,10 +91,31 @@ module.exports = {
         extensions: ['.js', '.jsx', '.ts', '.tsx', '.mdx'],
       },
     ],
-    'import/no-extraneous-dependencies': [
+    'import/no-extraneous-dependencies': 'off',
+    'no-restricted-imports': [
       'error',
       {
-        devDependencies: ['**/*.stories.*', '**/.storybook/**/*.*'],
+        patterns: [
+          {
+            // https://mui.com/material-ui/guides/minimizing-bundle-size#option-one-use-path-imports
+            group: ['@mui/*/*/*'],
+            message: `Please use second-level imports: '@mui/*/*'. `,
+          },
+        ],
+        paths: [
+          {
+            name: '@mui/material',
+            message: `Please use '@mui/material/*' path imports instead. `,
+          },
+          {
+            name: '@mui/icons-material',
+            message: `Please use '@mui/icons-material/*' path imports instead. `,
+          },
+          {
+            name: '@mui/lab',
+            message: `Please use '@mui/lab/*' path imports instead. `,
+          },
+        ],
       },
     ],
   },

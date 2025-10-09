@@ -1,5 +1,9 @@
-import type {SvgIconProps, Theme} from '@mui/material';
-import {Grid, Typography, Tooltip, Button} from '@mui/material';
+import Button from '@mui/material/Button';
+import Grid from '@mui/material/Grid';
+import {type SvgIconProps} from '@mui/material/SvgIcon';
+import Tooltip from '@mui/material/Tooltip';
+import Typography from '@mui/material/Typography';
+import type {Theme} from '@mui/material/styles';
 import React from 'react';
 
 import {makeStyles} from '../styles';
@@ -45,10 +49,23 @@ const defaultArgs: Pick<SvgIconProps, 'fontSize' | 'color'> = {
   fontSize: 'medium' as const,
 };
 
-const useStyles = makeStyles()(() => ({
+const useStyles = makeStyles()((theme: Theme) => ({
   icon: {
     width: 60,
     height: 60,
+  },
+  title: {
+    boxSizing: 'border-box',
+    width: 180,
+    padding: theme.spacing(0.5),
+    border: '1px solid #e1e9f6',
+    borderRadius: theme.spacing(1),
+    marginTop: theme.spacing(1.25),
+    fontSize: theme.typography.body2.fontSize,
+    fontFamily: 'monospace',
+    backgroundColor: '#f0f6f9',
+    color: '#003378',
+    textAlign: 'center',
   },
   tooltip: {
     maxWidth: 'none',
@@ -122,21 +139,10 @@ const [GeneralIconsTemplate, CryptoIconsTemplate, NftIconsTemplate] = [
                   justifyContent="center"
                   alignItems="center"
                 >
-                  <Icon
-                    {...args}
-                    className={classes.icon}
-                    stopColor="#62626A"
-                  />
-                  <Tooltip title={key}>
-                    <Typography
-                      fontSize={14}
-                      align="center"
-                      noWrap
-                      sx={{width: 160, marginTop: '10px'}}
-                    >
-                      {key}
-                    </Typography>
-                  </Tooltip>
+                  <Icon {...args} className={classes.icon} />
+                  <Typography noWrap className={classes.title}>
+                    {key}
+                  </Typography>
                 </Grid>
               </Tooltip>
             </Grid>
