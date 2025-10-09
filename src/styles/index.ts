@@ -1,9 +1,11 @@
-import {useTheme, createTheme, responsiveFontSizes} from '@mui/material';
-import type {
-  SimplePaletteColorOptions,
-  ThemeOptions,
-  Theme,
-} from '@mui/material';
+import {
+  useTheme,
+  createTheme,
+  responsiveFontSizes,
+  type SimplePaletteColorOptions,
+  type ThemeOptions,
+  type Theme,
+} from '@mui/material/styles';
 import {createMakeAndWithStyles} from 'tss-react';
 import type {CSSObject} from 'tss-react';
 
@@ -416,6 +418,11 @@ const buildThemeOptions = (mode: 'light' | 'dark'): ThemeOptions => ({
 const addThemeOverrides = (theme: Theme) => {
   /* eslint-disable no-param-reassign */
   theme.components = {
+    MuiTooltip: {
+      defaultProps: {
+        enterTouchDelay: 0,
+      },
+    },
     MuiTabs: {
       defaultProps: {
         textColor: 'primary',
@@ -530,6 +537,9 @@ const addThemeOverrides = (theme: Theme) => {
     },
     MuiAlert: {
       styleOverrides: {
+        root: {
+          boxShadow: 'none',
+        },
         standardError: {
           background: theme.palette.dangerShades[100],
           color: theme.palette.dangerShades[900],
@@ -577,6 +587,13 @@ const addThemeOverrides = (theme: Theme) => {
       styleOverrides: {
         root: {
           wordBreak: 'normal',
+        },
+      },
+    },
+    MuiPaper: {
+      styleOverrides: {
+        root: {
+          boxShadow: `0px 0px 0px 1px ${theme.palette.greyShades[75]}`,
         },
       },
     },

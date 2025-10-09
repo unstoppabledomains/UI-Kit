@@ -3,6 +3,136 @@
 All notable changes to this project will be documented in this file. This
 project adheres to [Semantic Versioning](http://semver.org/).
 
+### 0.3.25
+
+- ADD `FARMS` icon
+
+### 0.3.24
+
+- ADD `UnstoppableWalletIcon` icon
+
+### 0.3.23
+
+- ADD `IconPlate` icon
+- ADD `CheckCircleIcon` icon
+- ADD `ChecklistIcon` icon
+- ADD `CopyIcon` icon
+- ADD `CrownVipIcon` icon
+- ADD `HandOutlinedIcon` icon
+- ADD `HeartIcon` icon
+- ADD `PencilFilledIcon` icon
+- ADD `PencilOutlinedIcon` icon
+- ADD `ShieldKeyHoleIcon` icon
+- ADD `SyncIcon` icon
+- ADD `TrashIcon` icon
+- ADD `WalletIcon` icon
+- ADD `WarningIcon` icon
+
+### 0.3.22
+
+- ADD `WETH` icon
+
+### 0.3.21
+
+- ADD `XLAYER` icon
+
+### 0.3.20
+
+- ADD `Base` icon
+
+### 0.3.19
+
+- UPDATE `nibiru` icon v2
+
+### 0.3.18
+
+- UPDATE `nibiru` icon
+
+### 0.3.17
+
+- ADD `nibiru` icon
+
+### 0.3.16
+
+- Add `Arbitrum`, `Optimism`, and `Stacks` icons
+
+### 0.3.15
+
+- Fix `TwitterX` icon inner positioning
+
+### 0.3.14
+
+- Use NPM registry when publishing new package versions
+
+### 0.3.13
+
+- Add `TwitterX` (X, formerly Twitter) icon
+
+### 0.3.12
+
+- Update `Polygon` icon
+
+### 0.3.11
+
+- Update `MuiPaper` component styles
+- Update `MuiAlert` component styles
+
+### 0.3.10
+
+- Add `Ens` icon
+
+### 0.3.9
+
+- Adds support for HTML content inside `Alert` component
+
+### 0.3.8
+
+- Set `enterTouchDelay` prop default value to `0` for `MuiTooltip` component
+
+### 0.3.7
+
+- Remove `CryptoCom` crypto icon
+- Add `CRO` crypto icon
+
+### 0.3.6
+
+- Add `MCONTENT` crypto icon
+
+### 0.3.5
+
+- Add `VERSE` crypto icon
+
+### 0.3.4
+
+- Add `HI` crypto icon
+
+### 0.3.3
+
+- Add styles prop to `PWETH`, `PUSDC` crypto icons to avoid overwriting existing
+  styles
+
+### 0.3.2
+
+- Fix styles for `PWETH`, `PUSDC` crypto icons
+
+### 0.3.1
+
+- Added `PWETH`, `PUSDC`, `ApeCoin` crypto icons
+
+### 0.3.0
+
+- Add `Alert` component
+
+### 0.2.14
+
+- Replace top-level MUI imports with path imports
+
+### 0.2.13
+
+- Add `GTH` crypto icon
+- Fix `XLA` crypto icon
+- Fix `APT` crypto icon
+
 ### 0.2.12
 
 - Add `POKT` crypto icon
