@@ -81,12 +81,9 @@ const DEFAULT_ACCENT_OKLCH = formatOklch({
   alpha: 1,
 });
 
-const engineModeOptions: GeneratedThemeVariant[] = [
-  'lighter',
-  'light',
-  'dark',
-  'darker',
-];
+// UI-Kit ships light/dark only — the lighter/darker variants from the #13609
+// demo are dropped, so the generator exposes just these two modes.
+const engineModeOptions: GeneratedThemeVariant[] = ['light', 'dark'];
 
 const engineModeLabels: Record<GeneratedThemeVariant, string> = {
   lighter: 'Lighter',
