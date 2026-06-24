@@ -321,11 +321,9 @@ const classifyToken = (
     return {family: 'dropShadow', key: toCamelCase(name.split('-').slice(2))};
   }
 
-  // `border-glow-*` are the residual border-effect tokens (doc: `border`, 2).
-  if (name.startsWith('border-glow-')) {
-    return {family: 'border', key: toCamelCase(name.split('-').slice(1))};
-  }
-
+  // First segment is the family (e.g. `surface`, `fg`, `border`); the rest is
+  // the camelCase key. The only `border-*` tokens are `border-glow-*`, which
+  // this maps to `border.glowOnAccent` / `border.glowOnSurfaceHover`.
   const [first, ...rest] = name.split('-');
   if ((PUBLIC_FAMILIES as readonly string[]).includes(first) && rest.length) {
     return {family: first as PaletteFamily, key: toCamelCase(rest)};
@@ -566,6 +564,11 @@ const run = async () => {
     if (Object.keys(options.overrides).length) {
       console.warn(
         'Note: --check validates the committed recipe; ignoring the override flags passed alongside it.',
+      );
+    }
+    if (options.outDir) {
+      console.warn(
+        'Note: --check does not export; ignoring --out-dir. Run without --check to export.',
       );
     }
     await runCheck(createWebsiteGeneratedThemeConfig());

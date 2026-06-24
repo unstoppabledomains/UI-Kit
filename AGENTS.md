@@ -19,11 +19,18 @@ Your job: run it, verify, version-bump, and ship a new UI-Kit release.
 
 ## Prerequisites
 
-UI-Kit pins `engines.node` to **16.x.x**, and `yarn` enforces it. Run these
-commands under Node 16 (`nvm use 16`). On a newer Node, prefix yarn commands
-with `--ignore-engines`, e.g.
-`yarn --ignore-engines color-system:tokens --check` (the toolchain itself runs
-fine on newer Node).
+UI-Kit pins `engines.node` to **16.x.x**, and `yarn` enforces it. Easiest is to
+run everything under Node 16 (`nvm use 16`) — then every command below works as
+written.
+
+On a newer Node, use the env var `YARN_IGNORE_ENGINES=true` — **not** the
+`--ignore-engines` flag. The flag is not inherited by the nested yarn calls
+inside composite scripts (`yarn build` runs `yarn build:cjs && …`; `yarn dist`
+runs `yarn build && …`), so those inner calls would still abort on the engine
+check. The env var is inherited. So either prefix each command, e.g.
+`YARN_IGNORE_ENGINES=true yarn build` / `YARN_IGNORE_ENGINES=true yarn dist`, or
+`export YARN_IGNORE_ENGINES=true` once for the session. (The toolchain itself
+runs fine on newer Node; CI pins Node 16.)
 
 ## The generated color system in one paragraph
 
@@ -80,6 +87,10 @@ the published bundle (see `.babelrc.js`). Runtime ships only the CSS and the
    ```
    npm version patch   # or: npm version minor
    ```
+
+   Then reconcile `CHANGELOG.md`: rename the `### Unreleased` heading to the new
+   version number (it ships verbatim into `dist`, so it must not publish as
+   `Unreleased`).
 
 5. **Ship.** Two supported paths — pick the one your access allows:
 
