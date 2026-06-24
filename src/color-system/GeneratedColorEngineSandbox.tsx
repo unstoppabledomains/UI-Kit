@@ -941,7 +941,9 @@ const useStyles = makeStyles()((theme: Theme) => ({
   },
   contentColumn: {
     minWidth: 0,
-    gridColumn: '2 / -1',
+    // Place the content in the track after the seed rail. `2 / -1` rendered
+    // overlapping the rail in the Storybook canvas; `3 / -1` resolves it.
+    gridColumn: '3 / -1',
     [theme.breakpoints.down('md')]: {
       gridColumn: '1',
     },
