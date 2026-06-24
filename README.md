@@ -162,7 +162,7 @@ references are published.
 
 A designer tunes seeds on the **Color System Generator** Storybook page and
 clicks **Copy command**; a coding agent runs it. See
-[`AGENTS.md`](https://github.com/unstoppabledomains/UI-Kit/blob/main/AGENTS.md)
+[`CLAUDE.md`](https://github.com/unstoppabledomains/UI-Kit/blob/main/CLAUDE.md)
 for the full regenerate → verify → version-bump → publish flow. In short:
 
 ```shell
@@ -241,7 +241,7 @@ The script will also build `*.d.ts.` types (put under `dist` alongside the
 
 > Regenerating the **generated color system** (`paletteV2` / `theme-tokens.css`)
 > follows a dedicated agent-driven flow — see
-> [`AGENTS.md`](https://github.com/unstoppabledomains/UI-Kit/blob/main/AGENTS.md).
+> [`CLAUDE.md`](https://github.com/unstoppabledomains/UI-Kit/blob/main/CLAUDE.md).
 > It can either publish directly (Approach A) or land via the PR flow above.
 
 ### Storybook

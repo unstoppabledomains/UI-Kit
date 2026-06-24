@@ -9,7 +9,7 @@ import GeneratedColorEngineSandbox from './generator';
  * **Copy command** action emits a `yarn color-system:tokens --write-config
  * --from-url "…"` command that a coding agent runs to regenerate
  * `theme-tokens.css` + `paletteV2.generated.ts` and publish a new UI-Kit
- * version (see AGENTS.md).
+ * version (see CLAUDE.md).
  *
  * This story is dev/Storybook-only — it bundles the generation engine and
  * `colorjs.io`, which are excluded from the published npm runtime.
