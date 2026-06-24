@@ -1,6 +1,7 @@
-/* eslint-disable no-console, no-param-reassign */
-// A build/dev CLI: console output is the UX, and the option handlers
-// deliberately accumulate into a shared mutable `overrides`/`options` object.
+/* eslint-disable no-console, no-param-reassign, sort-exports/sort-exports */
+// A build/dev CLI: console output is the UX, the option handlers deliberately
+// accumulate into a shared mutable `overrides`/`options` object, and the few
+// exports exist for unit tests — so they're ordered by dependency, not sorted.
 /**
  * Dual-emit generator for the UI-Kit generated color system.
  *
@@ -309,7 +310,7 @@ const toCamelCase = (segments: readonly string[]): string =>
  * family and camelCase key (e.g. `surface` / `accentMuted`). Private `_*`
  * component tokens and any unknown family are skipped.
  */
-const classifyToken = (
+export const classifyToken = (
   name: string,
 ): {family: PaletteFamily; key: string} | undefined => {
   if (name.startsWith('_')) {
@@ -401,7 +402,11 @@ const toCssBlock = (mode: string, variables: GeneratedCssVariables): string => {
   return `:root[data-color-theme='${mode}'] {\n${lines}\n}`;
 };
 
-const buildCss = async (
+// Note: `config.outputMode` is intentionally NOT read here — UI-Kit always emits
+// the sRGB baseline + an `@supports` Display-P3 upgrade (the only form that gives
+// progressive enhancement). The field is retained in the recipe for engine
+// parity but does not change the emitted CSS format.
+export const buildCss = async (
   family: GeneratedThemeFamilyOutput,
   config: WebsiteGeneratedThemeConfig,
 ): Promise<string> => {

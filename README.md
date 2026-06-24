@@ -133,6 +133,15 @@ const Card = styled('div')(({theme}) => ({
 const styles = {background: surface.base, color: fg.secondary};
 ```
 
+The dot-alias groups mirror the `paletteV2` families one-to-one, with one naming
+note: `paletteV2`'s ring tokens live under `effect`
+(`paletteV2.effect.ringBase`) but are exported as the **`ring`** dot-alias
+(`ring.base` / `ring.focus`) — the wider internal `effect` group (which also
+holds engine-private component tokens) is intentionally not re-exported. The
+barrel also exposes low-level escape hatches (`token`, `cssColorVar`,
+`cssToken`); these resolve only for tokens UI-Kit actually emits, so prefer the
+typed groups for everyday use.
+
 > **Keep the CSS import.** `theme-tokens.css` carries every color value but has
 > no JS bindings, so make sure your bundler does not tree-shake it (UI-Kit marks
 > `**/*.css` as having side effects to prevent this). Without it, every
