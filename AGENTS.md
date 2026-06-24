@@ -1,0 +1,94 @@
+# AGENTS.md — UI-Kit coding-agent runbook
+
+This file tells an AI coding agent (Claude, Codex, …) how to regenerate and
+publish the **generated color system** without human hand-holding. It exists
+because UI-Kit ships its theme via an agent-driven publish flow (Approach A — no
+CI auto-publish).
+
+## When you are invoked
+
+A designer tuned base / accent / tint / contrast on the **Color System
+Generator** Storybook page and clicked **Copy command**. They pasted you a
+command that looks like:
+
+```
+yarn color-system:tokens --write-config --from-url "<generator url>"
+```
+
+Your job: run it, verify, version-bump, and publish a new UI-Kit release.
+
+## The generated color system in one paragraph
+
+One recipe (`src/color-system/websiteGeneratedTheme.config.json`) drives one
+generator (`scripts/generateThemeTokens.ts`, exposed as
+`yarn color-system:tokens`) that emits **two coupled artifacts** so they can
+never drift:
+
+- `src/styles/theme-tokens.css` — the values: per-theme sRGB hex + an
+  `@supports` Display-P3 upgrade, scoped to `[data-color-theme='light'|'dark']`.
+- `src/color-system/paletteV2.generated.ts` — the typed accessor: a `paletteV2`
+  map whose every leaf is a `var(--color-*)` reference, wired into `lightTheme`
+  and `darkTheme`.
+
+The OKLCH engine + `colorjs.io` are **dev/script-only** and are excluded from
+the published bundle (see `.babelrc.js`). Runtime ships only the CSS and the
+`var(--color-*)` references.
+
+## Steps
+
+1. **Regenerate** from the designer's command (or, if they only changed the
+   committed recipe, just `yarn color-system:tokens --write-config`):
+
+   ```
+   yarn color-system:tokens --write-config --from-url "<generator url>"
+   ```
+
+   This rewrites `websiteGeneratedTheme.config.json`, `theme-tokens.css`, and
+   `paletteV2.generated.ts` together.
+
+2. **Verify** — these must all pass:
+
+   ```
+   yarn color-system:tokens --check   # 0 contrast/non-text failures, 0 gamut warnings, artifacts in sync
+   yarn test                          # engine + wiring unit tests
+   yarn tsc                           # type-check
+   yarn build                         # produces dist/ incl. dist/styles/theme-tokens.css
+   ```
+
+   If `--check` reports contrast/gamut failures, do **not** publish — report the
+   failing tokens back to the designer; the seeds need adjusting.
+
+3. **Commit** the three regenerated files (and nothing else):
+
+   ```
+   git add src/color-system/websiteGeneratedTheme.config.json \
+           src/styles/theme-tokens.css \
+           src/color-system/paletteV2.generated.ts
+   git commit -m "Regenerate color system tokens"
+   ```
+
+4. **Version-bump** — patch for a tuning tweak, minor for new tokens:
+
+   ```
+   npm version patch   # or: npm version minor
+   ```
+
+5. **Publish**:
+
+   ```
+   yarn dist           # build + copy package files + per-module package.json
+   npm publish dist    # publishes the contents of dist/
+   ```
+
+6. **Hand back** the new version number so the consuming app (ecomm) can bump
+   its `@unstoppabledomains/ui-kit` dependency.
+
+## Guardrails
+
+- Never edit `theme-tokens.css` or `paletteV2.generated.ts` by hand — they are
+  generated. Change the recipe (or pass override flags) and regenerate.
+- `borderContrast` and `surfaceHue` are pinned brand defaults and are not
+  exposed as generator inputs; do not surface them.
+- Only base / accent / tint / contrast are tunable inputs.
+- If `yarn build` or `yarn test` fails, stop and report — do not publish a
+  broken release.

@@ -2,7 +2,9 @@
   "extends": "./tsconfig.json",
   "exclude": [
     "src/**/*.stories.tsx",
+    "src/**/*.test.ts",
     "src/**/*.test.tsx",
+    "src/color-system/GeneratedColorEngineSandbox.tsx",
     "stories/**/*",
     ".storybook/**/*",
     "tests/**/*",

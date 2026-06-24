@@ -1,0 +1,19 @@
+{
+  "name": "unstoppable",
+  "variantBaseSeeds": {
+    "lighter": "#FFFFFF",
+    "light": "#F5F5F5",
+    "dark": "#1A1A1A",
+    "darker": "#0B0B0B"
+  },
+  "accent": "oklch(0.5039 0.4 263.75)",
+  "contrast": 1,
+  "borderContrast": 0.5,
+  "neutralTint": 0.005,
+  "surfaceHue": 100,
+  "outputMode": "displayP3",
+  "modeVariants": {
+    "light": "light",
+    "dark": "dark"
+  }
+}

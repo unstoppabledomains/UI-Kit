@@ -9,6 +9,7 @@
   "compilerOptions": {
     "baseUrl": "./",
     "allowJs": true,
+    "resolveJsonModule": true,
     "declaration": true,
     "emitDeclarationOnly": true,
     "outDir": "dist",
