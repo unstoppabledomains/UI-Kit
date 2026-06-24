@@ -12,21 +12,20 @@
  * to runtime. Brand-specific `integration`/`tld`/`campaign` helpers stay in the
  * consuming app per the token boundary.
  */
-export {paletteV2} from './paletteV2.generated';
+export type {CssColorVariableReference, CssTokenReference} from './tokens';
 export type {PaletteV2} from './paletteV2.generated';
-
 export {
+  chart,
   cssColorVar,
   cssToken,
-  token,
-  surface,
+  dropShadow,
+  effect,
   fg,
+  gradient,
   line,
   overlay,
-  effect,
-  dropShadow,
   shadow,
-  gradient,
-  chart,
+  surface,
+  token,
 } from './tokens';
-export type {CssColorVariableReference, CssTokenReference} from './tokens';
+export {paletteV2} from './paletteV2.generated';

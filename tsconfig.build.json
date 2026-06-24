@@ -5,9 +5,11 @@
     "src/**/*.test.ts",
     "src/**/*.test.tsx",
     "src/color-system/GeneratedColorEngineSandbox.tsx",
+    "scripts/**/*",
     "stories/**/*",
     ".storybook/**/*",
     "tests/**/*",
-    "*.ts"
+    "*.ts",
+    "src/color-system/websiteGeneratedThemeConfig.ts"
   ]
 }

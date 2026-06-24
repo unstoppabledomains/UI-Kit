@@ -92,10 +92,10 @@ import theme from '@unstoppabledomains/ui-kit/styles'; // lightTheme is exported
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
-      <Button variant="contained>Hello World</Button>
+      <Button variant="contained">Hello World</Button>
     </ThemeProvider>
   );
-}
+};
 ```
 
 ### Generated color system (`paletteV2` + `theme-tokens.css`)
@@ -217,6 +217,10 @@ The script will also build `*.d.ts.` types (put under `dist` alongside the
 
 3. Create a pull request to the UI Kit with the desired changes and wait for it
    to be merged and published
+
+> Regenerating the **generated color system** (`paletteV2` / `theme-tokens.css`)
+> follows a dedicated agent-driven flow — see [`AGENTS.md`](./AGENTS.md). It can
+> either publish directly (Approach A) or land via the PR flow above.
 
 ### Storybook
 

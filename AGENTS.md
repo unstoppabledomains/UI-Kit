@@ -15,7 +15,15 @@ command that looks like:
 yarn color-system:tokens --write-config --from-url "<generator url>"
 ```
 
-Your job: run it, verify, version-bump, and publish a new UI-Kit release.
+Your job: run it, verify, version-bump, and ship a new UI-Kit release.
+
+## Prerequisites
+
+UI-Kit pins `engines.node` to **16.x.x**, and `yarn` enforces it. Run these
+commands under Node 16 (`nvm use 16`). On a newer Node, prefix yarn commands
+with `--ignore-engines`, e.g.
+`yarn --ignore-engines color-system:tokens --check` (the toolchain itself runs
+fine on newer Node).
 
 ## The generated color system in one paragraph
 
@@ -73,12 +81,21 @@ the published bundle (see `.babelrc.js`). Runtime ships only the CSS and the
    npm version patch   # or: npm version minor
    ```
 
-5. **Publish**:
+5. **Ship.** Two supported paths — pick the one your access allows:
 
-   ```
-   yarn dist           # build + copy package files + per-module package.json
-   npm publish dist    # publishes the contents of dist/
-   ```
+   - **Direct publish (Approach A)** — if you hold npm publish rights for
+     `@unstoppabledomains`:
+
+     ```
+     yarn dist           # build + copy package files + per-module package.json
+     npm publish dist    # publishes the contents of dist/ (requires npm auth / 2FA)
+     ```
+
+   - **PR for maintainer release** — otherwise, open a pull request with the
+     regenerated files + the version bump and let it publish on merge, following
+     the standard UI-Kit release flow in `README.md` → _Publishing to npm_.
+     (There is no CI auto-publish, so a human or an authorized agent runs the
+     publish.)
 
 6. **Hand back** the new version number so the consuming app (ecomm) can bump
    its `@unstoppabledomains/ui-kit` dependency.

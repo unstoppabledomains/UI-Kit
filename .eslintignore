@@ -4,8 +4,16 @@ storybook-static/
 !.storybook/
 !.babelrc.js
 
-# Ported OKLCH color engine + generator (vendored from website PR #13609) and the
-# generated token artifacts. Linted upstream; excluded here to avoid churning
-# vendored/generated code against UI-Kit's lint rules.
-src/color-system/
-scripts/generateThemeTokens.ts
+# Vendored OKLCH engine (copied verbatim / adapted from website PR #13609) and
+# generated token artifacts. Linted upstream / machine-generated; excluded to
+# avoid churning them against UI-Kit's lint rules. The genuinely new authored
+# glue (src/color-system/index.ts, the Storybook story) and
+# scripts/generateThemeTokens.ts are deliberately NOT ignored so they stay linted.
+src/color-system/generatedTheme.ts
+src/color-system/generatedTheme.test.ts
+src/color-system/colorEngineAdapter.ts
+src/color-system/tokens.ts
+src/color-system/tokens.test.ts
+src/color-system/websiteGeneratedThemeConfig.ts
+src/color-system/GeneratedColorEngineSandbox.tsx
+src/color-system/paletteV2.generated.ts

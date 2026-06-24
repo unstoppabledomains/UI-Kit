@@ -4,6 +4,7 @@
     "stories/**/*",
     ".storybook/**/*",
     "tests/**/*",
+    "scripts/**/*",
     "*.ts"
   ],
   "compilerOptions": {

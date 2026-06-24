@@ -1,4 +1,6 @@
-/* eslint-disable no-console */
+/* eslint-disable no-console, no-param-reassign */
+// A build/dev CLI: console output is the UX, and the option handlers
+// deliberately accumulate into a shared mutable `overrides`/`options` object.
 /**
  * Dual-emit generator for the UI-Kit generated color system.
  *
@@ -26,7 +28,16 @@
  */
 import fs from 'fs';
 import path from 'path';
+
+// eslint-disable-next-line import/no-extraneous-dependencies -- dev/build-only tool
 import prettier from 'prettier';
+
+import {generatedSemanticTokenNames} from '../src/color-system/generatedTheme';
+import type {
+  GeneratedCssVariables,
+  GeneratedThemeFamilyOutput,
+  GeneratedThemeVariant,
+} from '../src/color-system/generatedTheme';
 import {
   DEFAULT_WEBSITE_GENERATED_THEME_CONFIG,
   createWebsiteGeneratedThemeConfig,
@@ -38,12 +49,6 @@ import type {
   WebsiteGeneratedThemeConfigOverrides,
   WebsiteGeneratedThemeMode,
 } from '../src/color-system/websiteGeneratedThemeConfig';
-import {generatedSemanticTokenNames} from '../src/color-system/generatedTheme';
-import type {
-  GeneratedCssVariables,
-  GeneratedThemeFamilyOutput,
-  GeneratedThemeVariant,
-} from '../src/color-system/generatedTheme';
 
 const REPO_ROOT = path.resolve(__dirname, '..');
 const CONFIG_PATH = path.join(
@@ -113,7 +118,23 @@ const readValue = (args: string[], index: number, flag: string) => {
   return value;
 };
 
-const applyGeneratorUrl = (
+// The four engine variants the Storybook generator can emit as `mode=…`. Only
+// `light`/`dark` are consumed by UI-Kit's emit (via modeVariants), but the
+// generator page also exposes the `lighter`/`darker` presets, so map every value
+// to its OWN base-seed slot — never silently fold them into the light seed.
+const GENERATED_THEME_VARIANTS: readonly GeneratedThemeVariant[] = [
+  'lighter',
+  'light',
+  'dark',
+  'darker',
+];
+
+const resolveUrlVariant = (mode: string | null): GeneratedThemeVariant =>
+  mode && (GENERATED_THEME_VARIANTS as readonly string[]).includes(mode)
+    ? (mode as GeneratedThemeVariant)
+    : 'light';
+
+export const applyGeneratorUrl = (
   overrides: WebsiteGeneratedThemeConfigOverrides,
   rawUrl: string,
 ) => {
@@ -122,8 +143,7 @@ const applyGeneratorUrl = (
       ? new URL(rawUrl, 'http://localhost')
       : new URL(rawUrl);
   const params = url.searchParams;
-  const mode = params.get('mode');
-  const variant: GeneratedThemeVariant = mode === 'dark' ? 'dark' : 'light';
+  const variant = resolveUrlVariant(params.get('mode'));
   const base = params.get('base');
   const accent = params.get('accent');
   const contrast = params.get('contrast');
@@ -131,6 +151,11 @@ const applyGeneratorUrl = (
 
   if (base) {
     setBaseSeed(overrides, variant, base);
+    if (variant === 'lighter' || variant === 'darker') {
+      console.warn(
+        `Note: base seed for "${variant}" is recorded but not emitted — UI-Kit only renders the light/dark scopes.`,
+      );
+    }
   }
   if (accent) {
     overrides.accent = accent;
@@ -141,9 +166,27 @@ const applyGeneratorUrl = (
   if (tint) {
     overrides.neutralTint = parseNumber(tint, 'tint');
   }
+
+  // `borderContrast`/`surfaceHue` are pinned brand defaults and `outputMode` is
+  // fixed (UI-Kit always emits sRGB + @supports P3), so the generator does not
+  // accept them. Warn loudly if a copy-command still carries tuned values, so a
+  // designer never assumes a stale tune was applied.
+  (
+    [
+      ['borderContrast', 'borderContrast'],
+      ['hue', 'surfaceHue'],
+      ['output', 'outputMode'],
+    ] as const
+  ).forEach(([param, field]) => {
+    if (params.get(param)) {
+      console.warn(
+        `Ignoring "${param}" from --from-url: ${field} is pinned/fixed in UI-Kit and is not a tunable input.`,
+      );
+    }
+  });
 };
 
-const parseArgs = (args: string[]): CliOptions => {
+export const parseArgs = (args: string[]): CliOptions => {
   const options: CliOptions = {
     check: false,
     writeConfig: false,
@@ -301,8 +344,10 @@ const buildPaletteGroups = (): {groups: PaletteGroups; skipped: string[]} => {
       }
       return;
     }
-    const group = (groups[classified.family] ||= {});
-    group[classified.key] = `var(--color-${name})`;
+    if (!groups[classified.family]) {
+      groups[classified.family] = {};
+    }
+    groups[classified.family][classified.key] = `var(--color-${name})`;
   });
 
   return {groups, skipped};
@@ -491,7 +536,8 @@ const runCheck = async (config: WebsiteGeneratedThemeConfig) => {
   problems.slice(0, 12).forEach((problem) => console.error(`- ${problem}`));
   if (cssStale || paletteStale) {
     console.error(
-      '- Artifacts are stale. Run `yarn color-system:tokens --write-config`.',
+      '- Artifacts are stale. Run `yarn color-system:tokens` to regenerate ' +
+        '(add --write-config only when persisting recipe changes).',
     );
   }
 
@@ -528,11 +574,11 @@ const run = async () => {
   );
 };
 
-void (async () => {
-  try {
-    await run();
-  } catch (error) {
+// Only execute when run directly (e.g. `yarn color-system:tokens`); importing
+// this module (e.g. from unit tests) must not trigger generation or read argv.
+if (require.main === module) {
+  run().catch((error) => {
     console.error(error instanceof Error ? error.message : error);
     process.exit(1);
-  }
-})();
+  });
+}
