@@ -3,7 +3,8 @@
  *
  * Every leaf is a `var(--color-*)` reference resolved at runtime against the
  * values in `src/styles/theme-tokens.css` (sRGB with an `@supports` Display-P3
- * upgrade, scoped per `data-color-theme`). Because the leaves are theme-agnostic
+ * upgrade; light on `:root`, dark on `[data-theme='dark']`). Because the leaves
+ * are theme-agnostic
  * variable references, the same object serves both `lightTheme` and `darkTheme`.
  */
 export const paletteV2 = {

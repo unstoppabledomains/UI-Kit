@@ -47,13 +47,13 @@ describe('generator: buildCss emit', () => {
     const config = createWebsiteGeneratedThemeConfig();
     const css = await buildCss(generateWebsiteThemeFamily(config), config);
 
-    expect(css).toContain(":root[data-color-theme='light']");
-    expect(css).toContain(":root[data-color-theme='dark']");
+    // Light is the default (bare :root); dark overrides under [data-theme='dark'].
+    expect(css).toContain(':root {');
+    expect(css).toContain(":root[data-theme='dark'] {");
     expect(css).toContain('@supports (color: color(display-p3 1 1 1))');
     expect(css).toContain('--color-surface-base:');
     expect(css).toMatch(/color\(display-p3 /);
-    // No lighter/darker scopes — UI-Kit ships light/dark only.
-    expect(css).not.toContain("data-color-theme='lighter'");
-    expect(css).not.toContain("data-color-theme='darker'");
+    // Single attribute: data-theme only, no data-color-theme.
+    expect(css).not.toContain('data-color-theme');
   });
 });

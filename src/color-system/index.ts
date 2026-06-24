@@ -3,8 +3,8 @@
  *
  * Exposes the typed `paletteV2` map and the ergonomic dot-alias groups, all of
  * whose leaves are `var(--color-*)` references. Consumers resolve the actual
- * values by importing the published `theme-tokens.css` and toggling
- * `data-color-theme` on the document root.
+ * values by importing the published `theme-tokens.css` (light by default; set
+ * `data-theme="dark"` on the document root for dark).
  *
  * The OKLCH generation engine (`generatedTheme`, `colorEngineAdapter`,
  * `websiteGeneratedThemeConfig`) and its `colorjs.io` dependency are

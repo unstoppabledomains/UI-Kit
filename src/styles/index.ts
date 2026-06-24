@@ -197,7 +197,7 @@ interface PaletteExtends {
   // Generated, P3-capable semantic color system. Every leaf is a
   // `var(--color-*)` reference resolved against `theme-tokens.css`, so the same
   // object is valid for both light and dark themes (the active values are
-  // selected by the `data-color-theme` attribute on the document root).
+  // light by default, dark when `data-theme="dark"` is set on the document root).
   paletteV2: PaletteV2;
 }
 
@@ -294,7 +294,8 @@ const buildThemeOptions = (mode: 'light' | 'dark'): ThemeOptions => ({
   palette: {
     mode,
     // Var-reference based generated palette; theme-agnostic, identical for both
-    // light and dark themes (resolved at runtime via `data-color-theme`).
+    // light and dark themes (resolved at runtime: light by default, dark via
+    // `data-theme="dark"`).
     paletteV2,
     error: {main: '#B72015'},
     link: {main: '#0D67FE'},

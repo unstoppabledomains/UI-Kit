@@ -40,7 +40,8 @@ generator (`scripts/generateThemeTokens.ts`, exposed as
 never drift:
 
 - `src/styles/theme-tokens.css` — the values: per-theme sRGB hex + an
-  `@supports` Display-P3 upgrade, scoped to `[data-color-theme='light'|'dark']`.
+  `@supports` Display-P3 upgrade; light on `:root` (default), dark on
+  `[data-theme='dark']`.
 - `src/color-system/paletteV2.generated.ts` — the typed accessor: a `paletteV2`
   map whose every leaf is a `var(--color-*)` reference, wired into `lightTheme`
   and `darkTheme`.

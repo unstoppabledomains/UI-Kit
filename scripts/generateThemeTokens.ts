@@ -9,7 +9,7 @@
  * this writes BOTH coupled artifacts so they can never drift:
  *
  *   1. `src/styles/theme-tokens.css` — the values: per-theme sRGB hex plus an
- *      `@supports` Display-P3 upgrade, scoped to `[data-color-theme='light'|'dark']`.
+ *      `@supports` Display-P3 upgrade; light on `:root`, dark on `[data-theme='dark']`.
  *   2. `src/color-system/paletteV2.generated.ts` — the typed accessor: a
  *      `paletteV2` map whose every leaf is a `var(--color-*)` reference.
  *
@@ -379,7 +379,8 @@ const buildPaletteTs = async (): Promise<string> => {
  *
  * Every leaf is a \`var(--color-*)\` reference resolved at runtime against the
  * values in \`src/styles/theme-tokens.css\` (sRGB with an \`@supports\` Display-P3
- * upgrade, scoped per \`data-color-theme\`). Because the leaves are theme-agnostic
+ * upgrade; light on \`:root\`, dark on \`[data-theme='dark']\`). Because the leaves
+ * are theme-agnostic
  * variable references, the same object serves both \`lightTheme\` and \`darkTheme\`.
  */
 export const paletteV2 = {
@@ -395,11 +396,23 @@ export type PaletteV2 = typeof paletteV2;
 
 // --- theme-tokens.css -----------------------------------------------------
 
-const toCssBlock = (mode: string, variables: GeneratedCssVariables): string => {
+// Light values are the default (bare `:root`); dark overrides under
+// `[data-theme='dark']`. So a consumer only toggles the `data-theme` attribute
+// for dark and gets the light palette for free — matching ecomm's existing
+// `ThemeModeProvider`, which sets `data-theme="dark"` on the document root.
+const THEME_BLOCK_SELECTORS: Record<WebsiteGeneratedThemeMode, string> = {
+  light: ':root',
+  dark: ":root[data-theme='dark']",
+};
+
+const toCssBlock = (
+  mode: WebsiteGeneratedThemeMode,
+  variables: GeneratedCssVariables,
+): string => {
   const lines = Object.entries(variables)
     .map(([name, value]) => `  ${name}: ${value};`)
     .join('\n');
-  return `:root[data-color-theme='${mode}'] {\n${lines}\n}`;
+  return `${THEME_BLOCK_SELECTORS[mode]} {\n${lines}\n}`;
 };
 
 // Note: `config.outputMode` is intentionally NOT read here — UI-Kit always emits

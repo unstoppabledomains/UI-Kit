@@ -110,7 +110,8 @@ can never drift:
 
 - **`@unstoppabledomains/ui-kit/styles/theme-tokens.css`** — the values:
   per-theme sRGB hex plus an `@supports (color: color(display-p3 1 1 1))`
-  Display-P3 layer, scoped to `:root[data-color-theme='light'|'dark']`.
+  Display-P3 layer. **Light is the default** (on `:root`); dark overrides under
+  `:root[data-theme='dark']`.
 - **`paletteV2`** — a typed palette namespace on `lightTheme` / `darkTheme`
   whose every leaf is a `var(--color-*)` reference, plus ergonomic dot-alias
   groups (`surface`, `fg`, `line`, …) re-exported from
@@ -147,8 +148,9 @@ typed groups for everyday use.
 > `**/*.css` as having side effects to prevent this). Without it, every
 > `var(--color-*)` reference resolves to nothing.
 
-Toggle the active theme by setting `data-color-theme="light"` or `"dark"` on the
-document root (e.g. `<html>`). Because the palette leaves are theme-agnostic
+**Light values apply by default** — no attribute needed. For dark, set
+`data-theme="dark"` on the document root (e.g. `<html data-theme="dark">`);
+clear it to go back to light. Because the palette leaves are theme-agnostic
 variable references, the browser resolves them to the correct per-theme value
 and upgrades to P3 automatically on capable displays.
 
@@ -179,8 +181,10 @@ A consuming app should: import `theme-tokens.css` once; read colors via
 `theme.palette.paletteV2.*` or the dot-aliases; keep its own static brand
 families (`integration`, `tld`, `campaign`, `templateBuilder`, `code`) emitted
 locally (these are intentionally **not** part of UI-Kit's generated system); and
-keep toggling `data-color-theme` for light/dark. Bumping the UI-Kit dependency
-picks up any retuned palette.
+keep its existing `data-theme="dark"` toggle (light needs no attribute). The CSS
+is scoped on `:root` / `:root[data-theme='dark']`, so it drops into an app that
+already toggles `data-theme` — no attribute migration. Bumping the UI-Kit
+dependency picks up any retuned palette.
 
 ### Importing UD-specific components
 
