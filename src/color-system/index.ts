@@ -14,13 +14,15 @@
  */
 export type {CssColorVariableReference, CssTokenReference} from './tokens';
 export type {PaletteV2} from './paletteV2.generated';
+// NOTE: the wide `effect` dot-alias group is intentionally NOT re-exported — it
+// includes engine-private `_`-prefixed component tokens (checkbox/radio/switch).
+// Public ring tokens are available via `theme.palette.paletteV2.effect`.
 export {
   border,
   chart,
   cssColorVar,
   cssToken,
   dropShadow,
-  effect,
   fg,
   glow,
   gradient,

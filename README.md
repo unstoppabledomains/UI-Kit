@@ -133,6 +133,11 @@ const Card = styled('div')(({theme}) => ({
 const styles = {background: surface.base, color: fg.secondary};
 ```
 
+> **Keep the CSS import.** `theme-tokens.css` carries every color value but has
+> no JS bindings, so make sure your bundler does not tree-shake it (UI-Kit marks
+> `**/*.css` as having side effects to prevent this). Without it, every
+> `var(--color-*)` reference resolves to nothing.
+
 Toggle the active theme by setting `data-color-theme="light"` or `"dark"` on the
 document root (e.g. `<html>`). Because the palette leaves are theme-agnostic
 variable references, the browser resolves them to the correct per-theme value
@@ -145,7 +150,8 @@ references are published.
 #### Regenerating the tokens
 
 A designer tunes seeds on the **Color System Generator** Storybook page and
-clicks **Copy command**; a coding agent runs it. See [`AGENTS.md`](./AGENTS.md)
+clicks **Copy command**; a coding agent runs it. See
+[`AGENTS.md`](https://github.com/unstoppabledomains/UI-Kit/blob/main/AGENTS.md)
 for the full regenerate → verify → version-bump → publish flow. In short:
 
 ```shell
@@ -203,7 +209,7 @@ The script will also build `*.d.ts.` types (put under `dist` alongside the
 1. Make sure to document the changes in the `CHANGELOG.md` file:
 
 ```markdown
-## 1.2.3
+### 1.2.3
 
 - Added styled Alert component
 - Updated readme
@@ -221,8 +227,9 @@ The script will also build `*.d.ts.` types (put under `dist` alongside the
    `yarn dist && npm publish dist`.
 
 > Regenerating the **generated color system** (`paletteV2` / `theme-tokens.css`)
-> follows a dedicated agent-driven flow — see [`AGENTS.md`](./AGENTS.md). It can
-> either publish directly (Approach A) or land via the PR flow above.
+> follows a dedicated agent-driven flow — see
+> [`AGENTS.md`](https://github.com/unstoppabledomains/UI-Kit/blob/main/AGENTS.md).
+> It can either publish directly (Approach A) or land via the PR flow above.
 
 ### Storybook
 

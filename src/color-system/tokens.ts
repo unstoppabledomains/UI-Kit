@@ -319,6 +319,10 @@ type IntegrationTokenGroup = CssColorVarGroup<IntegrationTokenKey> & {
   readonly solanaGradient: readonly CssColorVariableReference<string>[];
 };
 
+// Brand integration colors are OUT of UI-Kit's token boundary: `theme-tokens.css`
+// emits no `--color-integration-*` vars, so these refs resolve to nothing here.
+// This helper is retained for the vendored test/sandbox only and is deliberately
+// NOT re-exported from the public barrel — consuming apps emit these locally.
 export const integration = new Proxy(
   {},
   {

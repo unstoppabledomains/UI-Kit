@@ -73,7 +73,10 @@ function generatePackageJsonFileContents(packagePath, level = 1) {
   const parentPaths = '../'.repeat(level);
 
   return {
-    sideEffects: false,
+    // Keep CSS (e.g. styles/theme-tokens.css) from being tree-shaken away by
+    // consumers' bundlers — a CSS-only import has no JS bindings, so `false`
+    // would let it be dropped and break every var(--color-*) reference.
+    sideEffects: ['**/*.css'],
     module: `${parentPaths}esm${packagePath}/index.js`,
     main: './index.js',
     types: './index.d.ts',

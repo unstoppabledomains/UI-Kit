@@ -578,7 +578,12 @@ const run = async () => {
     writeConfigFile(config);
   }
 
-  await writeArtifacts(config);
+  // A pure `--out-dir` export must NOT rewrite the committed artifacts; only
+  // regenerate them when persisting the recipe or when no out-dir is given.
+  const regenerateCommitted = options.writeConfig || !options.outDir;
+  if (regenerateCommitted) {
+    await writeArtifacts(config);
+  }
 
   if (options.outDir) {
     await writeExports(options.outDir, config);
@@ -587,8 +592,14 @@ const run = async () => {
   const {contrast, nonText, gamut} = collectFailures(
     generateWebsiteThemeFamily(config),
   );
+  const wrote = [
+    regenerateCommitted && 'theme-tokens.css + paletteV2.generated.ts',
+    options.outDir && `export → ${options.outDir}`,
+  ]
+    .filter(Boolean)
+    .join('; ');
   console.log(
-    `Wrote theme-tokens.css + paletteV2.generated.ts (${config.name}). ` +
+    `Wrote ${wrote} (${config.name}). ` +
       `Contrast failures: ${contrast.length}; non-text: ${nonText.length}; gamut: ${gamut.length}.`,
   );
 };

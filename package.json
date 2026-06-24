@@ -23,7 +23,9 @@
     "url": "git+https://github.com/unstoppabledomains/UI-Kit.git"
   },
   "license": "MIT",
-  "sideEffects": false,
+  "sideEffects": [
+    "**/*.css"
+  ],
   "main": "index.js",
   "module": "esm/index.js",
   "types": "index.d.ts",

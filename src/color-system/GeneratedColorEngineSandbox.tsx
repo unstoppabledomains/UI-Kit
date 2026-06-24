@@ -928,11 +928,14 @@ const useStyles = makeStyles()((theme: Theme) => ({
     margin: '0 auto',
     padding: theme.spacing(4, 3, 8),
     display: 'grid',
-    gridTemplateColumns: '300px minmax(0, 1fr)',
+    // `minmax(0, 300px)` (not a hard `300px`) so the seed rail can shrink rather
+    // than overflow and overlap the content when the container is narrower than
+    // 300px (e.g. inside a constrained Storybook canvas).
+    gridTemplateColumns: 'minmax(0, 300px) minmax(0, 1fr)',
     gap: theme.spacing(3),
     alignItems: 'start',
     [theme.breakpoints.down('md')]: {
-      gridTemplateColumns: '1fr',
+      gridTemplateColumns: 'minmax(0, 1fr)',
       padding: theme.spacing(3, 2, 6),
     },
   },
