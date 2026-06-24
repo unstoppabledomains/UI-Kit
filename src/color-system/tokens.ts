@@ -199,6 +199,11 @@ const resolveEffectTokenName = (key: EffectTokenKey) => {
 
 export const effect = createTokenGroup<EffectTokenKey>(resolveEffectTokenName);
 
+// Ring-only dot-alias matching the public `paletteV2.effect` shape
+// (ringBase/ringFocus). The wider `effect` group above also carries
+// engine-private component tokens and is intentionally NOT re-exported publicly.
+export const ring = prefixedTokenGroup<'base' | 'focus'>('effect-ring');
+
 // fallow-ignore-next-line unused-export
 export const dropShadow = prefixedTokenGroup<'xs' | 'md' | 'xl'>('drop-shadow');
 

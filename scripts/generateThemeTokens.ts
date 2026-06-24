@@ -39,7 +39,6 @@ import type {
   GeneratedThemeVariant,
 } from '../src/color-system/generatedTheme';
 import {
-  DEFAULT_WEBSITE_GENERATED_THEME_CONFIG,
   createWebsiteGeneratedThemeConfig,
   generateWebsiteThemeFamily,
   getGeneratedThemeCssVariables,
@@ -404,9 +403,10 @@ const toCssBlock = (mode: string, variables: GeneratedCssVariables): string => {
 
 const buildCss = async (
   family: GeneratedThemeFamilyOutput,
+  config: WebsiteGeneratedThemeConfig,
 ): Promise<string> => {
   const variantFor = (mode: WebsiteGeneratedThemeMode): GeneratedThemeVariant =>
-    DEFAULT_WEBSITE_GENERATED_THEME_CONFIG.modeVariants[mode];
+    config.modeVariants[mode];
 
   const srgbBlocks = MODES.map((mode) =>
     toCssBlock(
@@ -437,9 +437,12 @@ const buildCss = async (
 
 // --- Diagnostics ----------------------------------------------------------
 
-const collectFailures = (family: GeneratedThemeFamilyOutput) => {
+const collectFailures = (
+  family: GeneratedThemeFamilyOutput,
+  config: WebsiteGeneratedThemeConfig,
+) => {
   const variantFor = (mode: WebsiteGeneratedThemeMode) =>
-    DEFAULT_WEBSITE_GENERATED_THEME_CONFIG.modeVariants[mode];
+    config.modeVariants[mode];
 
   const contrast = MODES.flatMap((mode) =>
     family.variants[variantFor(mode)].contrastReport
@@ -460,12 +463,15 @@ const collectFailures = (family: GeneratedThemeFamilyOutput) => {
   return {contrast, nonText, gamut};
 };
 
-const buildJsonExport = (family: GeneratedThemeFamilyOutput) => {
+const buildJsonExport = (
+  family: GeneratedThemeFamilyOutput,
+  config: WebsiteGeneratedThemeConfig,
+) => {
   const variantFor = (mode: WebsiteGeneratedThemeMode) =>
-    DEFAULT_WEBSITE_GENERATED_THEME_CONFIG.modeVariants[mode];
+    config.modeVariants[mode];
 
   return {
-    config: toSortedConfig(DEFAULT_WEBSITE_GENERATED_THEME_CONFIG),
+    config: toSortedConfig(config),
     modes: Object.fromEntries(
       MODES.map((mode) => {
         const theme = family.variants[variantFor(mode)];
@@ -489,7 +495,7 @@ const buildJsonExport = (family: GeneratedThemeFamilyOutput) => {
 
 const writeArtifacts = async (config: WebsiteGeneratedThemeConfig) => {
   const family = generateWebsiteThemeFamily(config);
-  fs.writeFileSync(CSS_PATH, await buildCss(family));
+  fs.writeFileSync(CSS_PATH, await buildCss(family, config));
   fs.writeFileSync(PALETTE_PATH, await buildPaletteTs());
 };
 
@@ -508,17 +514,17 @@ const writeExports = async (
   fs.mkdirSync(outDir, {recursive: true});
   fs.writeFileSync(
     path.join(outDir, 'theme-tokens.json'),
-    `${JSON.stringify(buildJsonExport(family), null, 2)}\n`,
+    `${JSON.stringify(buildJsonExport(family, config), null, 2)}\n`,
   );
   fs.writeFileSync(
     path.join(outDir, 'theme-tokens.css'),
-    await buildCss(family),
+    await buildCss(family, config),
   );
 };
 
 const runCheck = async (config: WebsiteGeneratedThemeConfig) => {
   const family = generateWebsiteThemeFamily(config);
-  const expectedCss = await buildCss(family);
+  const expectedCss = await buildCss(family, config);
   const expectedPalette = await buildPaletteTs();
   const actualCss = fs.existsSync(CSS_PATH)
     ? fs.readFileSync(CSS_PATH, 'utf8')
@@ -526,7 +532,7 @@ const runCheck = async (config: WebsiteGeneratedThemeConfig) => {
   const actualPalette = fs.existsSync(PALETTE_PATH)
     ? fs.readFileSync(PALETTE_PATH, 'utf8')
     : undefined;
-  const {contrast, nonText, gamut} = collectFailures(family);
+  const {contrast, nonText, gamut} = collectFailures(family, config);
 
   const cssStale = actualCss !== expectedCss;
   const paletteStale = actualPalette !== expectedPalette;
@@ -594,6 +600,7 @@ const run = async () => {
 
   const {contrast, nonText, gamut} = collectFailures(
     generateWebsiteThemeFamily(config),
+    config,
   );
   const wrote = [
     regenerateCommitted && 'theme-tokens.css + paletteV2.generated.ts',

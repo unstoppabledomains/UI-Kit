@@ -28,6 +28,7 @@ export {
   gradient,
   line,
   overlay,
+  ring,
   shadow,
   surface,
   token,
