@@ -3,3 +3,21 @@ dist/
 storybook-static/
 !.storybook/
 !.babelrc.js
+
+# Vendored OKLCH engine (copied verbatim / adapted from website PR #13609) and
+# generated token artifacts. Linted upstream / machine-generated; excluded to
+# avoid churning them against UI-Kit's lint rules. The genuinely new authored
+# glue (src/color-system/index.ts, the Storybook story) and
+# scripts/generateThemeTokens.ts ARE linted; the dedicated *.test.ts files added
+# in this PR are linted too.
+src/color-system/generatedTheme.ts
+src/color-system/generatedTheme.test.ts
+src/color-system/colorEngineAdapter.ts
+src/color-system/tokens.ts
+src/color-system/tokens.test.ts
+# Adapted from #13609 (4->2 variant collapse, pinned borderContrast/surfaceHue);
+# kept here because its export ordering trips eslint's sort-exports vs
+# no-use-before-define in a way that fighting would only obscure the diff.
+src/color-system/websiteGeneratedThemeConfig.ts
+src/color-system/generator/
+src/color-system/paletteV2.generated.ts

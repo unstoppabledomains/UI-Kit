@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "scripts": {
+    "setup": "export NVM_DIR=\"$HOME/.nvm\"; [ -s \"$NVM_DIR/nvm.sh\" ] && . \"$NVM_DIR/nvm.sh\"; nvm use 16 >/dev/null 2>&1 || nvm install 16; yarn install --ignore-engines",
+    "launch": {
+      "command": "export NVM_DIR=\"$HOME/.nvm\"; [ -s \"$NVM_DIR/nvm.sh\" ] && . \"$NVM_DIR/nvm.sh\"; nvm use 16 >/dev/null 2>&1 || nvm install 16; yarn --ignore-engines storybook:start --ci",
+      "devServerPattern": {
+        "pattern": "Local:\\s+(https?://\\S+)",
+        "label": "Storybook",
+        "openTarget": "in-app"
+      }
+    }
+  }
+}

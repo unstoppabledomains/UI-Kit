@@ -4,11 +4,13 @@
     "stories/**/*",
     ".storybook/**/*",
     "tests/**/*",
+    "scripts/**/*",
     "*.ts"
   ],
   "compilerOptions": {
     "baseUrl": "./",
     "allowJs": true,
+    "resolveJsonModule": true,
     "declaration": true,
     "emitDeclarationOnly": true,
     "outDir": "dist",

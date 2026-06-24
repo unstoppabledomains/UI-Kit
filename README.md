@@ -92,11 +92,99 @@ import theme from '@unstoppabledomains/ui-kit/styles'; // lightTheme is exported
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
-      <Button variant="contained>Hello World</Button>
+      <Button variant="contained">Hello World</Button>
     </ThemeProvider>
   );
-}
+};
 ```
+
+### Generated color system (`paletteV2` + `theme-tokens.css`)
+
+UI-Kit ships a generated, accessible, **Display-P3-capable** semantic color
+system derived from an OKLCH engine. From four tuned inputs (base, accent, tint,
+contrast) it produces a full set of `--color-*` custom properties for light and
+dark, with an sRGB baseline and an automatic P3 upgrade.
+
+It is delivered as two coupled artifacts, both generated from one recipe so they
+can never drift:
+
+- **`@unstoppabledomains/ui-kit/styles/theme-tokens.css`** — the values:
+  per-theme sRGB hex plus an `@supports (color: color(display-p3 1 1 1))`
+  Display-P3 layer. **Light is the default** (on `:root`); dark overrides under
+  `:root[data-theme='dark']`.
+- **`paletteV2`** — a typed palette namespace on `lightTheme` / `darkTheme`
+  whose every leaf is a `var(--color-*)` reference, plus ergonomic dot-alias
+  groups (`surface`, `fg`, `line`, …) re-exported from
+  `@unstoppabledomains/ui-kit/color-system`.
+
+```typescript
+import {ThemeProvider} from '@unstoppabledomains/ui-kit';
+import theme from '@unstoppabledomains/ui-kit/styles';
+import {surface, fg} from '@unstoppabledomains/ui-kit/color-system';
+// Load the values once, near the top of your app:
+import '@unstoppabledomains/ui-kit/styles/theme-tokens.css';
+
+// Read via the theme...
+const Card = styled('div')(({theme}) => ({
+  background: theme.palette.paletteV2.surface.primary,
+  color: theme.palette.paletteV2.fg.primary,
+}));
+
+// ...or via the dot-aliases (identical `var(--color-*)` references):
+const styles = {background: surface.base, color: fg.secondary};
+```
+
+The dot-alias groups mirror the `paletteV2` families one-to-one, with one naming
+note: `paletteV2`'s ring tokens live under `effect`
+(`paletteV2.effect.ringBase`) but are exported as the **`ring`** dot-alias
+(`ring.base` / `ring.focus`) — the wider internal `effect` group (which also
+holds engine-private component tokens) is intentionally not re-exported. The
+barrel also exposes low-level escape hatches (`token`, `cssColorVar`,
+`cssToken`); these resolve only for tokens UI-Kit actually emits, so prefer the
+typed groups for everyday use.
+
+> **Keep the CSS import.** `theme-tokens.css` carries every color value but has
+> no JS bindings, so make sure your bundler does not tree-shake it (UI-Kit marks
+> `**/*.css` as having side effects to prevent this). Without it, every
+> `var(--color-*)` reference resolves to nothing.
+
+**Light values apply by default** — no attribute needed. For dark, set
+`data-theme="dark"` on the document root (e.g. `<html data-theme="dark">`);
+clear it to go back to light. Because the palette leaves are theme-agnostic
+variable references, the browser resolves them to the correct per-theme value
+and upgrades to P3 automatically on capable displays.
+
+The OKLCH engine and its `colorjs.io` dependency are **build/script-only** —
+they never ship to runtime. Only the prebuilt CSS and the tiny `var(--color-*)`
+references are published.
+
+#### Regenerating the tokens
+
+A designer tunes seeds on the **Color System Generator** Storybook page and
+clicks **Copy command**; a coding agent runs it. See
+[`CLAUDE.md`](https://github.com/unstoppabledomains/UI-Kit/blob/main/CLAUDE.md)
+for the full regenerate → verify → version-bump → publish flow. In short:
+
+```shell
+yarn color-system:tokens --write-config --from-url "<generator url>"  # regenerate both artifacts
+yarn color-system:tokens --check    # CI gate: 0 contrast/gamut failures, artifacts in sync
+yarn color-system:tokens --out-dir ./review   # export token JSON for design review
+```
+
+Never edit `theme-tokens.css` or `paletteV2.generated.ts` by hand — change the
+recipe (`src/color-system/websiteGeneratedTheme.config.json`) or pass override
+flags and regenerate.
+
+#### Consuming from an app (e.g. ecomm)
+
+A consuming app should: import `theme-tokens.css` once; read colors via
+`theme.palette.paletteV2.*` or the dot-aliases; keep its own static brand
+families (`integration`, `tld`, `campaign`, `templateBuilder`, `code`) emitted
+locally (these are intentionally **not** part of UI-Kit's generated system); and
+keep its existing `data-theme="dark"` toggle (light needs no attribute). The CSS
+is scoped on `:root` / `:root[data-theme='dark']`, so it drops into an app that
+already toggles `data-theme` — no attribute migration. Bumping the UI-Kit
+dependency picks up any retuned palette.
 
 ### Importing UD-specific components
 
@@ -134,7 +222,7 @@ The script will also build `*.d.ts.` types (put under `dist` alongside the
 1. Make sure to document the changes in the `CHANGELOG.md` file:
 
 ```markdown
-## 1.2.3
+### 1.2.3
 
 - Added styled Alert component
 - Updated readme
@@ -146,8 +234,15 @@ The script will also build `*.d.ts.` types (put under `dist` alongside the
 "version": "1.2.3"
 ```
 
-3. Create a pull request to the UI Kit with the desired changes and wait for it
-   to be merged and published
+3. Create a pull request with the version bump and changes, and wait for it to
+   be merged. There is **no CI auto-publish**: after merge, a maintainer (or an
+   authorized coding agent) publishes the release with
+   `yarn dist && npm publish dist`.
+
+> Regenerating the **generated color system** (`paletteV2` / `theme-tokens.css`)
+> follows a dedicated agent-driven flow — see
+> [`CLAUDE.md`](https://github.com/unstoppabledomains/UI-Kit/blob/main/CLAUDE.md).
+> It can either publish directly (Approach A) or land via the PR flow above.
 
 ### Storybook
 

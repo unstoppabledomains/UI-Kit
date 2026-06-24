@@ -36,3 +36,6 @@ jobs:
 
       - name: Run Prettier check
         run: yarn prettier:check
+
+      - name: Check generated color tokens are in sync
+        run: yarn color-system:tokens --check
