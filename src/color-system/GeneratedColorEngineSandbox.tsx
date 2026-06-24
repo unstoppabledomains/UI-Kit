@@ -1064,6 +1064,8 @@ const useStyles = makeStyles()((theme: Theme) => ({
   },
   referenceHeaderCell: {
     height: 32,
+    minWidth: 96,
+    whiteSpace: 'nowrap',
     padding: theme.spacing(0.45, 0.7),
     borderBottom: '1px solid var(--color-line-base)',
     backgroundColor: 'var(--color-surface-primary)',
@@ -1254,10 +1256,14 @@ const useStyles = makeStyles()((theme: Theme) => ({
     minWidth: 980,
     borderCollapse: 'separate',
     borderSpacing: 0,
-    tableLayout: 'fixed',
+    // `auto` (not `fixed`) so per-cell min-widths set a healthy column floor and
+    // the table scrolls horizontally instead of squishing all 18 shade columns.
+    tableLayout: 'auto',
   },
   primitiveHeaderCell: {
     height: 34,
+    minWidth: 64,
+    whiteSpace: 'nowrap',
     padding: theme.spacing(0.55, 0.7),
     borderBottom: '1px solid var(--color-line-base)',
     color: 'var(--color-fg-tertiary)',
@@ -1281,6 +1287,7 @@ const useStyles = makeStyles()((theme: Theme) => ({
   },
   primitiveShadeCell: {
     height: 64,
+    minWidth: 68,
     padding: 0,
     borderBottom: '1px solid var(--color-line-base)',
     borderLeft: '1px solid var(--color-line-base)',
@@ -1426,10 +1433,13 @@ const useStyles = makeStyles()((theme: Theme) => ({
     minWidth: 920,
     borderCollapse: 'separate',
     borderSpacing: 0,
-    tableLayout: 'fixed',
+    // `auto` so each surface column keeps a readable min-width and the table
+    // scrolls rather than the columns sprawling or squishing to fill the pane.
+    tableLayout: 'auto',
   },
   alphaCell: {
     height: 58,
+    minWidth: 104,
     padding: theme.spacing(0.45),
     borderBottom: '1px solid var(--color-line-base)',
     borderLeft: '1px solid var(--color-line-base)',
