@@ -215,8 +215,10 @@ The script will also build `*.d.ts.` types (put under `dist` alongside the
 "version": "1.2.3"
 ```
 
-3. Create a pull request to the UI Kit with the desired changes and wait for it
-   to be merged and published
+3. Create a pull request with the version bump and changes, and wait for it to
+   be merged. There is **no CI auto-publish**: after merge, a maintainer (or an
+   authorized coding agent) publishes the release with
+   `yarn dist && npm publish dist`.
 
 > Regenerating the **generated color system** (`paletteV2` / `theme-tokens.css`)
 > follows a dedicated agent-driven flow — see [`AGENTS.md`](./AGENTS.md). It can

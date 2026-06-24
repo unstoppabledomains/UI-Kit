@@ -84,12 +84,15 @@ describe('color-system token generator CLI', () => {
       });
     });
 
-    it('throws on unknown options and on missing values', () => {
+    it('throws on unknown options, missing values, and non-decimal numbers', () => {
       expect(() => parseArgs(['--nope'])).toThrow(/Unknown option/);
       expect(() => parseArgs(['--accent'])).toThrow(/requires a value/);
       expect(() => parseArgs(['--contrast', 'not-a-number'])).toThrow(
-        /finite number/,
+        /decimal number/,
       );
+      // Number() quirks must not slip through.
+      expect(() => parseArgs(['--contrast', '0x1'])).toThrow(/decimal number/);
+      expect(() => parseArgs(['--tint', '1e3'])).toThrow(/decimal number/);
     });
   });
 });

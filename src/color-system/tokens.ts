@@ -254,6 +254,35 @@ type ChartTokenKey =
 
 export const chart = prefixedTokenGroup<ChartTokenKey>('chart');
 
+// Mirrors the `glow` / `border` families exposed by `paletteV2` so both public
+// surfaces (these dot-aliases and `theme.palette.paletteV2.*`) offer the same
+// groups. These vars are also reachable via the broader `effect` group above.
+type GlowTokenKey =
+  | 'neutralHover'
+  | 'neutralPressed'
+  | 'onNeutralHover'
+  | 'onNeutralPressed'
+  | 'onAccentHover'
+  | 'onAccentPressed'
+  | 'onInverseHover'
+  | 'onInversePressed'
+  | 'accentHover'
+  | 'accentPressed'
+  | 'destructiveHover'
+  | 'destructivePressed'
+  | 'attentionHover'
+  | 'attentionPressed'
+  | 'positiveHover'
+  | 'positivePressed'
+  | 'specialHover'
+  | 'specialPressed';
+
+export const glow = prefixedTokenGroup<GlowTokenKey>('glow');
+
+type BorderTokenKey = 'glowOnAccent' | 'glowOnSurfaceHover';
+
+export const border = prefixedTokenGroup<BorderTokenKey>('border');
+
 type IntegrationTokenKey =
   | 'coinbaseWallet'
   | 'discord'

@@ -15,12 +15,14 @@
 export type {CssColorVariableReference, CssTokenReference} from './tokens';
 export type {PaletteV2} from './paletteV2.generated';
 export {
+  border,
   chart,
   cssColorVar,
   cssToken,
   dropShadow,
   effect,
   fg,
+  glow,
   gradient,
   line,
   overlay,

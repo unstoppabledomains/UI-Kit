@@ -92,9 +92,13 @@ Options:
 `.trim();
 
 const parseNumber = (raw: string, name: string) => {
-  const parsed = Number(raw);
+  // Require a plain decimal so `Number()` quirks (hex `0x10`, exponent `1e3`)
+  // don't silently pass through for --contrast/--tint.
+  const parsed = /^-?\d+(\.\d+)?$/.test(raw.trim()) ? Number(raw) : NaN;
   if (!Number.isFinite(parsed)) {
-    throw new Error(`${name} must be a finite number. Received "${raw}".`);
+    throw new Error(
+      `${name} must be a finite decimal number. Received "${raw}".`,
+    );
   }
   return parsed;
 };
@@ -498,12 +502,19 @@ const writeConfigFile = (config: WebsiteGeneratedThemeConfig) => {
   );
 };
 
-const writeExports = (outDir: string, config: WebsiteGeneratedThemeConfig) => {
+const writeExports = async (
+  outDir: string,
+  config: WebsiteGeneratedThemeConfig,
+) => {
   const family = generateWebsiteThemeFamily(config);
   fs.mkdirSync(outDir, {recursive: true});
   fs.writeFileSync(
     path.join(outDir, 'theme-tokens.json'),
     `${JSON.stringify(buildJsonExport(family), null, 2)}\n`,
+  );
+  fs.writeFileSync(
+    path.join(outDir, 'theme-tokens.css'),
+    await buildCss(family),
   );
 };
 
@@ -548,12 +559,20 @@ const runCheck = async (config: WebsiteGeneratedThemeConfig) => {
 
 const run = async () => {
   const options = parseArgs(process.argv.slice(2));
-  const config = createWebsiteGeneratedThemeConfig(options.overrides);
 
   if (options.check) {
-    await runCheck(config);
+    // --check validates the COMMITTED recipe + artifacts; tuning overrides would
+    // make it compare against a hypothetical recipe and falsely report STALE.
+    if (Object.keys(options.overrides).length) {
+      console.warn(
+        'Note: --check validates the committed recipe; ignoring the override flags passed alongside it.',
+      );
+    }
+    await runCheck(createWebsiteGeneratedThemeConfig());
     return;
   }
+
+  const config = createWebsiteGeneratedThemeConfig(options.overrides);
 
   if (options.writeConfig) {
     writeConfigFile(config);
@@ -562,7 +581,7 @@ const run = async () => {
   await writeArtifacts(config);
 
   if (options.outDir) {
-    writeExports(options.outDir, config);
+    await writeExports(options.outDir, config);
   }
 
   const {contrast, nonText, gamut} = collectFailures(
