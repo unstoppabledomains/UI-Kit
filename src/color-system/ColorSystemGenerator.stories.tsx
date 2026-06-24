@@ -1,7 +1,7 @@
 import type {ComponentMeta, ComponentStory} from '@storybook/react';
 import React from 'react';
 
-import GeneratedColorEngineSandbox from './GeneratedColorEngineSandbox';
+import GeneratedColorEngineSandbox from './generator';
 
 /**
  * The OKLCH Color System Generator. Designers tune base / accent / tint /

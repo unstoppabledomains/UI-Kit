@@ -38,7 +38,7 @@ module.exports = function config(api) {
     '**/color-system/websiteGeneratedThemeConfig.ts',
     // The Storybook generator sandbox pulls the engine (and colorjs.io) — it is
     // a dev/Storybook-only tool and must not ship in the runtime bundle.
-    '**/color-system/GeneratedColorEngineSandbox.tsx',
+    '**/color-system/generator/**',
   ];
 
   if (api.env() === 'cjs') {
