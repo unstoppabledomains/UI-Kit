@@ -715,8 +715,9 @@ const useStyles = makeStyles()((theme: Theme) => ({
   seedPopover: {
     position: 'sticky',
     top: 88,
-    alignSelf: 'start',
-    width: '100%',
+    alignSelf: 'flex-start',
+    flex: '0 0 280px',
+    maxWidth: '100%',
     minWidth: 0,
     padding: theme.spacing(2),
     border: '1px solid var(--color-line-base)',
@@ -725,6 +726,10 @@ const useStyles = makeStyles()((theme: Theme) => ({
     boxShadow: 'none',
     [theme.breakpoints.down('md')]: {
       position: 'static',
+      // Reset the fixed basis so the rail spans full width above the content
+      // when the layout stacks.
+      flex: '0 0 auto',
+      alignSelf: 'stretch',
     },
   },
   seedPopoverHidden: {
@@ -924,30 +929,27 @@ const useStyles = makeStyles()((theme: Theme) => ({
     maxWidth: 1240,
     margin: '0 auto',
     padding: theme.spacing(4, 3, 8),
-    display: 'grid',
-    // `minmax(0, 300px)` (not a hard `300px`) so the seed rail can shrink rather
-    // than overflow and overlap the content when the container is narrower than
-    // 300px (e.g. inside a constrained Storybook canvas).
-    gridTemplateColumns: 'minmax(0, 300px) minmax(0, 1fr)',
+    // Flexbox (not CSS grid) for the seed-rail / content split: a fixed-width
+    // rail + a flexible content pane. This avoids grid auto-placement, which
+    // rendered the content overlapping the rail inside the Storybook canvas.
+    display: 'flex',
+    alignItems: 'flex-start',
     gap: theme.spacing(3),
-    alignItems: 'start',
     [theme.breakpoints.down('md')]: {
-      gridTemplateColumns: 'minmax(0, 1fr)',
+      flexDirection: 'column',
       padding: theme.spacing(3, 2, 6),
     },
   },
   contentColumn: {
+    flex: '1 1 0%',
     minWidth: 0,
-    // Place the content in the track after the seed rail. `2 / -1` rendered
-    // overlapping the rail in the Storybook canvas; `3 / -1` resolves it.
-    gridColumn: '3 / -1',
     [theme.breakpoints.down('md')]: {
-      gridColumn: '1',
+      alignSelf: 'stretch',
     },
   },
-  contentColumnFull: {
-    gridColumn: '1 / -1',
-  },
+  // When the seed rail is hidden it leaves flex flow entirely, so the content
+  // pane fills the row on its own — no explicit span needed (kept as a no-op).
+  contentColumnFull: {},
   pageHeader: {
     display: 'grid',
     gridTemplateColumns: 'minmax(0, 1fr)',
