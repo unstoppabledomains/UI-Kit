@@ -3,13 +3,14 @@
 All notable changes to this project will be documented in this file. This
 project adheres to [Semantic Versioning](http://semver.org/).
 
-### Unreleased
+### 0.4.0
 
 - ADD generated color system: typed `paletteV2` MUI namespace (wired into
   `lightTheme`/`darkTheme`) + published `theme-tokens.css` (sRGB with an
-  `@supports` Display-P3 upgrade, light/dark). Includes the OKLCH generation
-  engine (dev/script-only), a dual-emit `yarn color-system:tokens` generator,
-  the Color System Generator Storybook story, and `CLAUDE.md` publish runbook.
+  `@supports` Display-P3 upgrade; light on `:root`, dark on
+  `[data-theme='dark']`). Includes the OKLCH generation engine
+  (dev/script-only), a dual-emit `yarn color-system:tokens` generator, the Color
+  System Generator Storybook story, and `CLAUDE.md` publish runbook.
 
 ### 0.3.25
 
